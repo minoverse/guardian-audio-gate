@@ -1,0 +1,19 @@
+#ifndef RESONATOR_COEFS_CMSIS_H
+#define RESONATOR_COEFS_CMSIS_H
+#include <stdint.h>
+
+#define NUM_RESONATORS 4
+#define NUM_STAGES 1
+
+static const int16_t RESONATOR_0_COEFS[6] = {240, 0, -240, 0, 32767, -32289};
+static const int16_t RESONATOR_1_COEFS[6] = {631, 0, -631, 0, 32767, -31506};
+static const int16_t RESONATOR_2_COEFS[6] = {1164, 0, -1164, 0, 32767, -30440};
+static const int16_t RESONATOR_3_COEFS[6] = {1897, 0, -1897, 0, 32767, -28975};
+
+static const int16_t* const RESONATOR_COEFS[NUM_RESONATORS] = {
+    RESONATOR_0_COEFS, RESONATOR_1_COEFS, RESONATOR_2_COEFS, RESONATOR_3_COEFS
+};
+
+static const uint16_t RESONATOR_CENTER_FREQS[NUM_RESONATORS] = {300, 800, 1500, 2500};
+
+#endif
