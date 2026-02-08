@@ -338,7 +338,7 @@ CPU usage: 9.2% of frame budget
 | **Final** | **Lag 80-250 step-by-2** | **1546** | ** PASS** |
 
 **Total speedup:** 3.6x faster
-![Week 3-4 Timing Result]20260208_131113.jpg)
+![Week 3-4 Timing Result](docs/images/20260208_131113.jpg)
 ### Key Optimizations
 
 1. **Coherence Feature (Main Bottleneck)**
