@@ -306,16 +306,200 @@ CMSIS-DSP uses:
 - Minimal printk() calls (reduce overhead)
 - Direct CMSIS-DSP calls (no abstraction layers)
 
-## Future Work (Week 3-4)
+# Week 3-4 Problems & Solutions
+### Goal
+Implement 5 physics-based features with target: **< 2000 µs**
+### Final Result
+```
+Processing time: 1546 µs (target: < 2000 µs)
+PASS: Meets timing requirement
 
-Next milestone: Feature extraction
-- Energy calculation per channel
-- Inter-channel correlation (key discriminator, Cohen's d = 1.83)
-- Temporal coherence (pitch detection)
-- Zero-crossing rate
-- Spectral flux
+Total pipeline: 1843 µs (297 resonator + 1546 features)
+CPU usage: 9.2% of frame budget
+```
 
-Target: < 2ms for all features combined
+### Features Implemented
+
+| Feature | Purpose | Time (µs) |
+|---------|---------|-----------|
+| Energy (RMS) | Signal strength per channel | ~100 |
+| Correlation | Inter-channel similarity (d=1.83 discriminator) | ~800 |
+| Coherence | Pitch periodicity detection | ~600 |
+| Zero-Crossing Rate | Frequency estimation | ~30 |
+| Spectral Flux | Frame-to-frame change | ~16 |
+
+### Optimization Journey
+
+| Attempt | Method | Time (µs) | Result |
+|---------|--------|-----------|--------|
+| 1st | Original (lag 50-400, manual loop) | 5511 | Too slow |
+| 2nd | `arm_correlate_q15()` (full correlation) | 7014 |  Worse |
+| 3rd | Reduced lag 80-250 + `arm_dot_prod_q15()` | 2446 |  Close |
+| **Final** | **Lag 80-250 step-by-2** | **1546** | ** PASS** |
+
+**Total speedup:** 3.6x faster
+
+![Week 3-4 Timing Result](docs/images/20260208_125510.jpg)
+![Week 3-4 Timing Result](docs/images/20260208_125609.jpg)
+![Week 3-4 Timing Result]20260208_131113.jpg)
+### Key Optimizations
+
+1. **Coherence Feature (Main Bottleneck)**
+   - Original: Nested loops 350 lags × 270 samples = 94,500 iterations
+   - Reduced lag range: 80-250 (covers 64-200Hz adult speech)
+   - Step-by-2: 85 iterations instead of 170
+   - Used CMSIS-DSP `arm_dot_prod_q15()` for inner loop
+
+2. **Energy Feature**
+   - Used CMSIS-DSP `arm_rms_q15()` instead of manual calculation
+   - Required `CONFIG_CMSIS_DSP_STATISTICS=y`
+
+3. **Correlation Feature**
+   - Manual Pearson correlation with Q15 fixed-point
+   - 3 channel pairs: 0-1, 1-2, 2-3
+## Problem 1: Undefined Reference to Feature Functions
+
+**Error:**
+```
+undefined reference to `extract_energy_features'
+undefined reference to `extract_correlation_features'
+undefined reference to `extract_coherence_features'
+undefined reference to `compute_zcr'
+undefined reference to `compute_spectral_flux'
+```
+
+**Root Cause:**
+Feature source files (.c) not added to CMakeLists.txt, so they weren't being compiled and linked.
+
+**Solution:**
+Updated `firmware/lib/guardian_dsp/CMakeLists.txt`:
+```cmake
+zephyr_library_sources(
+    src/resonator_df2t.c
+    src/features/energy.c
+    src/features/correlation.c
+    src/features/coherence.c
+    src/features/zcr.c
+    src/features/flux.c
+)
+```
+
+---
+
+## Problem 2: Unknown Type 'size_t'
+
+**Error:**
+```
+coherence.h:11:56: error: unknown type name 'size_t'
+zcr.c:3:56: error: unknown type name 'size_t'
+```
+
+**Root Cause:**
+Missing `#include <stddef.h>` in header files. `size_t` is defined in stddef.h, not stdint.h.
+
+**Solution:**
+Added `#include <stddef.h>` to coherence.h and zcr.h headers.
+
+---
+
+## Problem 3: Undefined Reference to arm_rms_q15
+
+**Error:**
+```
+energy.c:11: undefined reference to `arm_rms_q15'
+```
+
+**Root Cause:**
+CMSIS-DSP statistics module not enabled. `arm_rms_q15()` is part of statistics functions, not filtering.
+
+**Solution:**
+Added to `prj.conf`:
+```ini
+CONFIG_CMSIS_DSP_STATISTICS=y
+```
+
+CMSIS-DSP has modular compilation - must enable each submodule separately:
+- CONFIG_CMSIS_DSP_FILTERING (for filters)
+- CONFIG_CMSIS_DSP_STATISTICS (for RMS, mean, variance)
+
+---
+
+### Goal
+Implement 5 physics-based features with target: **< 2000 µs**
+
+### Final Result
+```
+Processing time: 1546 µs (target: < 2000 µs)
+PASS: Meets timing requirement
+
+Total pipeline: 1843 µs (297 resonator + 1546 features)
+CPU usage: 9.2% of frame budget
+```
+
+### Features Implemented
+
+| Feature | Purpose | Time (µs) |
+|---------|---------|-----------|
+| Energy (RMS) | Signal strength per channel | ~100 |
+| Correlation | Inter-channel similarity (d=1.83 discriminator) | ~800 |
+| Coherence | Pitch periodicity detection | ~600 |
+| Zero-Crossing Rate | Frequency estimation | ~30 |
+| Spectral Flux | Frame-to-frame change | ~16 |
+
+### Optimization Journey
+
+| Attempt | Method | Time (µs) | Result |
+|---------|--------|-----------|--------|
+| 1st | Original (lag 50-400, manual loop) | 5511 | ❌ Too slow |
+| 2nd | `arm_correlate_q15()` (full correlation) | 7014 | ❌ Worse |
+| 3rd | Reduced lag 80-250 + `arm_dot_prod_q15()` | 2446 | ❌ Close |
+| **Final** | **Lag 80-250 step-by-2** | **1546** | **✅ PASS** |
+
+**Total speedup:** 3.6x faster
+
+![Week 3-4 Timing Result](docs/images/week3-4-timing.png)
+
+### Key Optimizations
+
+1. **Coherence Feature (Main Bottleneck)**
+   - Original: Nested loops 350 lags × 270 samples = 94,500 iterations
+   - Reduced lag range: 80-250 (covers 64-200Hz adult speech)
+   - Step-by-2: 85 iterations instead of 170
+   - Used CMSIS-DSP `arm_dot_prod_q15()` for inner loop
+
+2. **Energy Feature**
+   - Used CMSIS-DSP `arm_rms_q15()` instead of manual calculation
+   - Required `CONFIG_CMSIS_DSP_STATISTICS=y`
+
+3. **Correlation Feature**
+   - Manual Pearson correlation with Q15 fixed-point
+   - 3 channel pairs: 0-1, 1-2, 2-3
+## Key Lessons
+
+1. **CMake must list all source files** - C files not in CMakeLists.txt won't be compiled
+2. **Include proper headers** - stddef.h for size_t, stdlib.h for abs()
+3. **Enable CMSIS-DSP modules explicitly** - statistics, filtering, etc. are separate
+4. **Profile before optimizing** - coherence feature was 73% of total time
+5. **Algorithmic complexity matters** - O(n²) loops don't scale on embedded systems
+
+---
+
+## Files Modified
+```
+firmware/prj.conf                           # Added CONFIG_CMSIS_DSP_STATISTICS=y
+firmware/lib/guardian_dsp/CMakeLists.txt    # Added feature source files
+firmware/lib/guardian_dsp/include/guardian/features/*.h  # Added stddef.h
+firmware/src/main.c                         # Feature extraction test
+```
+
+---
+
+## Next Steps
+
+1. Confirm 4 features meet < 2000 µs target
+2. Optimize coherence feature or make it optional
+3. Test with real audio (speech vs noise discrimination)
+4. Implement gate decision logic using feature thresholds
 
 ## License
 
