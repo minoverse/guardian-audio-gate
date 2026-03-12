@@ -491,12 +491,108 @@ firmware/src/main.c                         # Feature extraction test
 
 ---
 
-## Next Steps
+## Week 5: DMA Zero-Copy Audio (Complete)
 
-1. Confirm 4 features meet < 2000 µs target
-2. Optimize coherence feature or make it optional
-3. Test with real audio (speech vs noise discrimination)
-4. Implement gate decision logic using feature thresholds
+### Goal
+Eliminate CPU overhead from audio capture using DMA transfers for 15% power savings.
+
+### Implementation
+
+**DMA Architecture:**
+- 4-buffer circular queue (ping-pong + overflow protection)
+- Hardware PDM → Memory transfer (zero CPU involvement)
+- Zero-copy buffer passing (pointers, no memcpy)
+- Semaphore-based synchronization
+
+**Key Files:**
+- `lib/guardian_dsp/src/audio/dma_pdm.c` - DMA driver
+- `lib/guardian_dsp/include/guardian/audio/dma_pdm.h` - API
+
+### Results
+
+**Processing Time:**
+- DMA mode: 1227 µs/frame
+- 20% faster than Week 4 polling (1546 µs)
+- Consistent timing (no variance)
+
+**Memory Usage:**
+```
+Flash: 34,268 bytes (3.27%)
+RAM:   9,752 bytes (3.72%)
+```
+
+**Energy vs Correlation (Real Audio):**
+```
+DMA: E:27295 C:32693 T:1227us
+```
+- Energy varies with sound intensity ✓
+- Correlation tracks signal structure ✓
+- Timing stable across frames ✓
+
+### Technical Challenges & Solutions
+
+**Problem 1: PDM Callbacks Not Firing**
+- Root cause: `NRFX_PDM_INSTANCE(0)` set `p_reg = NULL`
+- PDM writes went to address 0x0 instead of 0x4001D000
+- Solution: `NRFX_PDM_INSTANCE(NRF_PDM_BASE)` - pass register base, not index
+
+**Problem 2: HFCLK Not Running**
+- PDM requires HFXO (High Frequency Crystal Oscillator)
+- Boot default: HFINT (64MHz RC, inaccurate)
+- Solution: Explicit `nrf_clock_task_trigger(NRF_CLOCK_TASK_HFCLKSTART)` before PDM init
+- Wait for `nrf_clock_is_running(NRF_CLOCK, NRF_CLOCK_DOMAIN_HFCLK)` = true
+
+**Problem 3: Division by Zero in Correlation**
+- Overflow in Q15 fixed-point math caused zero denominators
+- Solution: Switched to `int64_t` accumulators + `float sqrt()` for final step
+- Trade-off: +7KB flash for stability (acceptable on nRF52)
+
+**Problem 4: IRQ Handler Signature Mismatch**
+- nrfx 3.x changed `nrfx_pdm_irq_handler()` to take instance pointer
+- Old code: `nrfx_pdm_irq_handler()` - undefined behavior
+- Solution: `nrfx_pdm_irq_handler(&pdm_instance)`
+
+**Problem 5: PDM Clock Configuration**
+- nrfx API moved `clock_freq` into nested struct
+- Old: `pdm_config.clock_freq`
+- New: `pdm_config.prescalers.clock_freq`
+
+### Power Measurement Status
+
+**Not completed** due to hardware limitation:
+- nRF52840-DK has SB40 (solder bridge) connecting USB power directly to nRF VDD
+- PPK2 measurement requires SB40 removal (physical solder cutting)
+- Development board arrived without soldering tools
+
+**Theoretical Analysis:**
+- DMA eliminates memcpy per frame: ~0.4 mA savings
+- Reduced context switches: ~0.3 mA savings
+- Expected total: 10-15% reduction vs interrupt-driven polling
+
+**week5 summary:**
+I implemented DMA zero-copy architecture and verified correct operation with real audio. Power measurement was deferred due to development board SB40 limitation - accurate measurement requires physical modification (solder bridge removal). The code demonstrates proper DMA usage: circular buffers, hardware-triggered transfers, and zero-copy data paths. Theoretical analysis predicts 10-15% power reduction, which aligns with industry expectations for DMA vs polling architectures.
+
+### Code Verification
+
+**Real Audio Test:**
+1. Connect Adafruit 3492 PDM microphone
+2. Flash DMA code
+3. Observe:
+   - Energy increases when speaking (~27000)
+   - Energy low during silence (~1000-5000)
+   - Correlation varies with signal structure
+   - Processing time stable at 1227 µs
+
+**No serial output during measurement** (UART disabled for power profiling):
+```c
+// prj.conf for measurement
+CONFIG_UART_CONSOLE=n
+CONFIG_CONSOLE=n
+```
+
+### Next Steps (Week 6)
+
+Gate decision logic - threshold-based wakeword discrimination using extracted features.
 
 ## License
 
