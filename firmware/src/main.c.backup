@@ -1,0 +1,105 @@
+#include <zephyr/kernel.h>
+#include <zephyr/sys/printk.h>
+#include <zephyr/drivers/i2s.h>
+#include <zephyr/timing/timing.h>
+#include "guardian/resonator_df2t.h"
+#include "guardian/features/energy.h"
+#include "guardian/features/correlation.h"
+#include "guardian/features/coherence.h"
+#include "guardian/features/zcr.h"
+#include "guardian/features/flux.h"
+
+#define FRAME_SIZE 320
+#define SAMPLE_RATE 16000
+
+static const struct device *i2s_dev;
+static int16_t audio_buffer[FRAME_SIZE];
+static resonator_bank_df2t_t bank;
+
+K_MEM_SLAB_DEFINE(mem_slab, FRAME_SIZE * sizeof(int16_t), 4, 4);
+
+int main(void)
+{
+    printk("Guardian Audio Gate - Week 5 Real Audio Test\n");
+    
+    // Get I2S device
+    i2s_dev = DEVICE_DT_GET(DT_NODELABEL(i2s0));
+    if (!device_is_ready(i2s_dev)) {
+        printk("ERROR: I2S device not ready\n");
+        return -1;
+    }
+    
+    // Configure I2S for PDM microphone
+    struct i2s_config config = {
+        .word_size = 16,
+        .channels = 1,
+        .format = I2S_FMT_DATA_FORMAT_I2S,
+        .options = I2S_OPT_BIT_CLK_MASTER | I2S_OPT_FRAME_CLK_MASTER,
+        .frame_clk_freq = SAMPLE_RATE,
+        .mem_slab = &mem_slab,
+        .block_size = FRAME_SIZE * sizeof(int16_t),
+        .timeout = 1000,
+    };
+    
+    int ret = i2s_configure(i2s_dev, I2S_DIR_RX, &config);
+    if (ret != 0) {
+        printk("ERROR: I2S config failed: %d\n", ret);
+        return ret;
+    }
+    
+    // Initialize Guardian
+    resonator_bank_df2t_init(&bank);
+    
+    printk("Microphone ready. Speak now...\n\n");
+    
+    // Start I2S
+    ret = i2s_trigger(i2s_dev, I2S_DIR_RX, I2S_TRIGGER_START);
+    if (ret != 0) {
+        printk("ERROR: I2S start failed: %d\n", ret);
+        return ret;
+    }
+    
+    // Processing loop
+    energy_features_t energy;
+    correlation_features_t corr;
+    coherence_features_t coherence;
+    flux_state_t flux = {0};
+    uint16_t zcr;
+    int frame_count = 0;
+    
+    while (1) {
+        void *rx_mem_block;
+        size_t size;
+        
+        ret = i2s_read(i2s_dev, &rx_mem_block, &size);
+        if (ret != 0) {
+            printk("I2S read failed: %d\n", ret);
+            k_sleep(K_MSEC(20));
+            continue;
+        }
+        
+        memcpy(audio_buffer, rx_mem_block, size);
+        k_mem_slab_free(&mem_slab, rx_mem_block);
+        
+        // Process
+        timing_t start = timing_counter_get();
+        
+        resonator_bank_df2t_process(&bank, audio_buffer, FRAME_SIZE);
+        extract_energy_features((const int16_t (*)[320])bank.outputs, &energy);
+        extract_correlation_features((const int16_t (*)[320])bank.outputs, &corr);
+        extract_coherence_features(bank.outputs[0], FRAME_SIZE, &coherence);
+        zcr = compute_zcr(bank.outputs[0], FRAME_SIZE);
+        compute_spectral_flux(&flux, &energy);
+        
+        timing_t end = timing_counter_get();
+        uint32_t us = timing_cycles_to_ns(timing_cycles_get(&start, &end)) / 1000;
+        
+        if (++frame_count >= 50) {
+            frame_count = 0;
+            printk("Energy: %d | Corr: %d | Coh: %d | ZCR: %d | Time: %u us\n",
+                   energy.total_energy, corr.max_corr, coherence.autocorr_peak, zcr, us);
+        }
+    }
+    
+    return 0;
+}

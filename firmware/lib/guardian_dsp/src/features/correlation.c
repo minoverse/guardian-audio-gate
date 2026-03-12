@@ -1,38 +1,37 @@
 #include "guardian/features/correlation.h"
-#include <arm_math.h>
+#include <math.h>
 
 static int16_t compute_correlation_q15(const int16_t *x, const int16_t *y, size_t len)
 {
-    int32_t mean_x = 0, mean_y = 0;
+    if (len == 0) return 0;
     
+    int32_t mean_x = 0, mean_y = 0;
     for (size_t i = 0; i < len; i++) {
         mean_x += x[i];
         mean_y += y[i];
     }
-    mean_x /= len;
-    mean_y /= len;
+    mean_x /= (int32_t)len;
+    mean_y /= (int32_t)len;
     
-    int32_t cov = 0, var_x = 0, var_y = 0;
-    
+    int64_t cov = 0, var_x = 0, var_y = 0;
     for (size_t i = 0; i < len; i++) {
         int32_t dx = x[i] - mean_x;
         int32_t dy = y[i] - mean_y;
-        cov += (dx * dy) >> 15;
-        var_x += (dx * dx) >> 15;
-        var_y += (dy * dy) >> 15;
+        cov   += (int64_t)dx * dy;
+        var_x += (int64_t)dx * dx;
+        var_y += (int64_t)dy * dy;
     }
     
-    cov /= len;
-    var_x /= len;
-    var_y /= len;
+    if (var_x <= 0 || var_y <= 0) return 0;
     
-    int32_t denom_sq = (var_x * var_y) >> 15;
-    if (denom_sq <= 0) return 0;
+    float denom = sqrtf((float)var_x * (float)var_y);
+    if (denom < 1.0f) return 0;
     
-    int16_t denom;
-    arm_sqrt_q15((int16_t)denom_sq, &denom);
+    float r = (float)cov / denom;
+    if (r >  1.0f) r =  1.0f;
+    if (r < -1.0f) r = -1.0f;
     
-    return (int16_t)((cov << 15) / denom);
+    return (int16_t)(r * 32767.0f);
 }
 
 void extract_correlation_features(const int16_t outputs[NUM_RESONATORS][FRAME_SIZE],
