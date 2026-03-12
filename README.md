@@ -598,9 +598,7 @@ Gate decision logic - threshold-based wakeword discrimination using extracted fe
 
 MIT License
 
-## Author
 
-Built as part of embedded audio DSP coursework.
 
 ## References
 
