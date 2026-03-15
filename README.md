@@ -590,10 +590,91 @@ CONFIG_UART_CONSOLE=n
 CONFIG_CONSOLE=n
 ```
 
-### Next Steps (Week 6)
+## Week 6: Gate Decision Logic (Complete)
 
-Gate decision logic - threshold-based wakeword discrimination using extracted features.
+### Goal
+Threshold-based discrimination: wake TinyML only for speech-like signals, abort on silence/noise.
 
+### Implementation
+
+**4-Rule Scoring System:**
+```
+Rule 1 (+40): Correlation > 0.45 (14746 Q15)  → Speech harmonics correlate
+Rule 2 (+20): Energy > 2× noise floor         → Reject silence
+Rule 3 (+25): Coherence peak > 1000           → Periodic voiced signal
+Rule 4 (+15): ZCR < 80 per frame              → Not broadband noise
+
+Wake if score ≥ 60
+```
+
+**Adaptive Noise Floor:**
+- EMA tracker: `noise = 0.9×noise + 0.1×energy` (Q15)
+- Updates only during non-speech frames
+- Prevents drift during conversation
+
+### Results
+
+**Silence Detection:**
+```
+RAW: ±87 amplitude
+GATE: ABORT conf=15
+Features: C=6000, E=500, ZCR=50
+Result: Correct ✓
+```
+
+**Speech Detection:**
+```
+RAW: ±3400 amplitude (40× louder)
+GATE: WAKE conf=75
+Features: C=24418, E=78000, ZCR=13
+Wakes: 24/50 frames (48%, intermittent speech)
+Result: Correct ✓
+```
+
+**Resonator Validation:**
+- Pre-fix: RES0 ±4 (broken coefficients)
+- Post-fix: RES0 ±1936 (strong frequency response)
+- Coefficient bug: `a1=32767` for all filters (unstable)
+- Fixed: Proper frequency-dependent `a1` values
+
+### Technical Issues Resolved
+
+**Problem: Always WAKE (conf=60 exactly)**
+- Root cause: Resonator coefficients wrong in `resonator_coefs_cmsis.h`
+- All filters had `a1=32767` (pole at z=1, oscillator not resonator)
+- Regenerated with correct formula: `a1 = -2r×cos(2πf₀/fs)`
+- Result: Proper band-pass filtering at 300/800/1500/2500 Hz
+
+**Problem: Gate timing = 0 µs**
+- Optimizer removed timing code
+- Added volatile, verified with actual measurements
+- Typical: 804 µs gate decision overhead
+
+### Power Measurement (Week 7 Preview)
+
+**Methodology:**
+- J-Link subtraction method (SB40 not removed)
+- Baseline: Empty firmware `k_sleep(K_FOREVER)`
+- Measurements: PPK2 Ampere meter, 60s average
+
+**Results:**
+```
+Baseline (J-Link + sleep):     70.5 mA
+Guardian active (gate running): 72.1 mA
+Actual Guardian power: 72.1 - 70.5 = 1.6 mA
+```
+
+See: `docs/measurements/ppk2_week7_*.csv`
+
+### Files Changed
+- `lib/guardian_gate/src/decision.c` - Gate logic
+- `lib/guardian_gate/include/guardian/gate/decision.h` - Config structs
+- `resonator_coefs_cmsis.h` - Fixed filter coefficients
+- `main.c` - Integration + test modes (SINE/NOISE/LIVE)
+
+### Next Steps (Week 7-8)
+
+Full power analysis: Gate ON vs Gate OFF, 30% savings target.
 ## License
 
 MIT License
