@@ -10,9 +10,9 @@
 #define NUM_STAGES 1
 
 typedef struct {
-    arm_biquad_casd_df1_inst_q15 channels[NUM_RESONATORS];
-    int16_t state[NUM_RESONATORS][4 * NUM_STAGES];  // DF1 needs 4 values
-    int16_t outputs[NUM_RESONATORS][FRAME_SIZE];
+    arm_biquad_cascade_df2T_instance_f32 channels[NUM_RESONATORS];
+    float32_t state[NUM_RESONATORS][2 * NUM_STAGES]; /* DF2T needs 2 values per stage */
+    int16_t outputs[NUM_RESONATORS][FRAME_SIZE];     /* Q15 output for feature functions */
 } resonator_bank_df2t_t;
 
 int resonator_bank_df2t_init(resonator_bank_df2t_t *bank);

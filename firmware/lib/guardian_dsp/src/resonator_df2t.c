@@ -4,21 +4,21 @@
 #include <zephyr/kernel.h>
 #include <arm_math.h>
 
-static int16_t state_buffers[NUM_RESONATORS][4];
+/* Static conversion buffers — avoids large stack allocations */
+static float32_t s_float_input[FRAME_SIZE];
+static float32_t s_float_output[FRAME_SIZE];
 
 int resonator_bank_df2t_init(resonator_bank_df2t_t *bank)
 {
     if (bank == NULL) return -EINVAL;
     memset(bank, 0, sizeof(resonator_bank_df2t_t));
-    memset(state_buffers, 0, sizeof(state_buffers));
-    
+
     for (int ch = 0; ch < NUM_RESONATORS; ch++) {
-        arm_biquad_cascade_df1_init_q15(
+        arm_biquad_cascade_df2T_init_f32(
             &bank->channels[ch],
             NUM_STAGES,
-            (int16_t*)RESONATOR_COEFS[ch],
-            state_buffers[ch],
-            2
+            RESONATOR_COEFS[ch],
+            bank->state[ch]
         );
     }
     printk("Resonator initialized\n");
@@ -27,11 +27,36 @@ int resonator_bank_df2t_init(resonator_bank_df2t_t *bank)
 
 void resonator_bank_df2t_process(resonator_bank_df2t_t *bank, const int16_t *input, size_t len)
 {
+    /* Q15 → float [-1.0, 1.0] */
+    for (size_t i = 0; i < len; i++) {
+        s_float_input[i] = (float32_t)input[i] / 32768.0f;
+    }
+
     for (int ch = 0; ch < NUM_RESONATORS; ch++) {
-        arm_biquad_cascade_df1_q15(&bank->channels[ch], (int16_t*)input, bank->outputs[ch], len);
+        arm_biquad_cascade_df2T_f32(
+            &bank->channels[ch], s_float_input, s_float_output, (uint32_t)len);
+
+        /* float → Q15, clip to [-32768, 32767] */
+        for (size_t i = 0; i < len; i++) {
+            float32_t v = s_float_output[i] * 32768.0f;
+            if      (v >  32767.0f) v =  32767.0f;
+            else if (v < -32768.0f) v = -32768.0f;
+            bank->outputs[ch][i] = (int16_t)v;
+        }
     }
 }
 
-void resonator_bank_df2t_reset(resonator_bank_df2t_t *bank) { memset(state_buffers, 0, sizeof(state_buffers)); }
-const int16_t* resonator_bank_df2t_get_output(const resonator_bank_df2t_t *bank, int channel) { return bank->outputs[channel]; }
-uint16_t resonator_bank_df2t_get_center_freq(int channel) { return RESONATOR_CENTER_FREQS[channel]; }
+void resonator_bank_df2t_reset(resonator_bank_df2t_t *bank)
+{
+    memset(bank->state, 0, sizeof(bank->state));
+}
+
+const int16_t* resonator_bank_df2t_get_output(const resonator_bank_df2t_t *bank, int channel)
+{
+    return bank->outputs[channel];
+}
+
+uint16_t resonator_bank_df2t_get_center_freq(int channel)
+{
+    return RESONATOR_CENTER_FREQS[channel];
+}
