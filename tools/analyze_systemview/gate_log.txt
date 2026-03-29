@@ -1,0 +1,238 @@
+--- Miniterm on /dev/ttyACM0  115200,8,N,1 ---
+--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
+GATE: ABORT conf= 15 E=    0 C=  4946 ZCR=  9 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -33 max=    19 samples[0..3]=1 -11 -13 -7
+RES0: min=    -8 max=     6
+GATE: ABORT conf= 15 E=    0 C=  1617 ZCR=  9 T=1468us noise=    0 wakes= 2/50
+RAW: min=   -45 max=    52 samples[0..3]=49 47 51 52
+RES0: min=    -8 max=     6
+GATE: ABORT conf= 15 E=    0 C=  3603 ZCR= 10 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -43 max=    30 samples[0..3]=-21 -20 -19 -20
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -39 max=    33 samples[0..3]=8 10 11 12
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2537 ZCR=  8 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -47 max=     8 samples[0..3]=-18 -20 -20 -18
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4557 ZCR= 15 T=1469us noise=    0 wakes= 0/50
+RAW: min=   -69 max=     2 samples[0..3]=-8 -9 -19 -20
+RES0: min=    -4 max=     5
+GATE: ABORT conf= 15 E=    0 C=   734 ZCR= 10 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -17 max=    43 samples[0..3]=23 25 25 22
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1891 ZCR=  6 T=1467us noise=    0 wakes= 0/50
+RAW: min=    11 max=    90 samples[0..3]=88 90 86 85
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  4345 ZCR= 14 T=1469us noise=    0 wakes= 0/50
+RAW: min=   -26 max=    57 samples[0..3]=11 2 -4 -17
+RES0: min=    -7 max=     5
+GATE: ABORT conf= 15 E=    0 C=  1777 ZCR=  8 T=1468us noise=    0 wakes= 1/50
+RAW: min=   -62 max=    -1 samples[0..3]=-58 -58 -62 -61
+RES0: min=   -16 max=    14
+GATE: ABORT conf= 15 E=    0 C=  1338 ZCR=  6 T=1467us noise=    0 wakes= 0/50
+RAW: min=    13 max=    71 samples[0..3]=55 51 49 51
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2383 ZCR= 10 T=1468us noise=    0 wakes= 1/50
+RAW: min=    -2 max=    58 samples[0..3]=10 13 14 13
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  8 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -57 max=     5 samples[0..3]=0 -4 -3 -6
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   916 ZCR= 11 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -35 max=    26 samples[0..3]=-2 -2 -3 -5
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -43 max=    -4 samples[0..3]=-27 -24 -25 -26
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  6121 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=     1 max=    55 samples[0..3]=55 54 45 50
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=   581 ZCR= 10 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -50 max=    29 samples[0..3]=29 28 22 23
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=  3938 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -60 max=     5 samples[0..3]=-41 -39 -42 -40
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 13 T=1467us noise=    0 wakes= 0/50
+RAW: min=     9 max=    49 samples[0..3]=37 36 35 37
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  2187 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -72 max=   -18 samples[0..3]=-63 -61 -64 -61
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -68 max=    -9 samples[0..3]=-31 -33 -32 -32
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   893 ZCR=  8 T=1468us noise=    0 wakes= 0/50
+RAW: min=     4 max=    81 samples[0..3]=36 34 37 35
+RES0: min=    -6 max=     5
+GATE: ABORT conf= 15 E=    0 C=  6401 ZCR=  9 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -63 max=   -23 samples[0..3]=-47 -47 -44 -42
+RES0: min=    -5 max=     6
+GATE: ABORT conf= 15 E=    0 C= 10401 ZCR= 13 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -14 max=   112 samples[0..3]=77 80 84 84
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  3613 ZCR=  7 T=1467us noise=    0 wakes= 1/50
+RAW: min=   -21 max=    27 samples[0..3]=4 5 0 4
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1880 ZCR=  9 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -42 max=    31 samples[0..3]=-25 -29 -27 -26
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  5139 ZCR= 10 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -50 max=    30 samples[0..3]=19 21 17 23
+RES0: min=    -4 max=     7
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  9 T=1467us noise=    0 wakes= 0/50
+RAW: min=    25 max=    66 samples[0..3]=61 61 61 58
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2319 ZCR= 11 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -63 max=     8 samples[0..3]=-9 -9 -11 -12
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  4634 ZCR=  6 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -10 max=    42 samples[0..3]=39 38 39 39
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=   440 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -21 max=    42 samples[0..3]=24 28 25 27
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=  1723 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -31 max=    10 samples[0..3]=-23 -26 -29 -25
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1407 ZCR= 10 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -15 max=    45 samples[0..3]=18 12 7 8
+RES0: min=    -7 max=     8
+GATE: ABORT conf= 15 E=    0 C=  2340 ZCR=  4 T=1467us noise=    0 wakes= 0/50
+RAW: min=    -8 max=    38 samples[0..3]=-3 -4 -8 -5
+RES0: min=    -6 max=     5
+GATE: ABORT conf= 15 E=    0 C=  2705 ZCR=  4 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -27 max=    13 samples[0..3]=-20 -19 -20 -18
+RES0: min=    -8 max=     6
+GATE: ABORT conf= 15 E=    0 C=  4233 ZCR= 11 T=1468us noise=    0 wakes= 0/50
+RAW: min=     4 max=    60 samples[0..3]=57 60 59 59
+RES0: min=    -7 max=     7
+GATE: ABORT conf= 15 E=    0 C=  1961 ZCR= 10 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -38 max=     7 samples[0..3]=-16 -20 -16 -20
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2318 ZCR=  4 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -79 max=    -9 samples[0..3]=-79 -73 -77 -73
+RES0: min=    -7 max=     7
+GATE: ABORT conf= 15 E=    0 C=  3616 ZCR=  8 T=1468us noise=    0 wakes= 0/50
+RAW: min=     9 max=    81 samples[0..3]=80 81 77 75
+RES0: min=    -6 max=     8
+GATE: ABORT conf= 15 E=    0 C=  7251 ZCR=  9 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -77 max=   -13 samples[0..3]=-66 -69 -69 -68
+RES0: min=    -4 max=     6
+GATE: ABORT conf= 15 E=    0 C=  4474 ZCR= 11 T=1468us noise=    0 wakes= 0/50
+RAW: min=    31 max=    61 samples[0..3]=43 46 45 47
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2090 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -26 max=     6 samples[0..3]=-2 -1 -1 -2
+RES0: min=    -9 max=     7
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -52 max=     2 samples[0..3]=-51 -49 -49 -51
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  1818 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -13 max=    34 samples[0..3]=26 26 23 16
+RES0: min=   -11 max=     9
+GATE: ABORT conf= 15 E=    0 C=  3195 ZCR= 11 T=1468us noise=    0 wakes= 6/50
+RAW: min=   -53 max=    60 samples[0..3]=-36 -8 -30 -14
+RES0: min=    -7 max=     6
+GATE: ABORT conf= 15 E=    0 C=  4522 ZCR=  4 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -17 max=    59 samples[0..3]=-8 -13 -11 -12
+RES0: min=    -8 max=    10
+GATE: ABORT conf= 15 E=    0 C= 10560 ZCR= 10 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -89 max=   170 samples[0..3]=164 167 170 163
+RES0: min=   -15 max=    14
+GATE: ABORT conf= 15 E=    0 C=  2294 ZCR= 10 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -25 max=    44 samples[0..3]=-14 -14 -16 -17
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3640 ZCR= 11 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -60 max=     3 samples[0..3]=-55 -58 -60 -59
+RES0: min=    -8 max=     8
+GATE: ABORT conf= 15 E=    0 C=  1755 ZCR=  2 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -26 max=    13 samples[0..3]=6 7 6 5
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2702 ZCR= 10 T=1468us noise=    0 wakes= 0/50
+RAW: min=     6 max=    70 samples[0..3]=14 14 13 15
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3762 ZCR=  7 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -22 max=    30 samples[0..3]=-15 -19 -15 -20
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1466us noise=    0 wakes= 1/50
+RAW: min=    -7 max=    25 samples[0..3]=15 15 20 17
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3397 ZCR=  8 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -41 max=    10 samples[0..3]=-34 -33 -35 -32
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2860 ZCR=  8 T=1467us noise=    0 wakes= 0/50
+RAW: min=    -7 max=    41 samples[0..3]=-3 -1 -2 -1
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -17 max=    10 samples[0..3]=-5 -1 1 5
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  3 T=1466us noise=    0 wakes= 0/50
+RAW: min=   -24 max=    29 samples[0..3]=-21 -21 -19 -23
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  1394 ZCR=  2 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -36 max=    10 samples[0..3]=-19 -17 -15 -17
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3068 ZCR= 10 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -26 max=     1 samples[0..3]=-15 -10 -15 -17
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2510 ZCR=  6 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -77 max=     6 samples[0..3]=-41 -40 -39 -35
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1077 ZCR= 10 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -47 max=    11 samples[0..3]=0 -1 0 2
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1370 ZCR= 11 T=1468us noise=    0 wakes= 0/50
+RAW: min=    20 max=    47 samples[0..3]=25 24 23 23
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  6803 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -23 max=    32 samples[0..3]=0 -1 -2 0
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1235 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -26 max=    22 samples[0..3]=18 18 20 20
+RES0: min=    -6 max=     4
+GATE: ABORT conf= 15 E=    0 C=   908 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -16 max=    60 samples[0..3]=31 29 31 26
+RES0: min=    -7 max=     9
+GATE: ABORT conf= 15 E=    0 C=  4543 ZCR= 12 T=1468us noise=    0 wakes= 1/50
+RAW: min=    -6 max=    40 samples[0..3]=2 3 4 6
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4148 ZCR= 11 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -41 max=    37 samples[0..3]=-4 -3 -3 -5
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3256 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=     6 max=    38 samples[0..3]=10 9 8 13
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=   728 ZCR=  8 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -18 max=    27 samples[0..3]=4 3 2 2
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  5799 ZCR= 10 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -42 max=    14 samples[0..3]=3 5 7 7
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1138 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=    14 max=    59 samples[0..3]=30 31 34 29
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3164 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -22 max=    15 samples[0..3]=4 -1 4 2
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2518 ZCR= 10 T=1468us noise=    0 wakes= 1/50
+RAW: min=   -36 max=    17 samples[0..3]=15 17 11 7
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3169 ZCR=  8 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -12 max=    41 samples[0..3]=15 10 14 10
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2072 ZCR=  0 T=1467us noise=    0 wakes= 0/50
+RAW: min=   -21 max=    43 samples[0..3]=42 42 43 38
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1911 ZCR=  6 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -29 max=    20 samples[0..3]=-18 -21 -16 -18
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1799 ZCR= 12 T=1468us noise=    0 wakes= 0/50
+RAW: min=   -47 max=     3 samples[0..3]=-41 -36 -35 -36
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  2355 ZCR=  9 T=1468us noise=    0 wakes=10/50
+RAW: min=   -19 max=    27 samples[0..3]=27 20 18 21
+RES0: min=    -2 max=     2
+
+--- exit ---

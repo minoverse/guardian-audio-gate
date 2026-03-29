@@ -1,0 +1,3046 @@
+FRAME_START,0
+141285,GUARDIAN_START,0
+141286,GUARDIAN_END,1467
+141286,FRAME_START,0
+141305,GUARDIAN_START,0
+141306,GUARDIANGATE: ABORT conf= 15 E=    0 C=  4533 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=27/3450  miss_rate=0.78%
+RAW: min=    -6 max=    36 samples[0..3]=-3 -2 -2 -3
+RES0: min=     0 max=     0
+GATE: ABORT conf= 15 E=    0 C=  4954 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=27/3500  miss_rate=0.77%
+RAW: min=   -25 max=    37 samples[0..3]=13 12 13 9
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1527 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=27/3550  miss_rate=0.76%
+RAW: min=   -41 max=    39 samples[0..3]=-4 -5 -4 -4
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5972 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=27/3600  miss_rate=0.75%
+RAW: min=   -28 max=    12 samples[0..3]=-19 -21 -22 -23
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4915 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=27/3650  miss_rate=0.73%
+RAW: min=   -41 max=    27 samples[0..3]=1 -2 1 3
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  8053 ZCR= 12 T=1463us noise=    6 wakes= 7/50
+SCHED: wcet=1485us avg=1464us duty=0.73% irq_lat_avg=2ms irq_lat_max=19ms
+DEADLINE: misses=34/3700  miss_rate=0.91%
+RAW: min=   -42 max=    97 samples[0..3]=69 65 71 67
+RES0: min=   -12 max=    11
+GATE: ABORT conf= 15 E=    0 C=  7189 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=34/3750  miss_rate=0.90%
+RAW: min=   -39 max=    47 samples[0..3]=-23 -20 -14 -22
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  7420 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=34/3800  miss_rate=0.89%
+RAW: min=   -43 max=    97 samples[0..3]=-1 5 8 7
+RES0: min=   -13 max=    13
+GATE: ABORT conf= 15 E=    0 C=  8515 ZCR=  7 T=1463us noise=    0 wakes= 2/50
+SCHED: wcet=1485us avg=1463us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=36/3850  miss_rate=0.93%
+RAW: min=   -44 max=    16 samples[0..3]=7 6 13 11
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2893 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=36/3900  miss_rate=0.92%
+RAW: min=   -34 max=    49 samples[0..3]=-20 -23 -21 -27
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=   873 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=36/3950  miss_rate=0.91%
+RAW: min=   -33 max=    32 samples[0..3]=-12 -13 -8 -11
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5243 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=36/4000  miss_rate=0.90%
+RAW: min=   -41 max=    65 samples[0..3]=-14 -9 -7 -3
+RES0: min=    -9 max=     8
+GATE: ABORT conf= 15 E=    0 C=  5994 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1463us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=36/4050  miss_rate=0.88%
+RAW: min=   -81 max=    55 samples[0..3]=-57 -36 -23 -25
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  4810 ZCR= 11 T=1462us noise=    0 wakes= 2/50
+SCHED: wcet=1485us avg=1463us duty=0.73% irq_lat_avg=1ms irq_lat_max=19ms
+DEADLINE: misses=38/4100  miss_rate=0.92%
+RAW: min=   -38 max=    52 samples[0..3]=48 52 49 36
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  1235 ZCR= 10 T=1462us noise=    0 wakes= 1/50
+SCHED: wcet=1485us avg=1463us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4150  miss_rate=0.93%
+RAW: min=   -39 max=    25 samples[0..3]=-9 -10 -11 -10
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3154 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4200  miss_rate=0.92%
+RAW: min=   -13 max=    44 samples[0..3]=-3 -2 -2 -3
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4250  miss_rate=0.91%
+RAW: min=    -2 max=    28 samples[0..3]=18 19 24 18
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4300  miss_rate=0.90%
+RAW: min=    16 max=    54 samples[0..3]=30 28 29 24
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2064 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4350  miss_rate=0.89%
+RAW: min=   -60 max=    -1 samples[0..3]=-56 -55 -52 -53
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4340 ZCR=  5 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4400  miss_rate=0.88%
+RAW: min=   -14 max=    12 samples[0..3]=-6 -6 -4 -5
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4460 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4450  miss_rate=0.87%
+RAW: min=   -36 max=    43 samples[0..3]=-10 -8 -10 -15
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  5148 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4500  miss_rate=0.86%
+RAW: min=   -23 max=    34 samples[0..3]=-18 -19 -20 -23
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3826 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4550  miss_rate=0.85%
+RAW: min=   -34 max=     7 samples[0..3]=-17 -16 -14 -17
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3654 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4600  miss_rate=0.84%
+RAW: min=   -52 max=     8 samples[0..3]=-32 -31 -31 -30
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  5042 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4650  miss_rate=0.83%
+RAW: min=   -42 max=    17 samples[0..3]=-42 -37 -36 -34
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   604 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4700  miss_rate=0.82%
+RAW: min=   -29 max=     5 samples[0..3]=-7 -11 -8 -4
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1489 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4750  miss_rate=0.82%
+RAW: min=   -14 max=    40 samples[0..3]=5 4 6 7
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  7517 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4800  miss_rate=0.81%
+RAW: min=   -46 max=    30 samples[0..3]=-29 -25 -25 -21
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3861 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4850  miss_rate=0.80%
+RAW: min=   -21 max=    31 samples[0..3]=23 25 25 18
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4900  miss_rate=0.79%
+RAW: min=   -14 max=    23 samples[0..3]=-5 0 -2 -5
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2145 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/4950  miss_rate=0.78%
+RAW: min=   -39 max=    31 samples[0..3]=4 8 1 8
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  6756 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5000  miss_rate=0.78%
+RAW: min=   -31 max=    25 samples[0..3]=-25 -26 -27 -30
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1933 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5050  miss_rate=0.77%
+RAW: min=   -47 max=    26 samples[0..3]=-3 2 4 2
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1794 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5100  miss_rate=0.76%
+RAW: min=   -19 max=    47 samples[0..3]=-1 0 3 9
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2055 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5150  miss_rate=0.75%
+RAW: min=   -20 max=    28 samples[0..3]=4 7 11 10
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5200  miss_rate=0.75%
+RAW: min=   -19 max=    31 samples[0..3]=11 10 13 10
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2095 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5250  miss_rate=0.74%
+RAW: min=   -12 max=    40 samples[0..3]=23 19 16 21
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2649 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5300  miss_rate=0.73%
+RAW: min=     5 max=    38 samples[0..3]=30 28 30 30
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  6161 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5350  miss_rate=0.72%
+RAW: min=   -29 max=    49 samples[0..3]=-24 -26 -25 -22
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2783 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5400  miss_rate=0.72%
+RAW: min=   -29 max=    23 samples[0..3]=-2 -5 -2 0
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2016 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5450  miss_rate=0.71%
+RAW: min=    -6 max=    48 samples[0..3]=41 45 45 44
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3437 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5500  miss_rate=0.70%
+RAW: min=   -26 max=    22 samples[0..3]=-16 -9 -15 -10
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4198 ZCR=  7 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5550  miss_rate=0.70%
+RAW: min=   -31 max=    33 samples[0..3]=18 18 19 16
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2229 ZCR=  5 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5600  miss_rate=0.69%
+RAW: min=   -26 max=    13 samples[0..3]=5 4 7 5
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4408 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5650  miss_rate=0.69%
+RAW: min=   -46 max=     9 samples[0..3]=-9 -10 -14 -12
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1930 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5700  miss_rate=0.68%
+RAW: min=   -43 max=    30 samples[0..3]=24 26 30 26
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1413 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5750  miss_rate=0.67%
+RAW: min=   -26 max=    37 samples[0..3]=0 1 4 1
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2193 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5800  miss_rate=0.67%
+RAW: min=   -50 max=    10 samples[0..3]=-15 -12 -19 -18
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1915 ZCR=  2 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5850  miss_rate=0.66%
+RAW: min=   -17 max=    72 samples[0..3]=60 59 63 63
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3441 ZCR=  7 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5900  miss_rate=0.66%
+RAW: min=   -20 max=    12 samples[0..3]=-9 -11 -13 -15
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  5201 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/5950  miss_rate=0.65%
+RAW: min=   -56 max=     1 samples[0..3]=-16 -13 -13 -15
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1410 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6000  miss_rate=0.65%
+RAW: min=   -36 max=    30 samples[0..3]=22 19 24 17
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1396 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6050  miss_rate=0.64%
+RAW: min=    -4 max=    23 samples[0..3]=7 10 11 8
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3889 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6100  miss_rate=0.63%
+RAW: min=   -31 max=    44 samples[0..3]=33 26 28 35
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3811 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6150  miss_rate=0.63%
+RAW: min=   -56 max=     8 samples[0..3]=5 8 4 6
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1132 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6200  miss_rate=0.62%
+RAW: min=     3 max=    28 samples[0..3]=15 11 11 12
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=   405 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6250  miss_rate=0.62%
+RAW: min=   -40 max=    22 samples[0..3]=-6 -5 -6 -4
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=   218 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6300  miss_rate=0.61%
+RAW: min=   -20 max=    38 samples[0..3]=-5 -6 -7 -7
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=   360 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6350  miss_rate=0.61%
+RAW: min=   -34 max=    13 samples[0..3]=8 6 13 3
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1213 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6400  miss_rate=0.60%
+RAW: min=    19 max=    58 samples[0..3]=53 46 54 51
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4496 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6450  miss_rate=0.60%
+RAW: min=   -33 max=    48 samples[0..3]=-14 -16 -17 -16
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=   921 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6500  miss_rate=0.60%
+RAW: min=   -20 max=    15 samples[0..3]=-3 -3 -2 -2
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6550  miss_rate=0.59%
+RAW: min=   -30 max=    29 samples[0..3]=4 7 4 6
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6600  miss_rate=0.59%
+RAW: min=   -37 max=     9 samples[0..3]=-19 -13 -17 -20
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   451 ZCR=  5 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6650  miss_rate=0.58%
+RAW: min=   -28 max=    27 samples[0..3]=2 8 5 7
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6089 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6700  miss_rate=0.58%
+RAW: min=   -41 max=    40 samples[0..3]=-19 -22 -21 -24
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=   842 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6750  miss_rate=0.57%
+RAW: min=   -35 max=    43 samples[0..3]=-2 3 2 2
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4519 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6800  miss_rate=0.57%
+RAW: min=   -24 max=    21 samples[0..3]=17 19 20 19
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1297 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6850  miss_rate=0.56%
+RAW: min=   -48 max=    14 samples[0..3]=-31 -34 -30 -30
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3840 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6900  miss_rate=0.56%
+RAW: min=   -15 max=    51 samples[0..3]=4 7 8 8
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4053 ZCR=  5 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/6950  miss_rate=0.56%
+RAW: min=   -19 max=    40 samples[0..3]=6 1 0 3
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2488 ZCR=  8 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7000  miss_rate=0.55%
+RAW: min=   -34 max=    59 samples[0..3]=-18 -20 -18 -19
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4459 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7050  miss_rate=0.55%
+RAW: min=    -8 max=    30 samples[0..3]=12 14 12 13
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4709 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7100  miss_rate=0.54%
+RAW: min=   -47 max=     7 samples[0..3]=-36 -34 -35 -36
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2364 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7150  miss_rate=0.54%
+RAW: min=   -33 max=    45 samples[0..3]=18 21 19 16
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2820 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7200  miss_rate=0.54%
+RAW: min=   -26 max=     0 samples[0..3]=-16 -19 -15 -19
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2286 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7250  miss_rate=0.53%
+RAW: min=   -37 max=    15 samples[0..3]=-34 -36 -37 -33
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1457us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7300  miss_rate=0.53%
+RAW: min=   -48 max=    35 samples[0..3]=20 24 26 18
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7350  miss_rate=0.53%
+RAW: min=   -28 max=    16 samples[0..3]=12 12 12 12
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C= 10043 ZCR=  2 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7400  miss_rate=0.52%
+RAW: min=   -18 max=    36 samples[0..3]=7 7 10 13
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2820 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7450  miss_rate=0.52%
+RAW: min=   -39 max=    34 samples[0..3]=9 8 9 6
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1216 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7500  miss_rate=0.52%
+RAW: min=   -42 max=    -4 samples[0..3]=-21 -20 -19 -19
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  6898 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7550  miss_rate=0.51%
+RAW: min=     6 max=    57 samples[0..3]=18 15 22 22
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2782 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7600  miss_rate=0.51%
+RAW: min=   -35 max=    23 samples[0..3]=-4 -6 -10 -9
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1478 ZCR=  7 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7650  miss_rate=0.50%
+RAW: min=   -41 max=    30 samples[0..3]=10 14 10 13
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  9241 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7700  miss_rate=0.50%
+RAW: min=   -44 max=    56 samples[0..3]=44 46 48 48
+RES0: min=    -4 max=     2
+GATE: ABORT conf= 15 E=    0 C=   933 ZCR=  7 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7750  miss_rate=0.50%
+RAW: min=    -8 max=    36 samples[0..3]=24 21 21 21
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1820 ZCR=  2 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7800  miss_rate=0.50%
+RAW: min=   -54 max=   -19 samples[0..3]=-36 -40 -38 -39
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  7783 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7850  miss_rate=0.49%
+RAW: min=   -14 max=    49 samples[0..3]=37 36 36 38
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3721 ZCR=  3 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7900  miss_rate=0.49%
+RAW: min=   -13 max=    33 samples[0..3]=15 15 14 16
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3603 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/7950  miss_rate=0.49%
+RAW: min=   -24 max=    24 samples[0..3]=10 11 12 13
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2013 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8000  miss_rate=0.48%
+RAW: min=   -56 max=    34 samples[0..3]=-19 -21 -20 -20
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2469 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8050  miss_rate=0.48%
+RAW: min=   -20 max=    60 samples[0..3]=-2 -4 -4 -6
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5438 ZCR=  3 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8100  miss_rate=0.48%
+RAW: min=   -48 max=    27 samples[0..3]=19 15 17 19
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=   370 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8150  miss_rate=0.47%
+RAW: min=   -43 max=    57 samples[0..3]=-20 -23 -22 -23
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3182 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8200  miss_rate=0.47%
+RAW: min=    -7 max=    25 samples[0..3]=4 0 -2 -1
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=   369 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8250  miss_rate=0.47%
+RAW: min=   -28 max=    47 samples[0..3]=3 6 3 0
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3070 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8300  miss_rate=0.46%
+RAW: min=   -30 max=    50 samples[0..3]=-16 -11 -15 -15
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5518 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8350  miss_rate=0.46%
+RAW: min=   -19 max=    17 samples[0..3]=6 3 -1 6
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3344 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8400  miss_rate=0.46%
+RAW: min=   -40 max=    14 samples[0..3]=-31 -30 -34 -32
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4395 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8450  miss_rate=0.46%
+RAW: min=   -47 max=    35 samples[0..3]=-41 -47 -47 -43
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4430 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8500  miss_rate=0.45%
+RAW: min=   -30 max=     9 samples[0..3]=-14 -15 -13 -16
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3758 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8550  miss_rate=0.45%
+RAW: min=   -52 max=    33 samples[0..3]=-26 -25 -26 -26
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1481 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8600  miss_rate=0.45%
+RAW: min=   -47 max=     8 samples[0..3]=-42 -45 -43 -45
+RES0: min=     0 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2231 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8650  miss_rate=0.45%
+RAW: min=     0 max=    61 samples[0..3]=7 6 5 11
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6264 ZCR=  5 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8700  miss_rate=0.44%
+RAW: min=   -37 max=    69 samples[0..3]=-31 -35 -29 -33
+RES0: min=    -2 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2142 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8750  miss_rate=0.44%
+RAW: min=   -34 max=    19 samples[0..3]=-30 -34 -27 -32
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8800  miss_rate=0.44%
+RAW: min=   -36 max=    23 samples[0..3]=-19 -21 -23 -22
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4702 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8850  miss_rate=0.44%
+RAW: min=   -27 max=    58 samples[0..3]=-27 -22 -25 -25
+RES0: min=    -1 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3917 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8900  miss_rate=0.43%
+RAW: min=   -18 max=    24 samples[0..3]=-6 -8 -10 -14
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2140 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/8950  miss_rate=0.43%
+RAW: min=   -59 max=    29 samples[0..3]=-52 -50 -51 -53
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3788 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9000  miss_rate=0.43%
+RAW: min=   -52 max=    34 samples[0..3]=-37 -40 -42 -45
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1287 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9050  miss_rate=0.43%
+RAW: min=     3 max=    43 samples[0..3]=31 32 28 28
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4402 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9100  miss_rate=0.42%
+RAW: min=   -29 max=    27 samples[0..3]=-18 -24 -21 -23
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=  3104 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9150  miss_rate=0.42%
+RAW: min=   -46 max=    43 samples[0..3]=-9 -13 -10 -10
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  5554 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9200  miss_rate=0.42%
+RAW: min=   -35 max=    11 samples[0..3]=-35 -27 -31 -34
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1933 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9250  miss_rate=0.42%
+RAW: min=   -41 max=    10 samples[0..3]=-37 -32 -32 -34
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5086 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9300  miss_rate=0.41%
+RAW: min=   -41 max=    21 samples[0..3]=-2 3 1 -3
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2237 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9350  miss_rate=0.41%
+RAW: min=   -47 max=     0 samples[0..3]=-29 -32 -34 -30
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9400  miss_rate=0.41%
+RAW: min=   -33 max=    29 samples[0..3]=10 12 11 15
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=   737 ZCR=  8 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9450  miss_rate=0.41%
+RAW: min=   -16 max=    65 samples[0..3]=53 56 58 58
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C= -1140 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9500  miss_rate=0.41%
+RAW: min=    -8 max=    36 samples[0..3]=17 19 18 21
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1891 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9550  miss_rate=0.40%
+RAW: min=   -36 max=    24 samples[0..3]=-6 -5 -3 -6
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2702 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9600  miss_rate=0.40%
+RAW: min=   -11 max=    43 samples[0..3]=30 35 36 33
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2045 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9650  miss_rate=0.40%
+RAW: min=   -28 max=    19 samples[0..3]=-25 -28 -27 -26
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4565 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9700  miss_rate=0.40%
+RAW: min=   -61 max=     3 samples[0..3]=-6 -5 -6 -10
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4325 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9750  miss_rate=0.40%
+RAW: min=   -12 max=    27 samples[0..3]=10 13 15 11
+RES0: min=    -1 max=     0
+GATE: ABORT conf= 15 E=    0 C=  2948 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9800  miss_rate=0.39%
+RAW: min=    -4 max=    33 samples[0..3]=13 13 10 12
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C= -1507 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9850  miss_rate=0.39%
+RAW: min=   -27 max=    37 samples[0..3]=9 7 8 2
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9900  miss_rate=0.39%
+RAW: min=    -3 max=    34 samples[0..3]=29 32 30 29
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4626 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/9950  miss_rate=0.39%
+RAW: min=   -15 max=    15 samples[0..3]=10 10 10 7
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2697 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/10000  miss_rate=0.39%
+RAW: min=   -29 max=    47 samples[0..3]=46 47 39 36
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3323 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/10050  miss_rate=0.38%
+RAW: min=   -20 max=     9 samples[0..3]=-4 -9 -7 -7
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3476 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/10100  miss_rate=0.38%
+RAW: min=   -51 max=    21 samples[0..3]=14 13 8 9
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4427 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=39/10150  miss_rate=0.38%
+RAW: min=   -54 max=    25 samples[0..3]=10 10 6 5
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=   489 ZCR= 12 T=1462us noise=    0 wakes= 1/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=40/10200  miss_rate=0.39%
+RAW: min=   -18 max=    18 samples[0..3]=-7 -9 -9 -13
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3344 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=40/10250  miss_rate=0.39%
+RAW: min=   -91 max=    69 samples[0..3]=21 20 20 18
+RES0: min=    -6 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1105 ZCR= 12 T=1462us noise=    0 wakes= 1/50
+SCHED: wcet=1485us avg=1463us duty=0.73% irq_lat_avg=1ms irq_lat_max=19ms
+DEADLINE: misses=41/10300  miss_rate=0.39%
+RAW: min=   -49 max=     7 samples[0..3]=-22 -19 -20 -20
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5123 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1463us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10350  miss_rate=0.39%
+RAW: min=   -37 max=    30 samples[0..3]=-6 -7 -7 -2
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10400  miss_rate=0.39%
+RAW: min=   -41 max=    23 samples[0..3]=-27 -28 -28 -23
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4181 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10450  miss_rate=0.39%
+RAW: min=   -19 max=    48 samples[0..3]=-12 -13 -10 -14
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2700 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10500  miss_rate=0.39%
+RAW: min=   -40 max=     6 samples[0..3]=-30 -32 -30 -36
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  5886 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10550  miss_rate=0.38%
+RAW: min=   -14 max=    49 samples[0..3]=9 6 5 1
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1588 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10600  miss_rate=0.38%
+RAW: min=   -55 max=    14 samples[0..3]=-55 -55 -53 -52
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  1665 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10650  miss_rate=0.38%
+RAW: min=   -21 max=    17 samples[0..3]=1 5 6 5
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  5402 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10700  miss_rate=0.38%
+RAW: min=   -34 max=    56 samples[0..3]=-14 -13 -14 -12
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  5596 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10750  miss_rate=0.38%
+RAW: min=   -38 max=     0 samples[0..3]=-13 -8 -16 -12
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1134 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10800  miss_rate=0.37%
+RAW: min=   -17 max=    19 samples[0..3]=7 8 11 10
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  5657 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10850  miss_rate=0.37%
+RAW: min=   -34 max=    33 samples[0..3]=-20 -23 -20 -21
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6452 ZCR=  5 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10900  miss_rate=0.37%
+RAW: min=   -19 max=    19 samples[0..3]=12 14 12 7
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3165 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/10950  miss_rate=0.37%
+RAW: min=   -30 max=     9 samples[0..3]=-21 -19 -21 -25
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2200 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11000  miss_rate=0.37%
+RAW: min=   -62 max=     8 samples[0..3]=-18 -18 -12 -15
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  -257 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11050  miss_rate=0.37%
+RAW: min=     7 max=    47 samples[0..3]=19 13 19 22
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1694 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11100  miss_rate=0.36%
+RAW: min=   -21 max=    31 samples[0..3]=0 -1 -6 8
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11150  miss_rate=0.36%
+RAW: min=   -12 max=    60 samples[0..3]=37 39 34 37
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6058 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11200  miss_rate=0.36%
+RAW: min=   -36 max=    10 samples[0..3]=10 8 1 4
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4443 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11250  miss_rate=0.36%
+RAW: min=   -45 max=     9 samples[0..3]=-21 -15 -14 -13
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2209 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11300  miss_rate=0.36%
+RAW: min=   -14 max=    36 samples[0..3]=28 33 30 28
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  5436 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11350  miss_rate=0.36%
+RAW: min=   -39 max=    19 samples[0..3]=-12 -14 -13 -9
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4108 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11400  miss_rate=0.35%
+RAW: min=   -31 max=    21 samples[0..3]=4 5 4 3
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11450  miss_rate=0.35%
+RAW: min=   -23 max=    10 samples[0..3]=4 5 3 2
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2385 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11500  miss_rate=0.35%
+RAW: min=   -25 max=    13 samples[0..3]=2 5 8 9
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11550  miss_rate=0.35%
+RAW: min=   -39 max=    32 samples[0..3]=16 21 22 19
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4653 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11600  miss_rate=0.35%
+RAW: min=   -22 max=    30 samples[0..3]=10 12 10 12
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4024 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11650  miss_rate=0.35%
+RAW: min=   -18 max=    20 samples[0..3]=2 -1 3 0
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6050 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11700  miss_rate=0.35%
+RAW: min=   -30 max=    33 samples[0..3]=-8 -12 -12 -14
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11750  miss_rate=0.34%
+RAW: min=    -8 max=    21 samples[0..3]=11 16 7 10
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4042 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11800  miss_rate=0.34%
+RAW: min=   -52 max=    35 samples[0..3]=-7 -8 -1 0
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1345 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11850  miss_rate=0.34%
+RAW: min=   -28 max=    44 samples[0..3]=33 32 33 34
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11900  miss_rate=0.34%
+RAW: min=   -11 max=    17 samples[0..3]=4 -2 0 -4
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5000 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/11950  miss_rate=0.34%
+RAW: min=   -22 max=    36 samples[0..3]=5 8 12 8
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4261 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/12000  miss_rate=0.34%
+RAW: min=    -2 max=    51 samples[0..3]=36 39 35 34
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  6320 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=41/12050  miss_rate=0.34%
+RAW: min=  -475 max=   460 samples[0..3]=215 215 211 223
+RES0: min=   -93 max=    96
+GATE: ABORT conf= 15 E=    0 C=  2465 ZCR=  8 T=1462us noise=    0 wakes= 1/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=1ms irq_lat_max=19ms
+DEADLINE: misses=42/12100  miss_rate=0.34%
+RAW: min=   -20 max=    43 samples[0..3]=15 13 12 14
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C= -1118 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12150  miss_rate=0.34%
+RAW: min=   -46 max=    40 samples[0..3]=15 16 14 12
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2155 ZCR=  2 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12200  miss_rate=0.34%
+RAW: min=   -16 max=    29 samples[0..3]=17 17 18 16
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12250  miss_rate=0.34%
+RAW: min=   -63 max=    18 samples[0..3]=5 6 8 6
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=   692 ZCR=  2 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12300  miss_rate=0.34%
+RAW: min=   -45 max=    37 samples[0..3]=37 35 37 37
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  6688 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12350  miss_rate=0.34%
+RAW: min=     7 max=    34 samples[0..3]=11 12 9 9
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2893 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12400  miss_rate=0.33%
+RAW: min=   -19 max=    26 samples[0..3]=-13 -13 -10 -5
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2404 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12450  miss_rate=0.33%
+RAW: min=   -37 max=     9 samples[0..3]=2 2 0 2
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=   892 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12500  miss_rate=0.33%
+RAW: min=   -34 max=    21 samples[0..3]=-5 1 1 4
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1994 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12550  miss_rate=0.33%
+RAW: min=   -47 max=    19 samples[0..3]=15 14 16 16
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2868 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12600  miss_rate=0.33%
+RAW: min=   -21 max=    13 samples[0..3]=-14 -12 -17 -11
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  6496 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12650  miss_rate=0.33%
+RAW: min=   -23 max=    16 samples[0..3]=2 1 2 3
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12700  miss_rate=0.33%
+RAW: min=   -43 max=    36 samples[0..3]=36 34 36 35
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12750  miss_rate=0.32%
+RAW: min=   -24 max=    18 samples[0..3]=-18 -19 -16 -21
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  3119 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12800  miss_rate=0.32%
+RAW: min=   -41 max=     5 samples[0..3]=-12 -18 -19 -23
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5180 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12850  miss_rate=0.32%
+RAW: min=   -20 max=    30 samples[0..3]=15 19 17 18
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5082 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12900  miss_rate=0.32%
+RAW: min=   -36 max=    20 samples[0..3]=-36 -35 -33 -35
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3191 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/12950  miss_rate=0.32%
+RAW: min=   -26 max=    33 samples[0..3]=19 19 19 17
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4000 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13000  miss_rate=0.32%
+RAW: min=   -22 max=    29 samples[0..3]=29 29 24 27
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  7859 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13050  miss_rate=0.32%
+RAW: min=   -37 max=     4 samples[0..3]=-35 -36 -36 -31
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  5538 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13100  miss_rate=0.32%
+RAW: min=   -56 max=    57 samples[0..3]=53 50 52 51
+RES0: min=    -4 max=     5
+GATE: ABORT conf= 15 E=    0 C=  2852 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13150  miss_rate=0.31%
+RAW: min=   -30 max=    36 samples[0..3]=2 0 -4 -2
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4239 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13200  miss_rate=0.31%
+RAW: min=   -25 max=    25 samples[0..3]=-2 1 -1 -2
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1589 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13250  miss_rate=0.31%
+RAW: min=   -17 max=    31 samples[0..3]=14 11 14 13
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  1924 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13300  miss_rate=0.31%
+RAW: min=   -21 max=    15 samples[0..3]=-17 -17 -17 -18
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1998 ZCR= 12 T=1464us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13350  miss_rate=0.31%
+RAW: min=   -44 max=    41 samples[0..3]=38 30 25 31
+RES0: min=    -6 max=     7
+GATE: ABORT conf= 15 E=    0 C=  6634 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1463us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13400  miss_rate=0.31%
+RAW: min=   -39 max=    54 samples[0..3]=26 13 14 -2
+RES0: min=    -7 max=     9
+GATE: ABORT conf= 15 E=    0 C=  2179 ZCR= 13 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1463us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13450  miss_rate=0.31%
+RAW: min=   -30 max=    32 samples[0..3]=-9 -13 -7 -1
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C= 11962 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1463us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13500  miss_rate=0.31%
+RAW: min=   -61 max=    30 samples[0..3]=26 18 17 13
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  1396 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1463us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13550  miss_rate=0.30%
+RAW: min=   -45 max=    10 samples[0..3]=-19 -18 -16 -16
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2923 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13600  miss_rate=0.30%
+RAW: min=    56 max=   120 samples[0..3]=64 66 62 65
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2621 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13650  miss_rate=0.30%
+RAW: min=     0 max=    86 samples[0..3]=71 77 71 77
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3997 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13700  miss_rate=0.30%
+RAW: min=   -22 max=    38 samples[0..3]=-15 -15 -15 -11
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3148 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13750  miss_rate=0.30%
+RAW: min=   -41 max=    -8 samples[0..3]=-36 -36 -35 -33
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2074 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13800  miss_rate=0.30%
+RAW: min=   -27 max=    19 samples[0..3]=6 10 8 8
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1685 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13850  miss_rate=0.30%
+RAW: min=   -43 max=    -3 samples[0..3]=-7 -6 -5 -3
+RES0: min=    -6 max=     6
+GATE: ABORT conf= 15 E=    0 C=  2590 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13900  miss_rate=0.30%
+RAW: min=    -9 max=    34 samples[0..3]=14 15 13 15
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5837 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/13950  miss_rate=0.30%
+RAW: min=   -34 max=    33 samples[0..3]=8 7 6 10
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/14000  miss_rate=0.30%
+RAW: min=   -38 max=   -11 samples[0..3]=-20 -17 -17 -16
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2108 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/14050  miss_rate=0.29%
+RAW: min=     2 max=    40 samples[0..3]=16 16 20 23
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  3855 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/14100  miss_rate=0.29%
+RAW: min=   -42 max=    37 samples[0..3]=4 3 2 3
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  7108 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/14150  miss_rate=0.29%
+RAW: min=   -15 max=    30 samples[0..3]=-5 -4 -6 -3
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  7357 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/14200  miss_rate=0.29%
+RAW: min=   -17 max=    21 samples[0..3]=-12 -13 -17 -13
+RES0: min=    -5 max=     6
+GATE: ABORT conf= 15 E=    0 C=  1665 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/14250  miss_rate=0.29%
+RAW: min=   -36 max=    24 samples[0..3]=4 3 -2 1
+RES0: min=    -8 max=     6
+GATE: ABORT conf= 15 E=    0 C=  2588 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/14300  miss_rate=0.29%
+RAW: min=   -24 max=    39 samples[0..3]=4 1 3 1
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  3264 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=42/14350  miss_rate=0.29%
+RAW: min=   -40 max=    13 samples[0..3]=-4 -3 -6 -3
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2103 ZCR= 11 T=1463us noise=    0 wakes= 1/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14400  miss_rate=0.29%
+RAW: min=   -39 max=    34 samples[0..3]=16 10 12 11
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2995 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14450  miss_rate=0.29%
+RAW: min=   -19 max=     5 samples[0..3]=0 0 1 2
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2650 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14500  miss_rate=0.29%
+RAW: min=   -45 max=    26 samples[0..3]=22 20 18 12
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  2 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14550  miss_rate=0.29%
+RAW: min=   -29 max=    27 samples[0..3]=11 12 11 5
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2958 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14600  miss_rate=0.29%
+RAW: min=   -11 max=    46 samples[0..3]=13 18 13 18
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4148 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14650  miss_rate=0.29%
+RAW: min=   -81 max=    30 samples[0..3]=13 16 18 21
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1156 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14700  miss_rate=0.29%
+RAW: min=   -20 max=    60 samples[0..3]=51 52 56 54
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2130 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14750  miss_rate=0.29%
+RAW: min=   -35 max=    16 samples[0..3]=-12 -11 -11 -13
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2786 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14800  miss_rate=0.29%
+RAW: min=    -1 max=    62 samples[0..3]=18 20 23 22
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3682 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14850  miss_rate=0.28%
+RAW: min=   -23 max=    17 samples[0..3]=-13 -12 -13 -12
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4029 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14900  miss_rate=0.28%
+RAW: min=   -34 max=    24 samples[0..3]=0 -2 -3 1
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3260 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/14950  miss_rate=0.28%
+RAW: min=   -49 max=    33 samples[0..3]=4 5 0 -1
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4674 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/15000  miss_rate=0.28%
+RAW: min=    -1 max=    38 samples[0..3]=37 35 35 38
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1804 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/15050  miss_rate=0.28%
+RAW: min=   -30 max=    34 samples[0..3]=-13 -17 -17 -18
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1863 ZCR=  7 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/15100  miss_rate=0.28%
+RAW: min=   -39 max=    17 samples[0..3]=-35 -34 -39 -38
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1408 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/15150  miss_rate=0.28%
+RAW: min=   -40 max=    27 samples[0..3]=-10 -11 -6 -9
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6507 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/15200  miss_rate=0.28%
+RAW: min=   -34 max=    66 samples[0..3]=-26 -28 -32 -26
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C= 13042 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=43/15250  miss_rate=0.28%
+RAW: min=  -375 max=   600 samples[0..3]=494 492 515 548
+RES0: min=   -86 max=    92
+GATE: ABORT conf= 15 E=    0 C=  2097 ZCR= 11 T=1463us noise=    0 wakes= 2/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=1ms irq_lat_max=19ms
+DEADLINE: misses=45/15300  miss_rate=0.29%
+RAW: min=   -18 max=    66 samples[0..3]=20 22 26 20
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4845 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=45/15350  miss_rate=0.29%
+RAW: min=   -73 max=    76 samples[0..3]=-66 -65 -73 -66
+RES0: min=    -7 max=     8
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=45/15400  miss_rate=0.29%
+RAW: min=   -30 max=    20 samples[0..3]=-30 -26 -24 -20
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1219 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=45/15450  miss_rate=0.29%
+RAW: min=   -49 max=    40 samples[0..3]=-5 -7 -6 -7
+RES0: min=    -8 max=     9
+GATE: ABORT conf= 15 E=    0 C=  3874 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=45/15500  miss_rate=0.29%
+RAW: min=   -66 max=    39 samples[0..3]=-55 -47 -38 -42
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  8 T=1457us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=45/15550  miss_rate=0.28%
+RAW: min=   -30 max=    37 samples[0..3]=6 4 2 2
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4571 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=45/15600  miss_rate=0.28%
+RAW: min=   -54 max=     3 samples[0..3]=-31 -26 -35 -37
+RES0: min=    -6 max=     5
+GATE: ABORT conf= 15 E=    0 C=   930 ZCR= 13 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=45/15650  miss_rate=0.28%
+RAW: min=   -30 max=    52 samples[0..3]=2 1 -3 -5
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  4633 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=45/15700  miss_rate=0.28%
+RAW: min=   -11 max=    41 samples[0..3]=32 34 33 33
+RES0: min=   -59 max=    57
+GATE: ABORT conf= 15 E=    0 C=  3318 ZCR=  6 T=1462us noise=    0 wakes= 1/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=46/15750  miss_rate=0.29%
+RAW: min=   -51 max=    34 samples[0..3]=30 33 29 28
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  4784 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=46/15800  miss_rate=0.29%
+RAW: min=   -21 max=    28 samples[0..3]=-5 -9 -8 -6
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3978 ZCR= 10 T=1464us noise=    0 wakes= 1/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=47/15850  miss_rate=0.29%
+RAW: min=   -25 max=    34 samples[0..3]=11 7 3 2
+RES0: min=    -5 max=     6
+GATE: ABORT conf= 15 E=    0 C=  3087 ZCR=  2 T=1462us noise=    0 wakes= 2/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=1ms irq_lat_max=19ms
+DEADLINE: misses=49/15900  miss_rate=0.30%
+RAW: min=    -5 max=    45 samples[0..3]=33 27 26 28
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3248 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/15950  miss_rate=0.30%
+RAW: min=   -32 max=    12 samples[0..3]=-7 -7 -11 -12
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2083 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16000  miss_rate=0.30%
+RAW: min=   -37 max=    25 samples[0..3]=-9 -12 -13 -14
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  7302 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16050  miss_rate=0.30%
+RAW: min=   -14 max=    23 samples[0..3]=19 23 17 16
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=   878 ZCR= 13 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16100  miss_rate=0.30%
+RAW: min=   -31 max=    28 samples[0..3]=8 13 15 8
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  6007 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16150  miss_rate=0.30%
+RAW: min=   -28 max=    39 samples[0..3]=-11 -9 -10 -16
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3339 ZCR=  5 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16200  miss_rate=0.30%
+RAW: min=   -70 max=    53 samples[0..3]=34 30 24 25
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2047 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16250  miss_rate=0.30%
+RAW: min=   -19 max=    18 samples[0..3]=-4 -2 -7 -6
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4993 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16300  miss_rate=0.30%
+RAW: min=   -10 max=    35 samples[0..3]=19 17 17 22
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   625 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16350  miss_rate=0.29%
+RAW: min=   -32 max=    32 samples[0..3]=5 3 5 6
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  6055 ZCR= 18 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16400  miss_rate=0.29%
+RAW: min=  -171 max=   126 samples[0..3]=-75 -73 -46 -55
+RES0: min=    -7 max=     9
+GATE: ABORT conf= 15 E=    0 C=  7771 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16450  miss_rate=0.29%
+RAW: min=   -22 max=    35 samples[0..3]=6 10 8 10
+RES0: min=    -5 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1712 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16500  miss_rate=0.29%
+RAW: min=   -11 max=    48 samples[0..3]=40 29 29 30
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1694 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16550  miss_rate=0.29%
+RAW: min=   -19 max=    45 samples[0..3]=-2 2 4 0
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4816 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16600  miss_rate=0.29%
+RAW: min=   -42 max=    27 samples[0..3]=9 6 12 11
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  7131 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16650  miss_rate=0.29%
+RAW: min=   -11 max=    44 samples[0..3]=30 31 28 25
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2193 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16700  miss_rate=0.29%
+RAW: min=     5 max=    42 samples[0..3]=27 27 29 31
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=   638 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16750  miss_rate=0.29%
+RAW: min=   -49 max=     7 samples[0..3]=-11 -2 -6 -4
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2952 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16800  miss_rate=0.29%
+RAW: min=   -39 max=    38 samples[0..3]=1 -1 -1 -4
+RES0: min=    -4 max=     5
+GATE: ABORT conf= 15 E=    0 C=  -378 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16850  miss_rate=0.29%
+RAW: min=   -22 max=    30 samples[0..3]=-22 -18 -18 -18
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4831 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16900  miss_rate=0.28%
+RAW: min=   -32 max=    17 samples[0..3]=13 16 14 12
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/16950  miss_rate=0.28%
+RAW: min=    -9 max=    40 samples[0..3]=5 12 9 12
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1810 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17000  miss_rate=0.28%
+RAW: min=   -18 max=    21 samples[0..3]=-7 -6 -9 -7
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  8605 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17050  miss_rate=0.28%
+RAW: min=   -14 max=    40 samples[0..3]=31 31 29 30
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3134 ZCR=  2 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17100  miss_rate=0.28%
+RAW: min=    -2 max=    26 samples[0..3]=12 11 13 11
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6688 ZCR=  0 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17150  miss_rate=0.28%
+RAW: min=   -29 max=    12 samples[0..3]=-4 -5 -5 1
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4202 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17200  miss_rate=0.28%
+RAW: min=   -26 max=    28 samples[0..3]=8 8 7 6
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=   808 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17250  miss_rate=0.28%
+RAW: min=   -12 max=    35 samples[0..3]=26 24 26 30
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2721 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17300  miss_rate=0.28%
+RAW: min=   -60 max=    -5 samples[0..3]=-17 -17 -15 -19
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  3419 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17350  miss_rate=0.28%
+RAW: min=   -29 max=    13 samples[0..3]=-7 -6 -6 -6
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17400  miss_rate=0.28%
+RAW: min=    -8 max=    38 samples[0..3]=16 6 12 12
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4538 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17450  miss_rate=0.28%
+RAW: min=   -30 max=    29 samples[0..3]=-13 -17 -13 -17
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  5 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17500  miss_rate=0.28%
+RAW: min=   -47 max=    10 samples[0..3]=-3 -2 -2 -1
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2327 ZCR=  6 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17550  miss_rate=0.27%
+RAW: min=   -16 max=    29 samples[0..3]=-9 -12 -16 -13
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3857 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17600  miss_rate=0.27%
+RAW: min=   -42 max=    43 samples[0..3]=-10 -5 -5 -11
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17650  miss_rate=0.27%
+RAW: min=   -31 max=    13 samples[0..3]=9 1 4 9
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=  3679 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17700  miss_rate=0.27%
+RAW: min=   -39 max=    27 samples[0..3]=-21 -24 -21 -20
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  1587 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17750  miss_rate=0.27%
+RAW: min=   -31 max=    79 samples[0..3]=5 7 -1 -6
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  3830 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17800  miss_rate=0.27%
+RAW: min=   -18 max=    24 samples[0..3]=15 17 15 15
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3225 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17850  miss_rate=0.27%
+RAW: min=   -16 max=    43 samples[0..3]=1 4 2 2
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3746 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17900  miss_rate=0.27%
+RAW: min=   -21 max=    35 samples[0..3]=-18 -17 -17 -16
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1205 ZCR= 13 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/17950  miss_rate=0.27%
+RAW: min=   -21 max=     9 samples[0..3]=-14 -13 -13 -15
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6756 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18000  miss_rate=0.27%
+RAW: min=   -62 max=     6 samples[0..3]=-47 -56 -54 -57
+RES0: min=    -5 max=     6
+GATE: ABORT conf= 15 E=    0 C=  1747 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18050  miss_rate=0.27%
+RAW: min=   -12 max=    42 samples[0..3]=4 3 6 6
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  8 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18100  miss_rate=0.27%
+RAW: min=   -26 max=    14 samples[0..3]=2 -3 0 -3
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2109 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18150  miss_rate=0.26%
+RAW: min=   -58 max=    18 samples[0..3]=-48 -45 -46 -45
+RES0: min=    -6 max=     5
+GATE: ABORT conf= 15 E=    0 C=  7759 ZCR=  8 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18200  miss_rate=0.26%
+RAW: min=   -31 max=    18 samples[0..3]=-7 -3 -5 -5
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  2774 ZCR=  8 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18250  miss_rate=0.26%
+RAW: min=   -37 max=     4 samples[0..3]=-16 -13 -13 -17
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=  4368 ZCR=  5 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18300  miss_rate=0.26%
+RAW: min=   -59 max=    10 samples[0..3]=-38 -43 -43 -41
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3765 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18350  miss_rate=0.26%
+RAW: min=   -18 max=    35 samples[0..3]=34 29 29 33
+RES0: min=    -8 max=     9
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  5 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18400  miss_rate=0.26%
+RAW: min=   -11 max=    38 samples[0..3]=19 21 19 17
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2991 ZCR=  7 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18450  miss_rate=0.26%
+RAW: min=   -12 max=    47 samples[0..3]=16 14 10 7
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2537 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18500  miss_rate=0.26%
+RAW: min=   -23 max=    26 samples[0..3]=9 12 10 13
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4633 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18550  miss_rate=0.26%
+RAW: min=   -37 max=    36 samples[0..3]=17 20 20 18
+RES0: min=    -3 max=     1
+GATE: ABORT conf= 15 E=    0 C=  6539 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18600  miss_rate=0.26%
+RAW: min=   -35 max=    32 samples[0..3]=-10 -8 -7 -9
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18650  miss_rate=0.26%
+RAW: min=   -12 max=    24 samples[0..3]=-7 -4 -2 -7
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5725 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18700  miss_rate=0.26%
+RAW: min=   -37 max=    34 samples[0..3]=29 27 26 28
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1188 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18750  miss_rate=0.26%
+RAW: min=   -31 max=    17 samples[0..3]=3 -2 1 -2
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  1734 ZCR=  2 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18800  miss_rate=0.26%
+RAW: min=   -60 max=    16 samples[0..3]=8 5 7 13
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2316 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18850  miss_rate=0.25%
+RAW: min=   -13 max=    51 samples[0..3]=26 26 23 24
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18900  miss_rate=0.25%
+RAW: min=   -33 max=    15 samples[0..3]=15 10 9 15
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=  7200 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/18950  miss_rate=0.25%
+RAW: min=   -24 max=    26 samples[0..3]=-8 -7 -6 -2
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3528 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19000  miss_rate=0.25%
+RAW: min=   -46 max=    37 samples[0..3]=19 19 18 18
+RES0: min=    -5 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3973 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19050  miss_rate=0.25%
+RAW: min=   -18 max=    17 samples[0..3]=13 17 15 9
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2991 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19100  miss_rate=0.25%
+RAW: min=   -40 max=    23 samples[0..3]=-9 -9 -10 -7
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4033 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19150  miss_rate=0.25%
+RAW: min=   -35 max=    39 samples[0..3]=25 23 24 24
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=  1831 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19200  miss_rate=0.25%
+RAW: min=   -18 max=    10 samples[0..3]=-8 -9 -9 -7
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   737 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19250  miss_rate=0.25%
+RAW: min=   -15 max=    44 samples[0..3]=18 20 16 16
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19300  miss_rate=0.25%
+RAW: min=   -44 max=    14 samples[0..3]=9 11 13 13
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2279 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19350  miss_rate=0.25%
+RAW: min=    10 max=    66 samples[0..3]=23 24 26 23
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  6069 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19400  miss_rate=0.25%
+RAW: min=   -10 max=    60 samples[0..3]=21 18 19 20
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3029 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19450  miss_rate=0.25%
+RAW: min=   -16 max=    25 samples[0..3]=5 7 4 8
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  5 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19500  miss_rate=0.25%
+RAW: min=   -31 max=    10 samples[0..3]=-11 -17 -19 -16
+RES0: min=    -6 max=     6
+GATE: ABORT conf= 15 E=    0 C=  1158 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19550  miss_rate=0.25%
+RAW: min=   -44 max=    29 samples[0..3]=-9 -5 -9 -8
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4565 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19600  miss_rate=0.25%
+RAW: min=   -13 max=    45 samples[0..3]=1 2 0 3
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2440 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19650  miss_rate=0.24%
+RAW: min=   -51 max=     7 samples[0..3]=-46 -47 -44 -45
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19700  miss_rate=0.24%
+RAW: min=   -24 max=    32 samples[0..3]=7 8 6 9
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C= 10513 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19750  miss_rate=0.24%
+RAW: min=   -30 max=    29 samples[0..3]=20 20 17 22
+RES0: min=    -8 max=     7
+GATE: ABORT conf= 15 E=    0 C=  4158 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19800  miss_rate=0.24%
+RAW: min=   -37 max=    26 samples[0..3]=-28 -21 -23 -25
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  2 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19850  miss_rate=0.24%
+RAW: min=   -63 max=    22 samples[0..3]=-14 -18 -18 -15
+RES0: min=    -6 max=     5
+GATE: ABORT conf= 15 E=    0 C=  5169 ZCR=  1 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19900  miss_rate=0.24%
+RAW: min=   -10 max=    24 samples[0..3]=18 18 23 24
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  8506 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/19950  miss_rate=0.24%
+RAW: min=   -45 max=    45 samples[0..3]=-28 -29 -25 -27
+RES0: min=   -11 max=    11
+GATE: ABORT conf= 15 E=    0 C=  2106 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20000  miss_rate=0.24%
+RAW: min=   -23 max=    37 samples[0..3]=-23 -21 -18 -14
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  9007 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20050  miss_rate=0.24%
+RAW: min=   -43 max=    30 samples[0..3]=12 12 12 14
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C= 13281 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20100  miss_rate=0.24%
+RAW: min=   -22 max=    30 samples[0..3]=-11 -18 -22 -16
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2220 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20150  miss_rate=0.24%
+RAW: min=   -38 max=     1 samples[0..3]=-23 -20 -18 -19
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  8150 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20200  miss_rate=0.24%
+RAW: min=   -29 max=    31 samples[0..3]=-3 -3 -8 2
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  7545 ZCR=  3 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20250  miss_rate=0.24%
+RAW: min=   -37 max=    36 samples[0..3]=-26 -32 -27 -27
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4050 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20300  miss_rate=0.24%
+RAW: min=   -14 max=    28 samples[0..3]=-5 -3 -10 -11
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  5313 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20350  miss_rate=0.24%
+RAW: min=   -58 max=    -9 samples[0..3]=-28 -29 -28 -32
+RES0: min=    -6 max=     6
+GATE: ABORT conf= 15 E=    0 C=  2541 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20400  miss_rate=0.24%
+RAW: min=   -26 max=    64 samples[0..3]=-13 -14 -12 -16
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3692 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20450  miss_rate=0.23%
+RAW: min=   -18 max=    23 samples[0..3]=17 16 21 19
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  9053 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20500  miss_rate=0.23%
+RAW: min=    -1 max=    64 samples[0..3]=36 36 38 33
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  5515 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20550  miss_rate=0.23%
+RAW: min=   -24 max=    26 samples[0..3]=-6 -9 -8 -2
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  1077 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20600  miss_rate=0.23%
+RAW: min=   -14 max=     9 samples[0..3]=-6 -9 -6 -6
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2902 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20650  miss_rate=0.23%
+RAW: min=   -35 max=    27 samples[0..3]=14 17 13 14
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=   771 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20700  miss_rate=0.23%
+RAW: min=   -28 max=     9 samples[0..3]=-14 -13 -12 -11
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1344 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20750  miss_rate=0.23%
+RAW: min=   -15 max=    23 samples[0..3]=16 14 13 12
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1202 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20800  miss_rate=0.23%
+RAW: min=   -58 max=    25 samples[0..3]=-10 -10 -12 -10
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2377 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20850  miss_rate=0.23%
+RAW: min=   -31 max=    18 samples[0..3]=-20 -19 -22 -19
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3105 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20900  miss_rate=0.23%
+RAW: min=   -64 max=    17 samples[0..3]=10 11 8 10
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2185 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/20950  miss_rate=0.23%
+RAW: min=   -30 max=    53 samples[0..3]=26 25 22 25
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2027 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21000  miss_rate=0.23%
+RAW: min=   -58 max=     6 samples[0..3]=6 5 0 6
+RES0: min=    -5 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2123 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21050  miss_rate=0.23%
+RAW: min=   -45 max=    43 samples[0..3]=25 26 23 23
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4673 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21100  miss_rate=0.23%
+RAW: min=   -38 max=    24 samples[0..3]=10 7 6 7
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21150  miss_rate=0.23%
+RAW: min=   -22 max=    20 samples[0..3]=17 16 18 7
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1861 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21200  miss_rate=0.23%
+RAW: min=   -16 max=    50 samples[0..3]=46 47 50 44
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2461 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21250  miss_rate=0.23%
+RAW: min=    -9 max=    31 samples[0..3]=12 21 22 19
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2639 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21300  miss_rate=0.23%
+RAW: min=   -30 max=    28 samples[0..3]=15 20 24 25
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6441 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21350  miss_rate=0.22%
+RAW: min=   -37 max=    53 samples[0..3]=38 40 42 44
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  5108 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21400  miss_rate=0.22%
+RAW: min=   -16 max=    19 samples[0..3]=-1 4 6 8
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4472 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21450  miss_rate=0.22%
+RAW: min=   -58 max=    11 samples[0..3]=0 -4 1 2
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21500  miss_rate=0.22%
+RAW: min=   -22 max=    32 samples[0..3]=20 20 15 14
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1362 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21550  miss_rate=0.22%
+RAW: min=   -45 max=    -6 samples[0..3]=-21 -22 -21 -19
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4746 ZCR=  7 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21600  miss_rate=0.22%
+RAW: min=   -31 max=    26 samples[0..3]=17 18 20 19
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4958 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21650  miss_rate=0.22%
+RAW: min=   -20 max=    34 samples[0..3]=-3 -3 -4 -4
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3575 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=49/21700  miss_rate=0.22%
+RAW: min=     6 max=    51 samples[0..3]=29 34 39 36
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1462us noise=    0 wakes= 3/50
+SCHED: wcet=1485us avg=1463us duty=0.73% irq_lat_avg=1ms irq_lat_max=19ms
+DEADLINE: misses=52/21750  miss_rate=0.23%
+RAW: min=    -6 max=    28 samples[0..3]=10 5 8 6
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1548 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/21800  miss_rate=0.23%
+RAW: min=   -36 max=    26 samples[0..3]=9 8 7 4
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1287 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/21850  miss_rate=0.23%
+RAW: min=   -34 max=    25 samples[0..3]=-15 -16 -16 -13
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4700 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/21900  miss_rate=0.23%
+RAW: min=    -2 max=    73 samples[0..3]=23 27 30 27
+RES0: min=    -6 max=     6
+GATE: ABORT conf= 15 E=    0 C=  2476 ZCR=  2 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/21950  miss_rate=0.23%
+RAW: min=   -31 max=    21 samples[0..3]=11 9 13 13
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  6170 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22000  miss_rate=0.23%
+RAW: min=   -59 max=    -4 samples[0..3]=-17 -17 -17 -14
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  5931 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22050  miss_rate=0.23%
+RAW: min=   -35 max=    16 samples[0..3]=-5 -7 -4 -8
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3635 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22100  miss_rate=0.23%
+RAW: min=   -18 max=    34 samples[0..3]=10 10 7 12
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  5761 ZCR=  5 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22150  miss_rate=0.23%
+RAW: min=   -45 max=    16 samples[0..3]=14 12 15 16
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=   845 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22200  miss_rate=0.23%
+RAW: min=   -17 max=    44 samples[0..3]=12 12 7 6
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2181 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22250  miss_rate=0.23%
+RAW: min=   -34 max=    10 samples[0..3]=9 5 4 7
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4782 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22300  miss_rate=0.23%
+RAW: min=   -28 max=    30 samples[0..3]=8 7 14 10
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22350  miss_rate=0.23%
+RAW: min=   -12 max=    33 samples[0..3]=11 15 10 10
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3256 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22400  miss_rate=0.23%
+RAW: min=   -11 max=    24 samples[0..3]=19 15 14 20
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C= -1354 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22450  miss_rate=0.23%
+RAW: min=   -20 max=    25 samples[0..3]=3 0 2 0
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1347 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22500  miss_rate=0.23%
+RAW: min=   -41 max=     6 samples[0..3]=-3 -4 2 0
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5442 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22550  miss_rate=0.23%
+RAW: min=   -36 max=    33 samples[0..3]=31 33 30 29
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1410 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22600  miss_rate=0.23%
+RAW: min=   -21 max=    35 samples[0..3]=-15 -14 -11 -9
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3593 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22650  miss_rate=0.22%
+RAW: min=   -11 max=    36 samples[0..3]=9 6 7 6
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2715 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22700  miss_rate=0.22%
+RAW: min=   -26 max=    19 samples[0..3]=18 15 10 12
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  0 T=1459us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22750  miss_rate=0.22%
+RAW: min=   -21 max=    19 samples[0..3]=9 16 9 9
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2471 ZCR=  1 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22800  miss_rate=0.22%
+RAW: min=   -33 max=     4 samples[0..3]=1 0 1 0
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2277 ZCR=  6 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22850  miss_rate=0.22%
+RAW: min=   -23 max=    15 samples[0..3]=6 0 7 0
+RES0: min=    -1 max=     0
+GATE: ABORT conf= 15 E=    0 C=  3089 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22900  miss_rate=0.22%
+RAW: min=    -5 max=    29 samples[0..3]=8 7 8 9
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3309 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/22950  miss_rate=0.22%
+RAW: min=   -30 max=    22 samples[0..3]=-25 -22 -24 -26
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3966 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23000  miss_rate=0.22%
+RAW: min=   -10 max=    52 samples[0..3]=34 29 25 30
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3836 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23050  miss_rate=0.22%
+RAW: min=   -28 max=    28 samples[0..3]=16 20 14 17
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1458us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23100  miss_rate=0.22%
+RAW: min=   -34 max=     7 samples[0..3]=-24 -24 -26 -24
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23150  miss_rate=0.22%
+RAW: min=   -19 max=    22 samples[0..3]=-8 -8 -8 -7
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1692 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23200  miss_rate=0.22%
+RAW: min=   -12 max=    20 samples[0..3]=-4 -4 -5 -8
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1717 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23250  miss_rate=0.22%
+RAW: min=   -46 max=     9 samples[0..3]=-40 -38 -39 -38
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1911 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23300  miss_rate=0.22%
+RAW: min=   -29 max=    17 samples[0..3]=-5 -2 -1 -4
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3288 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23350  miss_rate=0.22%
+RAW: min=   -58 max=    -5 samples[0..3]=-9 -13 -8 -10
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5161 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23400  miss_rate=0.22%
+RAW: min=   -47 max=    21 samples[0..3]=0 2 1 2
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C= -2047 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23450  miss_rate=0.22%
+RAW: min=   -44 max=     9 samples[0..3]=-4 -4 -4 -7
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C= -1254 ZCR=  5 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23500  miss_rate=0.22%
+RAW: min=   -32 max=     0 samples[0..3]=-18 -20 -23 -20
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2978 ZCR=  5 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23550  miss_rate=0.22%
+RAW: min=   -16 max=    27 samples[0..3]=-3 -3 -5 -5
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1119 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23600  miss_rate=0.22%
+RAW: min=    -7 max=    30 samples[0..3]=17 13 13 17
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 13 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23650  miss_rate=0.21%
+RAW: min=   -26 max=     4 samples[0..3]=-20 -21 -18 -23
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23700  miss_rate=0.21%
+RAW: min=    -5 max=    33 samples[0..3]=33 27 30 30
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4523 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23750  miss_rate=0.21%
+RAW: min=   -29 max=    26 samples[0..3]=-2 1 -1 -1
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4960 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23800  miss_rate=0.21%
+RAW: min=   -25 max=    51 samples[0..3]=-13 -17 -12 -17
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4593 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23850  miss_rate=0.21%
+RAW: min=   -27 max=    14 samples[0..3]=0 3 2 2
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2212 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23900  miss_rate=0.21%
+RAW: min=    -9 max=    30 samples[0..3]=2 1 2 -3
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1751 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/23950  miss_rate=0.21%
+RAW: min=    -6 max=    31 samples[0..3]=13 12 10 9
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3117 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24000  miss_rate=0.21%
+RAW: min=   -27 max=    26 samples[0..3]=-14 -14 -12 -11
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1680 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24050  miss_rate=0.21%
+RAW: min=   -15 max=    40 samples[0..3]=16 18 15 20
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24100  miss_rate=0.21%
+RAW: min=   -50 max=     2 samples[0..3]=-6 -2 -2 -2
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3369 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24150  miss_rate=0.21%
+RAW: min=   -63 max=    28 samples[0..3]=8 6 8 10
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24200  miss_rate=0.21%
+RAW: min=   -18 max=    42 samples[0..3]=-7 -3 -6 -8
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1475 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24250  miss_rate=0.21%
+RAW: min=   -24 max=    14 samples[0..3]=-14 -14 -10 -13
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2978 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24300  miss_rate=0.21%
+RAW: min=   -14 max=    26 samples[0..3]=5 4 5 4
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2505 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24350  miss_rate=0.21%
+RAW: min=   -22 max=    18 samples[0..3]=-13 -16 -19 -20
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2189 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24400  miss_rate=0.21%
+RAW: min=   -18 max=    29 samples[0..3]=12 9 13 12
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1404 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24450  miss_rate=0.21%
+RAW: min=   -22 max=    36 samples[0..3]=-1 4 3 2
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4459 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24500  miss_rate=0.21%
+RAW: min=   -20 max=    32 samples[0..3]=0 7 0 7
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4320 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24550  miss_rate=0.21%
+RAW: min=   -40 max=    14 samples[0..3]=-40 -40 -35 -38
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   710 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24600  miss_rate=0.21%
+RAW: min=   -62 max=    -3 samples[0..3]=-39 -39 -36 -33
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2383 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24650  miss_rate=0.21%
+RAW: min=   -15 max=    33 samples[0..3]=-12 -11 -8 -6
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1027 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24700  miss_rate=0.21%
+RAW: min=   -41 max=     8 samples[0..3]=-22 -20 -16 -20
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  7326 ZCR=  2 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24750  miss_rate=0.21%
+RAW: min=   -21 max=    21 samples[0..3]=-11 -13 -11 -12
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1538 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24800  miss_rate=0.20%
+RAW: min=   -32 max=    17 samples[0..3]=-24 -24 -30 -29
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  4746 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24850  miss_rate=0.20%
+RAW: min=   -31 max=    24 samples[0..3]=-31 -28 -24 -29
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2072 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24900  miss_rate=0.20%
+RAW: min=   -30 max=    11 samples[0..3]=-30 -29 -26 -27
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2911 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/24950  miss_rate=0.20%
+RAW: min=    -6 max=    61 samples[0..3]=-1 -4 -6 -2
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25000  miss_rate=0.20%
+RAW: min=   -41 max=    21 samples[0..3]=-38 -38 -40 -40
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  6850 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25050  miss_rate=0.20%
+RAW: min=  -152 max=   -30 samples[0..3]=-30 -31 -36 -38
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C= 10052 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25100  miss_rate=0.20%
+RAW: min=   -47 max=    42 samples[0..3]=-25 -25 -28 -32
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1264 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25150  miss_rate=0.20%
+RAW: min=   -21 max=    21 samples[0..3]=-4 0 -6 -6
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2223 ZCR=  5 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25200  miss_rate=0.20%
+RAW: min=   -21 max=    25 samples[0..3]=-7 -3 -7 -5
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25250  miss_rate=0.20%
+RAW: min=   -20 max=    32 samples[0..3]=-13 -16 -10 -11
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1930 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25300  miss_rate=0.20%
+RAW: min=   -60 max=    10 samples[0..3]=5 5 6 5
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4287 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25350  miss_rate=0.20%
+RAW: min=     7 max=    56 samples[0..3]=34 32 35 27
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5658 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25400  miss_rate=0.20%
+RAW: min=   -20 max=    25 samples[0..3]=-5 -1 -3 -4
+RES0: min=    -4 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5543 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25450  miss_rate=0.20%
+RAW: min=   -20 max=    46 samples[0..3]=1 -1 4 -1
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4075 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25500  miss_rate=0.20%
+RAW: min=    12 max=    67 samples[0..3]=55 54 51 52
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3644 ZCR=  7 T=1458us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25550  miss_rate=0.20%
+RAW: min=     2 max=    49 samples[0..3]=16 15 18 19
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4588 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25600  miss_rate=0.20%
+RAW: min=    15 max=    59 samples[0..3]=34 37 36 38
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2910 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25650  miss_rate=0.20%
+RAW: min=    38 max=    77 samples[0..3]=52 51 54 55
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  6094 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25700  miss_rate=0.20%
+RAW: min=   -21 max=    21 samples[0..3]=-15 -14 -8 -14
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2998 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=52/25750  miss_rate=0.20%
+RAW: min=   -42 max=    -6 samples[0..3]=-25 -20 -21 -24
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1514 ZCR=  8 T=1462us noise=    0 wakes= 1/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/25800  miss_rate=0.20%
+RAW: min=   -25 max=    23 samples[0..3]=19 18 20 19
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5861 ZCR=  2 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/25850  miss_rate=0.20%
+RAW: min=   -25 max=    36 samples[0..3]=36 32 31 35
+RES0: min=    -4 max=     5
+GATE: ABORT conf= 15 E=    0 C=   906 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/25900  miss_rate=0.20%
+RAW: min=   -51 max=    -8 samples[0..3]=-9 -8 -9 -8
+RES0: min=    -7 max=     6
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/25950  miss_rate=0.20%
+RAW: min=   -36 max=    12 samples[0..3]=2 3 5 5
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2402 ZCR=  7 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26000  miss_rate=0.20%
+RAW: min=   -34 max=     5 samples[0..3]=-2 -3 -5 -5
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  7 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26050  miss_rate=0.20%
+RAW: min=   -22 max=    19 samples[0..3]=-3 -2 -2 -2
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2484 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26100  miss_rate=0.20%
+RAW: min=   -44 max=    22 samples[0..3]=-40 -43 -42 -41
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3746 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26150  miss_rate=0.20%
+RAW: min=   -43 max=    26 samples[0..3]=-21 -22 -22 -23
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3388 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26200  miss_rate=0.20%
+RAW: min=   -18 max=    32 samples[0..3]=-5 -5 -5 0
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1457us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26250  miss_rate=0.20%
+RAW: min=    -4 max=    37 samples[0..3]=4 4 1 0
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2808 ZCR= 13 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26300  miss_rate=0.20%
+RAW: min=   -47 max=    -4 samples[0..3]=-11 -9 -10 -7
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  6082 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26350  miss_rate=0.20%
+RAW: min=     5 max=    51 samples[0..3]=22 21 18 18
+RES0: min=    -4 max=     5
+GATE: ABORT conf= 15 E=    0 C=  1295 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26400  miss_rate=0.20%
+RAW: min=    -5 max=    39 samples[0..3]=9 8 4 7
+RES0: min=    -6 max=     7
+GATE: ABORT conf= 15 E=    0 C= 12001 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26450  miss_rate=0.20%
+RAW: min=   -35 max=    24 samples[0..3]=-28 -27 -25 -24
+RES0: min=    -5 max=     6
+GATE: ABORT conf= 15 E=    0 C=  2294 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26500  miss_rate=0.20%
+RAW: min=   -57 max=    12 samples[0..3]=-36 -36 -38 -40
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  4496 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26550  miss_rate=0.19%
+RAW: min=   -29 max=    20 samples[0..3]=-29 -27 -26 -27
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  6474 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26600  miss_rate=0.19%
+RAW: min=     4 max=    46 samples[0..3]=7 9 9 13
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1457us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26650  miss_rate=0.19%
+RAW: min=   -41 max=    15 samples[0..3]=-12 -12 -10 -7
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 14 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26700  miss_rate=0.19%
+RAW: min=   -26 max=    20 samples[0..3]=-15 -8 -15 -12
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2328 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26750  miss_rate=0.19%
+RAW: min=    -5 max=    28 samples[0..3]=6 6 7 8
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  1298 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26800  miss_rate=0.19%
+RAW: min=   -45 max=    22 samples[0..3]=-2 -4 -6 -4
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1747 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26850  miss_rate=0.19%
+RAW: min=   -26 max=    23 samples[0..3]=-14 -13 -15 -9
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1651 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26900  miss_rate=0.19%
+RAW: min=   -16 max=    30 samples[0..3]=12 12 13 14
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  2 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/26950  miss_rate=0.19%
+RAW: min=   -35 max=    10 samples[0..3]=-22 -23 -18 -22
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2460 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/27000  miss_rate=0.19%
+RAW: min=   -58 max=   -16 samples[0..3]=-42 -43 -46 -44
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4274 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/27050  miss_rate=0.19%
+RAW: min=   -34 max=    16 samples[0..3]=-18 -23 -20 -20
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6899 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/27100  miss_rate=0.19%
+RAW: min=    -7 max=    36 samples[0..3]=10 3 6 10
+RES0: min=    -5 max=     5
+GATE: ABORT conf= 15 E=    0 C=  6461 ZCR=  3 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=53/27150  miss_rate=0.19%
+RAW: min=    -6 max=    33 samples[0..3]=-2 -6 -1 -6
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  -619 ZCR= 10 T=1463us noise=    0 wakes= 1/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=54/27200  miss_rate=0.19%
+RAW: min=   -25 max=    38 samples[0..3]=-12 -18 -17 -17
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=   821 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1485us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=54/27250  miss_rate=0.19%
+RAW: min=   -14 max=    49 samples[0..3]=-2 2 0 2
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2251 ZCR= 10 T=1463us noise=    0 wakes= 6/50
+SCHED: wcet=1521us avg=1465us duty=0.73% irq_lat_avg=3ms irq_lat_max=19ms
+DEADLINE: misses=60/27300  miss_rate=0.21%
+RAW: min=   -81 max=    -9 samples[0..3]=-27 -25 -24 -24
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  5364 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1463us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=60/27350  miss_rate=0.21%
+RAW: min=   -25 max=    27 samples[0..3]=-16 -15 -17 -19
+RES0: min=    -4 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2610 ZCR=  8 T=1462us noise=    0 wakes= 1/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27400  miss_rate=0.22%
+RAW: min=   -37 max=    19 samples[0..3]=0 3 -2 5
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1784 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27450  miss_rate=0.22%
+RAW: min=   -15 max=    24 samples[0..3]=1 4 2 3
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1846 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27500  miss_rate=0.22%
+RAW: min=   -38 max=     2 samples[0..3]=-36 -34 -35 -33
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1104 ZCR= 14 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27550  miss_rate=0.22%
+RAW: min=    73 max=   113 samples[0..3]=90 94 96 97
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5052 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27600  miss_rate=0.22%
+RAW: min=   -50 max=    -1 samples[0..3]=-7 -13 -10 -10
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1032 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27650  miss_rate=0.22%
+RAW: min=   -62 max=    -1 samples[0..3]=-24 -27 -24 -27
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2552 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27700  miss_rate=0.22%
+RAW: min=   -21 max=    29 samples[0..3]=27 27 25 23
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4968 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27750  miss_rate=0.21%
+RAW: min=   -16 max=    31 samples[0..3]=14 19 16 19
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1600 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27800  miss_rate=0.21%
+RAW: min=   -30 max=    17 samples[0..3]=3 -1 0 0
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2115 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27850  miss_rate=0.21%
+RAW: min=    -6 max=    32 samples[0..3]=-2 3 -1 0
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2850 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27900  miss_rate=0.21%
+RAW: min=   -33 max=    19 samples[0..3]=8 10 8 6
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  7881 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/27950  miss_rate=0.21%
+RAW: min=   -19 max=    42 samples[0..3]=18 15 14 16
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2366 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28000  miss_rate=0.21%
+RAW: min=   -22 max=    39 samples[0..3]=10 9 7 12
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1882 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28050  miss_rate=0.21%
+RAW: min=   -37 max=    -1 samples[0..3]=-9 -8 -8 -11
+RES0: min=    -1 max=     0
+GATE: ABORT conf= 15 E=    0 C=  3734 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28100  miss_rate=0.21%
+RAW: min=   -50 max=    30 samples[0..3]=25 27 26 19
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2454 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28150  miss_rate=0.21%
+RAW: min=   -24 max=    43 samples[0..3]=21 11 33 15
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3369 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28200  miss_rate=0.21%
+RAW: min=   -42 max=    10 samples[0..3]=9 9 9 10
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1011 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28250  miss_rate=0.21%
+RAW: min=   -12 max=    20 samples[0..3]=9 7 10 11
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4517 ZCR= 13 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1463us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28300  miss_rate=0.21%
+RAW: min=   -42 max=    42 samples[0..3]=-18 -7 -5 -4
+RES0: min=    -3 max=     4
+GATE: ABORT conf= 15 E=    0 C=  2789 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1463us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28350  miss_rate=0.21%
+RAW: min=   -12 max=    33 samples[0..3]=7 7 19 15
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28400  miss_rate=0.21%
+RAW: min=   -49 max=     8 samples[0..3]=-28 -25 -25 -28
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28450  miss_rate=0.21%
+RAW: min=   -20 max=    30 samples[0..3]=8 7 3 -1
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1567 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28500  miss_rate=0.21%
+RAW: min=   -18 max=    20 samples[0..3]=-1 -5 -2 -4
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2594 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28550  miss_rate=0.21%
+RAW: min=   -15 max=    11 samples[0..3]=5 8 8 6
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4971 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28600  miss_rate=0.21%
+RAW: min=   -19 max=    51 samples[0..3]=0 2 4 3
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  7 T=1457us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28650  miss_rate=0.21%
+RAW: min=   -15 max=    36 samples[0..3]=-6 -10 -8 -7
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2364 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28700  miss_rate=0.21%
+RAW: min=   -27 max=    20 samples[0..3]=-12 -9 -10 -8
+RES0: min=    -1 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2623 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28750  miss_rate=0.21%
+RAW: min=   -41 max=    12 samples[0..3]=-17 -20 -20 -19
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  4 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28800  miss_rate=0.21%
+RAW: min=   -43 max=     4 samples[0..3]=-18 -24 -25 -26
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  5098 ZCR=  5 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28850  miss_rate=0.21%
+RAW: min=   -42 max=   252 samples[0..3]=-42 -37 -33 -38
+RES0: min=    -2 max=     5
+GATE: ABORT conf= 15 E=    0 C=  3925 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28900  miss_rate=0.21%
+RAW: min=  -115 max=   -39 samples[0..3]=-41 -39 -39 -40
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   571 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/28950  miss_rate=0.21%
+RAW: min=   -14 max=    28 samples[0..3]=6 5 0 8
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29000  miss_rate=0.21%
+RAW: min=   -30 max=     3 samples[0..3]=-9 -10 -8 -11
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29050  miss_rate=0.20%
+RAW: min=   -15 max=    31 samples[0..3]=-11 -13 -14 -15
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  2 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29100  miss_rate=0.20%
+RAW: min=   -49 max=     4 samples[0..3]=-39 -37 -36 -40
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29150  miss_rate=0.20%
+RAW: min=   -16 max=    25 samples[0..3]=-15 -13 -11 -9
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2913 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29200  miss_rate=0.20%
+RAW: min=   -17 max=    42 samples[0..3]=-7 -8 -8 -12
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2910 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29250  miss_rate=0.20%
+RAW: min=   -18 max=    17 samples[0..3]=-7 -8 -11 -9
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  3276 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29300  miss_rate=0.20%
+RAW: min=     2 max=    56 samples[0..3]=25 22 27 23
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   997 ZCR= 12 T=1458us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29350  miss_rate=0.20%
+RAW: min=   -42 max=    17 samples[0..3]=-3 -3 -6 -6
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2028 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29400  miss_rate=0.20%
+RAW: min=   -39 max=    -9 samples[0..3]=-25 -24 -25 -24
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=   655 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29450  miss_rate=0.20%
+RAW: min=     5 max=    37 samples[0..3]=22 15 16 14
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  5570 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29500  miss_rate=0.20%
+RAW: min=   -48 max=    10 samples[0..3]=-24 -26 -26 -24
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1632 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29550  miss_rate=0.20%
+RAW: min=   -15 max=    22 samples[0..3]=-7 -12 -9 -14
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   188 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29600  miss_rate=0.20%
+RAW: min=     4 max=    33 samples[0..3]=7 7 4 9
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2189 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29650  miss_rate=0.20%
+RAW: min=   -24 max=    23 samples[0..3]=-6 0 2 2
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29700  miss_rate=0.20%
+RAW: min=   -37 max=    11 samples[0..3]=-21 -20 -19 -17
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1457us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29750  miss_rate=0.20%
+RAW: min=   -49 max=   -10 samples[0..3]=-41 -39 -39 -37
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4059 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29800  miss_rate=0.20%
+RAW: min=     6 max=    41 samples[0..3]=32 33 28 32
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4374 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29850  miss_rate=0.20%
+RAW: min=   -30 max=    11 samples[0..3]=-16 -17 -13 -12
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1847 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29900  miss_rate=0.20%
+RAW: min=     2 max=    41 samples[0..3]=12 13 15 16
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=   880 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/29950  miss_rate=0.20%
+RAW: min=   -23 max=    23 samples[0..3]=16 13 15 15
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30000  miss_rate=0.20%
+RAW: min=     8 max=    36 samples[0..3]=12 8 12 9
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3392 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30050  miss_rate=0.20%
+RAW: min=   -15 max=    17 samples[0..3]=-11 -8 -5 -6
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30100  miss_rate=0.20%
+RAW: min=   -59 max=    10 samples[0..3]=-4 -6 -7 -6
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4637 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30150  miss_rate=0.20%
+RAW: min=   -15 max=    27 samples[0..3]=23 24 20 20
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  5 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30200  miss_rate=0.20%
+RAW: min=   -14 max=    19 samples[0..3]=2 5 5 3
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1507 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30250  miss_rate=0.20%
+RAW: min=   -15 max=    32 samples[0..3]=4 -1 4 0
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3153 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30300  miss_rate=0.20%
+RAW: min=   -32 max=    15 samples[0..3]=4 7 2 6
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   704 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30350  miss_rate=0.20%
+RAW: min=    -7 max=    39 samples[0..3]=-1 -5 -2 -5
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1527 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30400  miss_rate=0.20%
+RAW: min=   -45 max=    14 samples[0..3]=-12 -12 -12 -8
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1582 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30450  miss_rate=0.20%
+RAW: min=   -50 max=    -5 samples[0..3]=-14 -13 -15 -15
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4774 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30500  miss_rate=0.20%
+RAW: min=     6 max=    62 samples[0..3]=52 53 55 59
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30550  miss_rate=0.19%
+RAW: min=   -46 max=    25 samples[0..3]=-22 -23 -26 -25
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30600  miss_rate=0.19%
+RAW: min=   -45 max=    18 samples[0..3]=-16 -17 -13 -12
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=   691 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30650  miss_rate=0.19%
+RAW: min=   -39 max=    11 samples[0..3]=9 8 9 11
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30700  miss_rate=0.19%
+RAW: min=   -25 max=    16 samples[0..3]=16 16 11 11
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30750  miss_rate=0.19%
+RAW: min=    15 max=    40 samples[0..3]=34 30 33 31
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1296 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30800  miss_rate=0.19%
+RAW: min=     0 max=    39 samples[0..3]=28 32 28 31
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2860 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30850  miss_rate=0.19%
+RAW: min=   -13 max=    29 samples[0..3]=27 28 26 28
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  8827 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30900  miss_rate=0.19%
+RAW: min=   -18 max=    15 samples[0..3]=10 12 13 14
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3284 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/30950  miss_rate=0.19%
+RAW: min=   -28 max=     5 samples[0..3]=2 4 1 5
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1075 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31000  miss_rate=0.19%
+RAW: min=   -26 max=     3 samples[0..3]=-6 -8 -4 -5
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  8 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31050  miss_rate=0.19%
+RAW: min=   -13 max=    34 samples[0..3]=15 15 12 16
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  5982 ZCR=  2 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31100  miss_rate=0.19%
+RAW: min=   -21 max=    37 samples[0..3]=-10 -11 -14 -15
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  7 T=1457us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31150  miss_rate=0.19%
+RAW: min=   -16 max=    29 samples[0..3]=0 -3 -3 -5
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1379 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31200  miss_rate=0.19%
+RAW: min=   -12 max=    38 samples[0..3]=0 -5 -6 -4
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1270 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31250  miss_rate=0.19%
+RAW: min=   -28 max=    15 samples[0..3]=-25 -24 -22 -23
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2396 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31300  miss_rate=0.19%
+RAW: min=   -20 max=     8 samples[0..3]=-9 -7 -5 -8
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  2804 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31350  miss_rate=0.19%
+RAW: min=   -26 max=    11 samples[0..3]=-1 -1 -2 -5
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3788 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31400  miss_rate=0.19%
+RAW: min=   -38 max=    12 samples[0..3]=-25 -23 -27 -29
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   822 ZCR=  9 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31450  miss_rate=0.19%
+RAW: min=   -45 max=     8 samples[0..3]=-39 -35 -41 -38
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2433 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31500  miss_rate=0.19%
+RAW: min=   -39 max=    35 samples[0..3]=-8 -6 -6 -7
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  4288 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31550  miss_rate=0.19%
+RAW: min=   -26 max=    19 samples[0..3]=-10 -16 -13 -16
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2867 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31600  miss_rate=0.19%
+RAW: min=   -38 max=    17 samples[0..3]=-38 -32 -33 -32
+RES0: min=    -1 max=     0
+GATE: ABORT conf= 15 E=    0 C=  8949 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31650  miss_rate=0.19%
+RAW: min=   -31 max=    15 samples[0..3]=-22 -22 -22 -23
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  6517 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31700  miss_rate=0.19%
+RAW: min=   -43 max=     7 samples[0..3]=-10 -13 -10 -12
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4647 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31750  miss_rate=0.19%
+RAW: min=   -17 max=    31 samples[0..3]=19 24 21 22
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3867 ZCR=  7 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31800  miss_rate=0.19%
+RAW: min=   -20 max=    24 samples[0..3]=-8 -13 -13 -9
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1823 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31850  miss_rate=0.19%
+RAW: min=   -30 max=    18 samples[0..3]=-23 -26 -24 -26
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6146 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31900  miss_rate=0.19%
+RAW: min=   -24 max=    24 samples[0..3]=-7 -4 -9 -2
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3323 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/31950  miss_rate=0.19%
+RAW: min=   -31 max=    18 samples[0..3]=2 3 5 6
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=   980 ZCR=  8 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32000  miss_rate=0.19%
+RAW: min=   -44 max=     0 samples[0..3]=-17 -14 -15 -14
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1011 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32050  miss_rate=0.19%
+RAW: min=   -28 max=    13 samples[0..3]=3 4 6 4
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1397 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32100  miss_rate=0.19%
+RAW: min=   -28 max=     4 samples[0..3]=-15 -18 -17 -19
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3159 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32150  miss_rate=0.18%
+RAW: min=   -26 max=     9 samples[0..3]=1 4 7 7
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  5023 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32200  miss_rate=0.18%
+RAW: min=   -28 max=     0 samples[0..3]=-7 -9 -6 -5
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1140 ZCR=  6 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32250  miss_rate=0.18%
+RAW: min=   -24 max=    31 samples[0..3]=27 28 25 20
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6752 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32300  miss_rate=0.18%
+RAW: min=   -28 max=    15 samples[0..3]=10 8 11 9
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32350  miss_rate=0.18%
+RAW: min=   -32 max=    13 samples[0..3]=5 3 9 0
+RES0: min=    -3 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2389 ZCR=  4 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32400  miss_rate=0.18%
+RAW: min=   -12 max=    33 samples[0..3]=0 -2 -3 -3
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 10 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32450  miss_rate=0.18%
+RAW: min=   -33 max=    18 samples[0..3]=7 6 3 3
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32500  miss_rate=0.18%
+RAW: min=    -8 max=    32 samples[0..3]=15 17 20 18
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  4477 ZCR= 11 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32550  miss_rate=0.18%
+RAW: min=   -14 max=    34 samples[0..3]=18 20 21 18
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3966 ZCR= 10 T=1457us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32600  miss_rate=0.18%
+RAW: min=    -2 max=    31 samples[0..3]=27 26 24 25
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1709 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32650  miss_rate=0.18%
+RAW: min=   -28 max=     2 samples[0..3]=0 -1 2 -1
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1006 ZCR= 10 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32700  miss_rate=0.18%
+RAW: min=   -24 max=    16 samples[0..3]=14 13 14 14
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  3 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32750  miss_rate=0.18%
+RAW: min=   -51 max=    -3 samples[0..3]=-9 -10 -10 -9
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2064 ZCR= 12 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32800  miss_rate=0.18%
+RAW: min=   -12 max=    20 samples[0..3]=20 16 15 13
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1689 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32850  miss_rate=0.18%
+RAW: min=     7 max=    38 samples[0..3]=13 10 10 11
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  6 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1461us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32900  miss_rate=0.18%
+RAW: min=    -6 max=    28 samples[0..3]=4 2 3 0
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2237 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/32950  miss_rate=0.18%
+RAW: min=   -25 max=     8 samples[0..3]=-6 -4 -4 -3
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  3692 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/33000  miss_rate=0.18%
+RAW: min=   -27 max=    24 samples[0..3]=11 14 14 13
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  1158 ZCR=  0 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/33050  miss_rate=0.18%
+RAW: min=   -29 max=    10 samples[0..3]=-10 -10 -12 -10
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2675 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/33100  miss_rate=0.18%
+RAW: min=    -6 max=    32 samples[0..3]=18 15 13 12
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  2 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/33150  miss_rate=0.18%
+RAW: min=   -30 max=     0 samples[0..3]=-7 -6 -8 -4
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=  4064 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/33200  miss_rate=0.18%
+RAW: min=   -25 max=    32 samples[0..3]=6 3 4 4
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=  5164 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/33250  miss_rate=0.18%
+RAW: min=   -32 max=     2 samples[0..3]=-26 -24 -26 -28
+RES0: min=    -1 max=     2
+GATE: ABORT conf= 15 E=    0 C=  1494 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/33300  miss_rate=0.18%
+RAW: min=    -2 max=    53 samples[0..3]=25 26 22 24
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  6264 ZCR=  7 T=1461us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/33350  miss_rate=0.18%
+RAW: min=   -44 max=     0 samples[0..3]=-36 -31 -33 -38
+RES0: min=    -3 max=     1
+GATE: ABORT conf= 15 E=    0 C= -2378 ZCR= 11 T=1463us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/33400  miss_rate=0.18%
+RAW: min=   -16 max=    29 samples[0..3]=1 -1 -8 -11
+RES0: min=    -2 max=     2
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR= 12 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=61/33450  miss_rate=0.18%
+RAW: min=   -42 max=    22 samples[0..3]=8 11 11 5
+RES0: min=    -3 max=     2
+GATE: ABORT conf= 15 E=    0 C=  2106 ZCR= 12 T=1462us noise=    0 wakes= 1/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=62/33500  miss_rate=0.18%
+RAW: min=   -43 max=    14 samples[0..3]=-8 -11 -9 -13
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  9010 ZCR=  9 T=1462us noise=    0 wakes= 4/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=2ms irq_lat_max=19ms
+DEADLINE: misses=66/33550  miss_rate=0.19%
+RAW: min=   -21 max=    51 samples[0..3]=-16 13 13 -15
+RES0: min=    -2 max=     3
+GATE: ABORT conf= 15 E=    0 C=  2940 ZCR= 10 T=1463us noise=    0 wakes= 2/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=1ms irq_lat_max=19ms
+DEADLINE: misses=68/33600  miss_rate=0.20%
+RAW: min=   -32 max=    16 samples[0..3]=-9 -3 0 -3
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C= -1493 ZCR= 12 T=1463us noise=   16 wakes= 6/50
+SCHED: wcet=1521us avg=1465us duty=0.73% irq_lat_avg=2ms irq_lat_max=19ms
+DEADLINE: misses=74/33650  miss_rate=0.21%
+RAW: min=  -547 max=   703 samples[0..3]=-99 -94 -93 -93
+RES0: min=  -181 max=   145
+GATE: ABORT conf= 15 E=    0 C=  4964 ZCR=  6 T=1462us noise=    0 wakes= 2/50
+SCHED: wcet=1521us avg=1463us duty=0.73% irq_lat_avg=1ms irq_lat_max=19ms
+DEADLINE: misses=76/33700  miss_rate=0.22%
+RAW: min=    87 max=   133 samples[0..3]=123 124 128 126
+RES0: min=    -1 max=     1
+GATE: ABORT conf= 15 E=    0 C=     0 ZCR=  9 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=76/33750  miss_rate=0.22%
+RAW: min=    23 max=    65 samples[0..3]=44 40 44 42
+RES0: min=    -4 max=     3
+GATE: ABORT conf= 15 E=    0 C=  1994 ZCR= 10 T=1462us noise=    0 wakes= 0/50
+SCHED: wcet=1521us avg=1462us duty=0.73% irq_lat_avg=0ms irq_lat_max=19ms
+DEADLINE: misses=76/33800  miss_rate=0.22%
+RAW: min=   -40 max=    -1 samples[0..3]=-16 -15 -12 -15
+RES0: min=    -2 max=     1
+GATE: ABORT conf= 15 E=    0 C=  3048 ZCR=  8 T=1462us noise=   

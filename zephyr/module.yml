@@ -1,0 +1,4 @@
+name: guardian
+build:
+  cmake: .
+  kconfig: Kconfig

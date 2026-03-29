@@ -1,0 +1,12 @@
+## Dataset
+
+The dataset used in this project is too large to upload directly to GitHub.
+
+You can download the CSV file here:
+
+ **Download dataset:**
+https://drive.google.com/file/d/1dZLwl6MgQqyg7vBM7CPOZ8AqbM6DnEAP/view?usp=sharing
+
+File name: `week7.csv`
+
+After downloading, place the file inside the `data/` folder before running the project.

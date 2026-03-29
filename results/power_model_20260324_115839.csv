@@ -1,0 +1,4 @@
+scenario,abort_rate,avg_ma,life_cr2032_h,life_lipo_h,q_uc_per_frame
+Quiet room (99.4% abort),0.994,1.6967,117.9,589.4,33.934153
+Subway noise (70% abort),0.7,8.7521,22.9,114.3,175.041600
+Worst case (0% abort),0.0,25.5521,7.8,39.1,511.041600

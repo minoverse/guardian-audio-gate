@@ -1,0 +1,5 @@
+config GUARDIAN
+    bool "Guardian Audio Gate"
+    default n
+
+source "Kconfig.zephyr"
