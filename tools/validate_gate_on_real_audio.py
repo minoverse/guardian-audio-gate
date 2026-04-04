@@ -148,16 +148,56 @@ def extract_correlation(outputs_q15):
     return max(c01, c12, c23)
 
 
-def extract_coherence(signal_q15):
+def estimate_lag_min(signal_q15, default=62):
     """
-    Autocorrelation via arm_dot_prod_q15 at lags 80-250 step-2.
+    Dynamic lag window: estimate fundamental frequency from raw signal
+    autocorrelation, return lag_min = floor(16000 / (f0 * 1.15)).
+
+    Why 1.15× safety margin: we want lag_min slightly BELOW the true pitch
+    period so the coherence search always includes the first harmonic peak.
+
+    Falls back to default=62 (258 Hz) if no clear pitch found.
+    Coverage mapping:
+        lag_min=40 → f0 up to ~400 Hz  (child / falsetto)
+        lag_min=62 → f0 up to ~258 Hz  (female, fixed value)
+        lag_min=80 → f0 up to ~200 Hz  (original male-only value)
+    """
+    sig = signal_q15.astype(np.float64)
+    sig -= sig.mean()
+    energy = np.sqrt(np.mean(sig ** 2))
+    if energy < 50:               # silent frame — no pitch to estimate
+        return default
+    # Normalised autocorrelation over lag range 32-300 (53-500 Hz)
+    corr = np.correlate(sig, sig, mode='full')[len(sig)-1:]
+    if corr[0] < 1e-6:
+        return default
+    corr_norm = corr / corr[0]
+    # Find first peak after lag 32 that exceeds 0.25 normalised correlation
+    for i in range(32, min(300, len(corr_norm) - 1)):
+        if (corr_norm[i] > corr_norm[i-1] and
+                corr_norm[i] > corr_norm[i+1] and
+                corr_norm[i] > 0.25):
+            f0 = 16000.0 / i
+            lag_min = max(32, int(16000.0 / (f0 * 1.15)))
+            return lag_min
+    return default
+
+
+def extract_coherence(signal_q15, lag_min=None):
+    """
+    Autocorrelation via arm_dot_prod_q15 at lags lag_min-250 step-2.
     result = sum(signal[i] * signal[i+lag]) >> 15  → stored as int16.
+
+    lag_min is dynamic when called from extract_coherence_dynamic().
+    Default fixed lag_min=62 preserves exact C firmware behaviour.
     Returns int16 autocorr_peak (matches C exactly, including int16 cast).
     """
+    if lag_min is None:
+        lag_min = 62              # firmware default: covers 64-258 Hz
     sig  = signal_q15.astype(np.int64)
     n    = len(sig)
     max_corr = np.int16(0)
-    for lag in range(62, min(250, n // 2), 2):  # 62-250 covers 64-258Hz (male+female)
+    for lag in range(lag_min, min(250, n // 2), 2):
         result_q63 = int(np.dot(sig[:n - lag], sig[lag:]))
         sum_val    = result_q63 >> 15
         sum_i16    = np.int16(np.clip(sum_val, -32768, 32767))

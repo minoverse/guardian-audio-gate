@@ -1,0 +1,13 @@
+build/
+*.wav
+*.flac
+*.mp3
+*.elf
+*.o
+*.bin
+*.hex
+datasets/
+LibriSpeech/
+ESC-50/
+node_modules/
+.vscode/

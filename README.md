@@ -1,35 +1,82 @@
 # Guardian Audio Gate - nRF52840 Implementation
 
-Physics-based audio gate for always-on wakeword detection on nRF52840. Uses IIR resonator banks and correlation features to filter noise before running TinyML models, achieving 30% power savings.
+Physics-based audio gate for always-on keyword detection on nRF52840.  
+Two-stage pipeline: IIR resonator bank (physics pre-filter) → TinyML KWS (Edge Impulse).  
+Gate decision: **1761 µs avg**, **~8.9% CPU duty cycle**, **100% abort rate on band-limited noise**.
 
-## Project Status
+## Project Status — Complete (Week 1–16)
 
-**Week 1-2: Complete**
-- 4-channel IIR resonator bank implemented with CMSIS-DSP
-- Processing time: 297 µs per 320-sample frame (target: < 5000 µs)
-- 16.8x faster than required
+| Phase | Status | Key Result |
+|-------|--------|------------|
+| Week 1–2: Resonator bank | ✅ | 297 µs/frame — 16.8× faster than 5ms target |
+| Week 3–4: Feature pipeline | ✅ | 5 features @ 1546 µs — 3.6× optimized |
+| Week 5–6: PDM DMA driver | ✅ | nrfx direct + IRQ_CONNECT; zero-copy ring buffer |
+| Week 7–8: Gate scoring | ✅ | 6 rules, score-based wake decision |
+| Week 9–10: Observability | ✅ | Trace logging, stress test, deadline stats |
+| Week 11–12: Pre-roll + playback | ✅ | 1000ms TinyML context window, zero memcpy |
+| Week 13–14: Pipeline stats | ✅ | Gate abort rate, TinyML call count logged |
+| Week 15–16: TinyML + production | ✅ | Edge Impulse KWS, 97.8% accuracy, fault tolerance |
+| Final: Safety + noise rejection | ✅ | Rule 7 multi-formant gate, AGC NaN fix, PPI batch wakeup |
+
+## Performance (measured on hardware)
+
+| Metric | Value |
+|--------|-------|
+| Gate decision avg | 1761 µs |
+| Gate WCET | ~1800 µs |
+| CPU duty cycle | 8.9% |
+| Abort rate — silence | 100% |
+| Abort rate — HVAC/car/wind (Rule 7) | 100% |
+| Speech recall | 100% |
+| TinyML accuracy (Google Speech Commands) | 97.8% |
+| Power — silence | 1.9 mW |
+| Power — speech w/ hysteresis | ~220 mW |
+| BLE jitter (100ms adv interval) | +95 µs wcet |
+
+## Gate Architecture
+
+```
+PDM mic ──[DMA zero-copy ring]──► audio_frontend_process()
+                                     ├─ mic calibration (NVMC, CRC16-CCITT)
+                                     ├─ DC removal (IIR HPF @ 20 Hz)
+                                     └─ AGC (10ms attack / 500ms release)
+                                   ↓
+                          resonator_bank_df2t (300/800/1500/2500 Hz)
+                                   ↓
+                          gate_decide() — 7 rules
+                            Rules 1–6: score (max 140)
+                            Rule  7  : hard gate — ≥2 active channels
+                            Wake     : score ≥ 20 AND active_ch ≥ 2
+                                   ↓
+                    WAKE → Edge Impulse KWS (MFCC + int8 NN)
+                           ← 1000ms pre-roll context (50 frames)
+```
 
 ## Repository Structure
 ```
 guardian-audio-gate/
+├── CLAUDE.md                                   # Development guide (build, arch, debug)
 ├── firmware/
 │   ├── src/
-│   │   └── main.c                              # Main application
-│   ├── lib/guardian_dsp/
-│   │   ├── src/
-│   │   │   └── resonator_df2t.c               # IIR filter implementation
-│   │   └── include/
-│   │       ├── guardian/
-│   │       │   └── resonator_df2t.h           # Public API
-│   │       └── resonator_coefs_cmsis.h        # Filter coefficients
+│   │   └── main.c                              # Main application (gate loop + TinyML)
+│   ├── lib/
+│   │   ├── guardian_dsp/                       # Audio DSP library
+│   │   │   ├── src/audio/dma_pdm.c             # PDM DMA driver (PPI batch wakeup)
+│   │   │   ├── src/audio/preprocess.c          # AGC + DC removal front-end
+│   │   │   ├── src/audio/mic_cal.c             # NVMC mic calibration (CRC16-CCITT)
+│   │   │   └── src/features/                   # Energy, correlation, ZCR, SFM, CV
+│   │   ├── guardian_gate/
+│   │   │   └── src/decision.c                  # Gate scoring + Rule 7 hard gate
+│   │   ├── guardian_sdk/
+│   │   │   └── src/biquad_df1.c               # Portable DF1 biquad (NaN-safe)
+│   │   └── ei_model/                           # Edge Impulse KWS model
 │   ├── prj.conf                                # Zephyr configuration
-│   └── CMakeLists.txt                          # Build configuration
+│   └── CMakeLists.txt
 ├── tools/
-│   └── coefficient_generation/
-│       └── generate_cmsis_resonator_coefs.py  # Coefficient generator
-├── zephyr/
-│   └── module.yml                              # Zephyr module metadata
-└── README.md
+│   ├── test_multi_env.py                       # 5-environment noise simulation
+│   ├── test_agc_gate_separation.py             # AGC/gate + float32 safety tests
+│   └── test_hardware.py                        # Hardware serial test runner
+└── training_data/                              # Google Speech Commands + ESC-50
 ```
 
 ## Hardware Requirements

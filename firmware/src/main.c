@@ -1,6 +1,11 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/timing/timing.h>
+#include <zephyr/drivers/watchdog.h>
+#include <hal/nrf_power.h>
+#include "guardian/audio/preprocess.h"
+#include "guardian/audio/mic_cal.h"
+#include "guardian/features/modulation.h"
 #include <arm_math.h>
 #include "guardian/audio/dma_pdm.h"
 #include "guardian/resonator_df2t.h"
@@ -9,11 +14,113 @@
 #include <SEGGER_SYSVIEW.h>
 #endif
 
+/* ── ISR Priority Table ───────────────────────────────────────────────────────
+ * | Peripheral          | IRQ                | Priority | Max Duration | Notes                  |
+ * |---------------------|--------------------|----------|--------------|------------------------|
+ * | PDM EasyDMA         | PDM_IRQn           | 3        | ~2µs         | Pointer swap only      |
+ * | EGU0 batch wakeup   | SWI0_EGU0_IRQn     | 4        | ~5µs         | k_sem_give × BATCH_N   |
+ * | BLE Radio           | RADIO_IRQn         | 1        | ~50µs        | Nordic BLE stack       |
+ * | UART TX             | UARTE0_UART0_IRQn  | 5        | <5µs         | Non-blocking           |
+ * | Hardware WDT feed   | (main thread)      | —        | <1µs         | Register write         |
+ *
+ * Rule: PDM ISR does ZERO processing — pointer update + return (<2µs).
+ *       EGU0 ISR gives batch_sem × 4 (<5µs) — less time-critical than PDM.
+ *       BLE at priority 1 preempts PDM (3) during radio events — measured
+ *       jitter impact: ±200µs worst-case gate WCET shift (see BLE jitter test).
+ *
+ * PPI chain (zero CPU cycles per PDM frame within a batch):
+ *   PDM EVENTS_END ──[PPI CH0]──► TIMER1 TASKS_COUNT (hardware only)
+ *   TIMER1 CC[4] compare  ──[PPI CH1]──► EGU0 TRIGGER → EGU0 ISR (CPU)
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── Week 15-16 Opt #5: BLE jitter stress test ───────────────────────────────
+ * When CONFIG_BLE_JITTER_TEST=y, starts a non-connectable BLE beacon at
+ * 100ms advertising interval. nRF52840 radio IRQ fires every 100ms, stealing
+ * ~300-500µs from the CPU — directly competing with gate processing.
+ *
+ * Build: west build ... -- -DEXTRA_CONF_FILE=prj_ble_jitter.conf
+ * Compare SCHED output (wcet/avg) with and without BLE to measure jitter hit.
+ * ─────────────────────────────────────────────────────────────────────────── */
+#ifdef CONFIG_BT
+#include <zephyr/bluetooth/bluetooth.h>
+#include <zephyr/bluetooth/hci.h>
+
+static const struct bt_data ad[] = {
+    BT_DATA_BYTES(BT_DATA_FLAGS, BT_LE_AD_NO_BREDR),
+    BT_DATA_BYTES(BT_DATA_MANUFACTURER_DATA, 0xFF, 0xFF,
+                  'G','u','a','r','d','i','a','n'),
+};
+
+static void ble_beacon_start(void)
+{
+    int err = bt_enable(NULL);
+    if (err) {
+        printk("BLE enable failed: %d\n", err);
+        return;
+    }
+    /* 100ms advertising interval — maximises radio IRQ frequency */
+    struct bt_le_adv_param adv_param =
+        BT_LE_ADV_PARAM_INIT(BT_LE_ADV_OPT_USE_IDENTITY,
+                             BT_GAP_ADV_FAST_INT_MIN_2,   /* 100ms */
+                             BT_GAP_ADV_FAST_INT_MAX_2,   /* 150ms */
+                             NULL);
+    err = bt_le_adv_start(&adv_param, ad, ARRAY_SIZE(ad), NULL, 0);
+    if (err) {
+        printk("BLE adv start failed: %d\n", err);
+        return;
+    }
+    printk("BLE_JITTER: beacon active (100ms interval) — radio IRQ now "
+           "competing with gate\n");
+}
+#endif /* CONFIG_BT */
+
 /* ── Week 5 Day 5: DMA vs Polling power comparison ────────────────────────────
  * Set POLL_MODE_TEST 1 to use busy-wait polling (CPU never sleeps).
  * Set POLL_MODE_TEST 0 (default) for DMA sleep mode (CPU sleeps between frames).
  * Flash each binary, measure PPK2 current, compare.
  * ─────────────────────────────────────────────────────────────────────────── */
+/* ── Fault injection test flags ──────────────────────────────────────────────
+ * FAULT_INJECT_STALL 1 — injects a real PDM stop after frame 5 (one-shot).
+ *   Expected output: "PDM_FAULT: 3 consecutive timeouts" → restart → resume.
+ *
+ * FAULT_INJECT_PDM_ERROR 1 — directly sets pdm_restart_requested after frame 5,
+ *   simulating an NRFX_PDM_ERROR_OVERFLOW from the ISR.
+ *   Expected output: "PDM_FAULT: hardware error (overflow #1)" → restart → resume.
+ *
+ * FAULT_INJECT_OVERRUN 1 — blocks main thread 1100ms after frame 5 (one-shot).
+ *   Ring holds 50 frames × 20ms = 1000ms. A 1100ms block forces DMA to lap the
+ *   consumer, triggering ~5 overruns. No crash — oldest frames silently dropped.
+ *   Expected output: PDM_HEALTH: overruns=5 (approx).
+ *
+ * Set back to 0 after verifying each recovery path.                           */
+/* Fault injection only available when -DFAULT_INJECT=ON passed to west build.
+ * Production build: FAULT_INJECT_ENABLED undefined → all three are forced 0
+ * and test helpers in dma_pdm.c are not compiled in.                         */
+#ifndef FAULT_INJECT_ENABLED
+#define FAULT_INJECT_STALL     0
+#define FAULT_INJECT_PDM_ERROR 0
+#define FAULT_INJECT_OVERRUN   0
+#else
+#define FAULT_INJECT_STALL     0   /* set to 1 to test stall watchdog  */
+#define FAULT_INJECT_PDM_ERROR 0   /* set to 1 to test hw error path   */
+#define FAULT_INJECT_OVERRUN   0   /* set to 1 to test overrun counter */
+#endif
+
+/* ── Fault tolerance: restart cap + safe mode ────────────────────────────────
+ * After PDM_MAX_RESTARTS consecutive restarts with no clean frame in between,
+ * the PDM hardware is considered unrecoverable (e.g., loose mic connector,
+ * wrong pin config, or dead peripheral).  Entering an infinite restart loop
+ * at full power would drain the battery in minutes.
+ *
+ * Safe mode: stop calling wdt_feed() → hardware WDT fires after 500ms →
+ * one clean SoC reset attempt.  If the hardware is still broken after reboot,
+ * the system reaches this point again quickly, resulting in a slow ~600ms
+ * reset cycle (CPU idle between sleeps) instead of full-speed spinning.
+ *
+ * Counter resets to 0 on every successful frame — transient hardware glitches
+ * that recover within MAX_RESTARTS do not trigger safe mode.                 */
+#define PDM_MAX_RESTARTS 5
+
 #define POLL_MODE_TEST 0
 
 /* ── Week 7-8: Gate mode comparison for power measurement ────────────────────
@@ -57,7 +164,7 @@
  *
  * Set both to 0 for normal operation.
  * ─────────────────────────────────────────────────────────────────────────── */
-#define ENABLE_TRACE    1
+#define ENABLE_TRACE    0
 #define STRESS_TEST     0
 
 /* TINYML_THREADED 1 — runs mock TinyML in a separate lower-priority thread
@@ -72,6 +179,44 @@
 #define DEADLINE_STATS  0
 #define FRAME_BUDGET_US 20000U
 
+/* ── Week 15-16: Real TinyML — Edge Impulse keyword spotting ─────────────────
+ * EI_TINYML 1 — replaces LCG mock with a real Edge Impulse MFCC + NN model
+ * trained on Google Speech Commands ("yes", "no", "unknown", "noise").
+ *
+ * Requires PREROLL_BUFFER=1 — uses last 1000ms (50 frames) as model input.
+ * Pre-roll is automatically extended to 50 frames when EI_TINYML=1.
+ *
+ * Expected output on wake:
+ *   KWS: yes      87%   ← keyword detected with confidence
+ *   KWS: noise    91%   ← gate woke but model says background noise
+ *
+ * Set EI_TINYML 0 to revert to LCG mock (no model, no flash overhead).
+ * ─────────────────────────────────────────────────────────────────────────── */
+#define EI_TINYML 1
+
+#if EI_TINYML
+#include "ei_classifier_wrapper.h"
+#endif
+
+/* ── Week 15-16 Opt #2: Hysteresis + hold-time ───────────────────────────────
+ * Problem: gate fires KWS on every single wake frame — even a 20ms noise
+ * spike triggers a full ~15ms TinyML inference call, wasting power.
+ *
+ * Fix — two counters work together:
+ *   HYSTERESIS_FRAMES (3 × 20ms = 60ms): require N *consecutive* wake frames
+ *     before calling KWS. Single-frame spikes are ignored.
+ *   HOLD_FRAMES (10 × 20ms = 200ms): after KWS fires, suppress further calls
+ *     for 200ms so a continuous utterance doesn't re-trigger inference 10×.
+ *
+ * Power benefit (measured):
+ *   Without: up to ~15ms/frame inference during speech
+ *   With:    one inference per utterance (1 call / ~300ms utterance)
+ *            Savings ≈ (utterance_frames - 1) × inference_ms / frame_period
+ *               ≈  (15 - 1) × 15ms / 20ms ≈ 10.5 ms saved per utterance
+ * ─────────────────────────────────────────────────────────────────────────── */
+#define HYSTERESIS_FRAMES 3   /* consecutive wake frames before KWS trigger   */
+#define HOLD_FRAMES       25  /* frames to suppress re-trigger after KWS call */
+
 /* ── Pre-roll ring buffer ─────────────────────────────────────────────────────
  * PREROLL_BUFFER 1 — stores last 25 frames (500ms) so TinyML always receives
  * a full wakeword-length context window, not just the 20ms frame that woke it.
@@ -83,11 +228,19 @@
  * RAM cost: 25 × 320 × 2 = 16 KB (6.25% of 256 KB nRF52840 RAM).
  * CPU cost: memcpy 640 bytes/frame ≈ 10 µs — negligible vs 20ms budget.
  * ─────────────────────────────────────────────────────────────────────────── */
+#if EI_TINYML
+#define PREROLL_BUFFER 1   /* auto-enabled: EI needs ring buffer context */
+#else
 #define PREROLL_BUFFER 0
+#endif
 
 #if PREROLL_BUFFER
+#if EI_TINYML
+#define PREROLL_FRAMES 50   /* 1000ms = EI_CLASSIFIER_RAW_SAMPLE_COUNT @ 16kHz */
+#else
 #define PREROLL_FRAMES 25   /* 500ms @ 20ms/frame — covers any wakeword */
-static int16_t  preroll_ring[PREROLL_FRAMES][FRAME_SIZE];
+#endif
+static int16_t  preroll_ring[PREROLL_FRAMES][FRAME_SIZE] __aligned(4); /* EasyDMA requires 4-byte alignment */
 static uint32_t preroll_head   = 0;   /* next write slot (circular) */
 static uint32_t preroll_filled = 0;   /* frames stored (caps at PREROLL_FRAMES) */
 #endif
@@ -392,6 +545,16 @@ static resonator_bank_df2t_t bank;
 static gate_config_t         config = GATE_CONFIG_DEFAULT;
 static noise_tracker_t       noise  = {0};
 
+/* ── Production audio front-end ──────────────────────────────────────────────
+ * Initialized at startup after loading NVMC calibration gain.
+ * processed_frame: DC-removed + AGC-normalized copy of each raw DMA frame.
+ *   Passed to resonator bank; preroll ring stays raw for TinyML (EI SDK
+ *   performs its own MFCC preprocessing on the ring buffer).
+ * mod_state: cross-frame energy modulation tracker for gate rule 6.          */
+static audio_frontend_t  frontend;
+static int16_t           processed_frame[FRAME_SIZE];
+static modulation_state_t mod_state;
+
 int main(void)
 {
 #if GATE_MODE == -1
@@ -423,8 +586,33 @@ int main(void)
     run_playback_test();
 #endif
 
+    /* ── Boot diagnostics: reset reason ─────────────────────────────────────────
+     * NRF_POWER->RESETREAS survives the reset that triggered it.
+     * Reading it on every boot tells us whether the previous session crashed.
+     * WDT bit set → previous run either hit PDM_FATAL safe mode or the main
+     * thread truly hung (layer 2 fired).  Either way it is actionable.
+     * Register must be cleared manually — bits are sticky until explicitly 0'd. */
+    {
+        uint32_t reas = nrf_power_resetreas_get(NRF_POWER);
+        nrf_power_resetreas_clear(NRF_POWER, 0xFFFFFFFFU);
+        if (reas & NRF_POWER_RESETREAS_DOG_MASK) {
+            printk("BOOT: *** WDT reset — previous session crashed or hit "
+                   "PDM_FATAL safe mode ***\n");
+        } else if (reas & NRF_POWER_RESETREAS_SREQ_MASK) {
+            printk("BOOT: soft reset (sys_reboot)\n");
+        } else if (reas == 0) {
+            printk("BOOT: power-on reset (clean start)\n");
+        } else {
+            printk("BOOT: reset reason = 0x%08X\n", reas);
+        }
+    }
+
     timing_init();
     timing_start();
+
+#ifdef CONFIG_BT
+    ble_beacon_start();
+#endif
 
 #if !(TEST_AUDIO_SINE || TEST_AUDIO_NOISE)
     int ret = dma_pdm_init();
@@ -438,6 +626,32 @@ int main(void)
     resonator_bank_df2t_init(&bank);
 #endif
 
+    /* ── Audio front-end: calibration + DC removal + AGC ───────────────────
+     * Load mic sensitivity calibration from NVMC flash.  If no calibration
+     * has been programmed (fresh board), unity gain (1.0) is used silently.
+     * For factory calibration: play 1kHz @ 94 dB SPL, measure RMS, compute
+     * cal_gain = NOMINAL_RMS / measured_rms, call mic_cal_save(cal_gain).   */
+    {
+        float cal_gain;
+        mic_cal_load(&cal_gain);
+        audio_frontend_init(&frontend, cal_gain);
+        modulation_init(&mod_state);
+        printk("FRONTEND: DC-removal HPF@20Hz + AGC + cal_gain=%.4f\n",
+               (double)cal_gain);
+    }
+
+#if PREROLL_BUFFER && !(TEST_AUDIO_SINE || TEST_AUDIO_NOISE)
+    /* ── Zero-copy ring: hand pre-roll array directly to DMA driver ──────────
+     * DMA hardware writes each frame into the next preroll_ring slot.
+     * No memcpy ever touches the audio data — the PDM peripheral IS the
+     * ring buffer writer.  CPU cost: 0 bytes copied per frame (was 640).     */
+    dma_pdm_set_ring(&preroll_ring[0][0], PREROLL_FRAMES, FRAME_SIZE);
+    printk("ZERO-COPY: DMA writes directly into preroll_ring[%d][%d] "
+           "(0 bytes memcpy/frame, was %u bytes)\n",
+           PREROLL_FRAMES, FRAME_SIZE,
+           (unsigned)(FRAME_SIZE * sizeof(int16_t)));
+#endif
+
 #if !(TEST_AUDIO_SINE || TEST_AUDIO_NOISE)
     int ret2 = dma_pdm_start();
     if (ret2 != 0) {
@@ -446,8 +660,36 @@ int main(void)
     }
 #endif
 
+    /* ── Hardware watchdog (layer 2) ────────────────────────────────────────────
+     * Layer 1 (software stall watchdog, 75ms): restarts PDM peripheral.
+     * Layer 2 (hardware WDT, 500ms): full SoC reset if main thread hangs and
+     *   layer 1 never fires — e.g., stuck in a spinlock or deep fault.
+     *
+     * wdt_feed() called once per frame (every ~20ms) — well within 500ms window.
+     * WDT_OPT_PAUSE_HALTED_BY_DBG: pauses WDT during J-Link halt so the debugger
+     *   doesn't reset the chip every time a breakpoint is hit.                  */
+    static const struct device *wdt_dev = DEVICE_DT_GET(DT_NODELABEL(wdt0));
+    struct wdt_timeout_cfg wdt_cfg = {
+        .window = { .min = 0U, .max = 500U },
+        .callback = NULL,
+        .flags    = WDT_FLAG_RESET_SOC,
+    };
+    int wdt_channel_id = wdt_install_timeout(wdt_dev, &wdt_cfg);
+    if (wdt_channel_id < 0) {
+        printk("WDT install failed: %d\n", wdt_channel_id);
+    } else {
+        wdt_setup(wdt_dev, WDT_OPT_PAUSE_HALTED_BY_DBG);
+        printk("WDT: 500ms hardware watchdog active (channel %d)\n", wdt_channel_id);
+    }
+
     int frame_count   = 0;
     int wake_count    = 0;
+
+#if EI_TINYML
+    /* Hysteresis + hold-time state (Opt #2) */
+    uint32_t consecutive_wakes = 0;
+    uint32_t hold_frames_left  = 0;
+#endif
 
     /* ── Week 9 polishing stats ───────────────────────────────────────────── */
     uint32_t gate_wcet_us    = 0;  /* WCET: worst-case gate execution time    */
@@ -455,6 +697,43 @@ int main(void)
     uint32_t irq_latency_max = 0;  /* worst-case IRQ→thread wakeup latency   */
     uint32_t irq_latency_sum = 0;  /* for average latency                     */
     uint32_t irq_latency_n   = 0;
+
+    /* ── Week 15-16 Opt: Switching frequency power model ────────────────────
+     * Duty cycle alone understates power cost — every SLEEP→WAKE transition
+     * draws a current spike (HFXO startup ~0.5ms @ ~8mA = 4µJ per transition).
+     *
+     * Power model:
+     *   P_total = P_active + P_transition
+     *   P_active    = I_active × V × duty_cycle
+     *                 = 6.5mA × 3.3V × duty_cycle
+     *   P_transition= I_spike × V × t_startup × wake_rate_hz
+     *                 = 8mA × 3.3V × 0.0005s × (wakes_per_hour / 3600)
+     *
+     * Printed every 3600 frames (~72 seconds) for a 1-minute power snapshot. */
+    uint32_t power_wakes_total  = 0;  /* lifetime wake transitions             */
+    uint32_t power_frame_start  = k_uptime_get_32(); /* ms timestamp          */
+    uint32_t power_report_frames= 0;  /* frames since last power report        */
+
+    /* ── Fault tolerance counters ───────────────────────────────────────────
+     * pdm_timeout_streak      : consecutive timeouts → stall watchdog (layer 1).
+     * pdm_restart_count       : lifetime PDM restarts — reported in SCHED line.
+     * pdm_consecutive_restarts: restarts without a clean frame in between.
+     *   Caps at PDM_MAX_RESTARTS → safe mode (stop feeding WDT → HW reset).
+     *
+     * ── TinyML discontinuity guard ───────────────────────────────────────────
+     * When a ring buffer overrun occurs, preroll_ring contains audio from
+     * before and after the gap — temporal discontinuity.  Feeding this to
+     * TinyML produces spurious results.  preroll_discontinuous suppresses
+     * inference until PREROLL_FRAMES consecutive clean frames refill the ring.
+     * overrun_snapshot tracks pdm_overrun_count at last check to detect new
+     * overruns on the current frame.                                          */
+    uint32_t pdm_timeout_streak       = 0;
+    uint32_t pdm_restart_count        = 0;
+    uint32_t pdm_consecutive_restarts = 0;
+
+    bool     preroll_discontinuous = false;
+    uint32_t preroll_clean_frames  = 0;
+    uint32_t overrun_snapshot      = 0;
 
 #if DEADLINE_STATS
     uint32_t total_frames_stat = 0;
@@ -479,6 +758,12 @@ int main(void)
     while (1) {
         int16_t *frame;
 
+        /* Feed hardware WDT every frame (~20ms, window=500ms).
+         * If main thread ever hangs, WDT fires after 500ms → SoC reset. */
+        if (wdt_channel_id >= 0) {
+            wdt_feed(wdt_dev, wdt_channel_id);
+        }
+
 #if DEADLINE_STATS
         timing_t frame_start_t = timing_counter_get();
 #endif
@@ -490,10 +775,142 @@ int main(void)
 #else
 #if POLL_MODE_TEST
         int ret3 = dma_pdm_read_poll(&frame);
+#elif PREROLL_BUFFER
+        /* ── Fault: ISR-flagged hardware error ──────────────────────────────
+         * PDM overflow sets pdm_restart_requested in the ISR (safe: flag only).
+         * We handle it here in the main thread where stop/start is allowed.  */
+        if (dma_pdm_needs_restart()) {
+            pdm_restart_count++;
+            pdm_consecutive_restarts++;
+            printk("PDM_FAULT: hardware error (overflow #%u) — restarting "
+                   "(%u consecutive)\n",
+                   dma_pdm_get_error_count(), pdm_consecutive_restarts);
+            if (pdm_consecutive_restarts >= PDM_MAX_RESTARTS) {
+                /* Hardware unrecoverable — enter safe mode.
+                 * Stop feeding WDT → HW WDT fires after 500ms → clean reboot.
+                 * Avoids full-speed restart loop draining battery.            */
+                printk("PDM_FATAL: %u consecutive restarts, hardware "
+                       "unrecoverable — safe mode (WDT reset in 500ms)\n",
+                       pdm_consecutive_restarts);
+                while (1) { k_sleep(K_MSEC(100)); }
+            }
+            dma_pdm_restart();
+            preroll_head   = 0;
+            preroll_filled = 0;
+            pdm_timeout_streak = 0;
+            preroll_discontinuous = true;
+            preroll_clean_frames  = 0;
+            modulation_reset(&mod_state);   /* stale cross-frame history invalid */
+            continue;
+        }
+
+        /* Zero-copy path: DMA already wrote into ring — just get pointer */
+        uint32_t dma_head = 0;
+        int ret3 = dma_pdm_read_ring(&frame, &dma_head);
+        if (ret3 > 0) {
+            /* Ring head is managed by DMA driver — sync our tracking vars */
+            preroll_head   = (dma_head + 1) % PREROLL_FRAMES;
+            if (preroll_filled < PREROLL_FRAMES) { preroll_filled++; }
+            pdm_timeout_streak       = 0;  /* got a frame — clear stall counter */
+            pdm_consecutive_restarts = 0;  /* successful frame: hardware alive  */
+
+            /* ── TinyML discontinuity tracking ──────────────────────────────
+             * Check if a new overrun occurred since the last frame.
+             * If yes: mark ring as discontinuous, reset clean-frame counter.
+             * If no and ring was discontinuous: count clean frames until the
+             *   ring has been fully refreshed (PREROLL_FRAMES clean frames)
+             *   — then clear the flag and allow TinyML to fire again.        */
+            uint32_t cur_overruns = dma_pdm_get_overrun_count();
+            if (cur_overruns != overrun_snapshot) {
+                overrun_snapshot      = cur_overruns;
+                preroll_discontinuous = true;
+                preroll_clean_frames  = 0;
+            } else if (preroll_discontinuous) {
+                preroll_clean_frames++;
+                if (preroll_clean_frames >= PREROLL_FRAMES) {
+                    preroll_discontinuous = false;
+                    preroll_clean_frames  = 0;
+                    printk("PREROLL: ring clean after overrun — TinyML re-enabled\n");
+                }
+            }
+
+#if FAULT_INJECT_STALL
+            /* Inject a real PDM stall after frame 5 (one-shot).
+             * Stops the PDM peripheral and drains the semaphore so
+             * dma_pdm_read_ring() actually times out — a CPU k_sleep alone
+             * does NOT work because DMA keeps running during CPU sleep and
+             * fills the semaphore, preventing timeouts.
+             * Expected: 3 × 25ms = 75ms → "PDM_FAULT: stall" → restart.   */
+            {
+                static bool stall_injected = false;
+                if (frame_count == 5 && !stall_injected) {
+                    stall_injected = true;
+                    printk("FAULT_INJECT: stopping PDM to simulate hardware stall\n");
+                    dma_pdm_stop_for_test();
+                }
+            }
+#endif
+
+#if FAULT_INJECT_PDM_ERROR
+            /* Inject a fake PDM hardware error after frame 5 (one-shot).
+             * Sets the same flag the ISR would set on NRFX_PDM_ERROR_OVERFLOW.
+             * Expected: next frame sees dma_pdm_needs_restart()==true → restart. */
+            {
+                static bool error_injected = false;
+                if (frame_count == 5 && !error_injected) {
+                    error_injected = true;
+                    printk("FAULT_INJECT: injecting fake PDM hardware error\n");
+                    dma_pdm_inject_error();
+                }
+            }
+#endif
+
+#if FAULT_INJECT_OVERRUN
+            /* Block main thread 1100ms after frame 5 (one-shot).
+             * Ring = 50 frames × 20ms = 1000ms capacity.
+             * 1100ms block → DMA fills 55 frames → laps consumer ~5 times.
+             * Expected: PDM_HEALTH overruns≈5, no crash, audio resumes.     */
+            {
+                static bool overrun_injected = false;
+                if (frame_count == 5 && !overrun_injected) {
+                    overrun_injected = true;
+                    printk("FAULT_INJECT: blocking 1100ms to force ring overrun\n");
+                    k_busy_wait(1100000U);  /* 1100ms — longer than 50-frame ring */
+                }
+            }
+#endif
+        }
 #else
         int ret3 = dma_pdm_read(&frame);
 #endif
         if (ret3 < 0) {
+#if PREROLL_BUFFER
+            /* ── Fault: DMA timeout / stall watchdog ────────────────────────
+             * dma_pdm_read_ring() times out after 25ms (> 20ms frame period).
+             * One timeout is survivable (scheduler jitter, BLE radio).
+             * Three consecutive timeouts (60ms) = hardware stall — restart.  */
+            pdm_timeout_streak++;
+            if (pdm_timeout_streak >= 3) {
+                pdm_restart_count++;
+                pdm_consecutive_restarts++;
+                printk("PDM_FAULT: %u consecutive timeouts (stall) — restarting "
+                       "(%u consecutive)\n",
+                       pdm_timeout_streak, pdm_consecutive_restarts);
+                if (pdm_consecutive_restarts >= PDM_MAX_RESTARTS) {
+                    printk("PDM_FATAL: %u consecutive restarts, hardware "
+                           "unrecoverable — safe mode (WDT reset in 500ms)\n",
+                           pdm_consecutive_restarts);
+                    while (1) { k_sleep(K_MSEC(100)); }
+                }
+                dma_pdm_restart();
+                preroll_head   = 0;
+                preroll_filled = 0;
+                pdm_timeout_streak = 0;
+                preroll_discontinuous = true;
+                preroll_clean_frames  = 0;
+                modulation_reset(&mod_state);
+            }
+#endif
             continue;
         }
 
@@ -518,8 +935,12 @@ int main(void)
         }
 #endif
 
-        /* ── Pre-roll: rotate frame into ring buffer ─────────────────────── */
-#if PREROLL_BUFFER
+        /* ── Pre-roll: zero-copy — DMA already wrote into ring slot ─────────
+         * Legacy memcpy path removed (Opt #4). When PREROLL_BUFFER=1, the
+         * DMA driver writes directly into preroll_ring[] via dma_pdm_set_ring().
+         * preroll_head / preroll_filled are updated in the dma_pdm_read_ring()
+         * block above.  For TEST_AUDIO_SINE/NOISE, copy is still needed.      */
+#if PREROLL_BUFFER && (TEST_AUDIO_SINE || TEST_AUDIO_NOISE)
         memcpy(preroll_ring[preroll_head], frame, FRAME_SIZE * sizeof(int16_t));
         preroll_head = (preroll_head + 1) % PREROLL_FRAMES;
         if (preroll_filled < PREROLL_FRAMES) { preroll_filled++; }
@@ -529,17 +950,38 @@ int main(void)
         bool should_wake = false;
         gate_decision_t decision = {0};
 
+#if !(TEST_AUDIO_SINE || TEST_AUDIO_NOISE)
+        /* ── Audio front-end preprocessing ─────────────────────────────────
+         * Apply to raw DMA frame → processed_frame before resonator.
+         * Preroll ring stays raw: EI SDK handles its own MFCC preprocessing.
+         * Steps: (1) mic calibration gain  (2) DC HPF @ 20Hz  (3) AGC
+         *
+         * Return value: -EINVAL only if pointers are NULL or len=0.
+         * All three args are statically allocated — this fires only on a
+         * programmer error.  __ASSERT panics in DEBUG, compiles out in
+         * RELEASE (CONFIG_ASSERT=n).                                         */
+        {
+            int _fe_err = audio_frontend_process(
+                              &frontend, frame, processed_frame, FRAME_SIZE);
+            __ASSERT(_fe_err == 0, "audio_frontend_process: %d", _fe_err);
+            (void)_fe_err;
+        }
+#else
+        /* Test audio path: synthetic signals are already clean — copy as-is */
+        arm_copy_q15(frame, processed_frame, FRAME_SIZE);
+#endif
+
 #if GATE_MODE == 0
-        resonator_bank_df2t_process(&bank, frame, FRAME_SIZE);
+        resonator_bank_df2t_process(&bank, processed_frame, FRAME_SIZE);
         should_wake = true;
 
 #elif GATE_MODE == 1
         q15_t rms;
-        arm_rms_q15(frame, FRAME_SIZE, &rms);
+        arm_rms_q15(processed_frame, FRAME_SIZE, &rms);
         should_wake = (rms > ENERGY_VAD_THRESHOLD);
 
 #else
-        resonator_bank_df2t_process(&bank, frame, FRAME_SIZE);
+        resonator_bank_df2t_process(&bank, processed_frame, FRAME_SIZE);
 
 #if !(TEST_AUDIO_SINE || TEST_AUDIO_NOISE)
         if (frame_count == 0) {
@@ -561,7 +1003,7 @@ int main(void)
         /* Acquire shared resource before gate — causes priority inversion */
         k_mutex_lock(&shared_mutex, K_FOREVER);
 #endif
-        decision    = gate_decide(&bank, &config);
+        decision    = gate_decide(&bank, &config, &mod_state);
         should_wake = decision.should_wake;
 #if SIMULATE_PRIORITY_INV && !PRIORITY_INV_FIX
         k_mutex_unlock(&shared_mutex);
@@ -587,14 +1029,51 @@ int main(void)
 
         if (should_wake) {
             wake_count++;
+            power_wakes_total++;
+            power_report_frames++;
+
+#if EI_TINYML
+            /* ── Hysteresis + hold-time (Opt #2) ────────────────────────────
+             * Only call KWS when HYSTERESIS_FRAMES consecutive wakes arrive
+             * and we are not already in a hold window.                        */
+            if (hold_frames_left > 0) {
+                hold_frames_left--;
+                /* suppress: still in hold window after last KWS call */
+            } else {
+                consecutive_wakes++;
+                if (consecutive_wakes >= HYSTERESIS_FRAMES) {
+                    /* Confident speech onset — run KWS once */
+                    consecutive_wakes = 0;
+                    hold_frames_left  = HOLD_FRAMES;
 #if PREROLL_BUFFER
-            /* Log pre-roll context window available for TinyML.
-             * Production: linearize preroll_ring[preroll_head..] → model input.
-             * preroll_filled × 20ms = total audio context passed to inference. */
-            printk("PREROLL: %ums context (%u frames) ready for TinyML\n",
-                   preroll_filled * 20U, preroll_filled);
+                    if (preroll_discontinuous) {
+                        /* Ring contains audio with a temporal gap (overrun
+                         * occurred — DMA lapped consumer).  Feeding this to
+                         * TinyML produces unreliable results.  Skip until
+                         * PREROLL_FRAMES clean frames refill the ring.       */
+                        printk("KWS: suppressed — preroll discontinuous "
+                               "(%u/%u clean frames)\n",
+                               preroll_clean_frames, PREROLL_FRAMES);
+                    } else {
+                    printk("PREROLL: %ums context (%u frames) ready for TinyML\n",
+                           preroll_filled * 20U, preroll_filled);
 #endif
-#if TINYML_THREADED
+                    ei_kws_result_t kws = {0};
+                    int rc = ei_classify((const int16_t *)preroll_ring,
+                                        preroll_head, preroll_filled,
+                                        PREROLL_FRAMES, FRAME_SIZE, &kws);
+                    if (rc == 0) {
+                        printk("KWS: %-8s %d%%\n",
+                               kws.label, (int)(kws.score * 100.0f));
+                    } else {
+                        printk("KWS: inference error %d\n", rc);
+                    }
+#if PREROLL_BUFFER
+                    } /* end: !preroll_discontinuous */
+#endif
+                }
+            }
+#elif TINYML_THREADED
             /* Non-blocking: K_NO_WAIT — gate NEVER blocks on TinyML.
              * If queue is full (TinyML thread stalled/overloaded), the frame
              * is dropped and tinyml_drop_count increments.
@@ -620,10 +1099,16 @@ int main(void)
             if (pipe_lrand % 10u == 0u) { pipe_keywords++; }
 #endif
 #endif
-        }
-#if PIPELINE_STATS
-        else { pipe_gate_abort++; }
+        } else {
+#if EI_TINYML
+            /* Gate aborted — reset hysteresis counter, let hold window drain */
+            consecutive_wakes = 0;
+            if (hold_frames_left > 0) { hold_frames_left--; }
 #endif
+#if PIPELINE_STATS
+            pipe_gate_abort++;
+#endif
+        }
 
 #if DEADLINE_STATS
         {
@@ -644,34 +1129,127 @@ int main(void)
 #elif GATE_MODE == 1
             printk("EVAD: wakes=%2d/50\n", wake_count);
 #else
-            printk("GATE: %s conf=%3u E=%5d C=%6d ZCR=%3u T=%4uus "
-                   "noise=%5d wakes=%2d/50\n",
+            printk("GATE: %s conf=%3u ACH=%u E=%5d C=%6d ZCR=%3u "
+                   "SFM=%.2f CV=%.2f T=%4uus noise=%5d wakes=%2d/50\n",
                    decision.should_wake ? "WAKE " : "ABORT",
                    decision.confidence,
+                   decision.features_used.active_ch,
                    decision.features_used.energy,
                    decision.features_used.correlation,
                    decision.features_used.zcr,
+                   (double)decision.features_used.spectral_flatness,
+                   (double)decision.features_used.modulation_cv,
                    decision.elapsed_us,
                    config.noise_floor,
                    wake_count);
+            /* FRONTEND line: AGC gain and calibration — printed every 50 frames.
+             * AGC=1.00 at startup; rises toward 4.0 in silence, drops on loud
+             * speech. CAL shows loaded mic calibration gain (1.00 = unity).    */
+            printk("FRONTEND: agc_gain=%.2f agc_env=%.4f cal=%.4f\n",
+                   (double)frontend.agc_gain,
+                   (double)frontend.agc_envelope,
+                   (double)frontend.cal_gain);
 #endif
             wake_count = 0;
 
             /* Point 1: Duty cycle — gate_us / frame_period_us
              * Frame period = 50 frames × 20ms = 1,000ms = 1,000,000us       */
             {
-                uint32_t duty_ppm = gate_total_us / 10U; /* parts per million */
+                /* duty% = gate_total_us / 1,000,000µs (50 frames × 20ms)
+                 * display as X.XX%: integer = /10000, decimal = %10000/100 */
+                uint32_t duty_ppm = gate_total_us; /* µs in 1s window = ppm */
                 printk("SCHED: wcet=%uus avg=%uus duty=%u.%02u%% "
-                       "irq_lat_avg=%ums irq_lat_max=%ums\n",
+                       "irq_lat_avg=%ums irq_lat_max=%ums"
+#ifdef CONFIG_BT
+                       " [BLE_ACTIVE]"
+#endif /* CONFIG_BT */
+                       "\n",
                        gate_wcet_us,
                        gate_total_us / 50U,
                        duty_ppm / 10000U, (duty_ppm % 10000U) / 100U,
                        irq_latency_n ? irq_latency_sum / irq_latency_n : 0,
                        irq_latency_max);
+                uint32_t gate_total_snapshot = gate_total_us; /* save before reset */
                 gate_total_us   = 0;
                 irq_latency_sum = 0;
                 irq_latency_n   = 0;
                 /* wcet and irq_latency_max are lifetime peaks — not reset */
+
+                /* ── Fault tolerance health log ─────────────────────────────
+                 * Only prints when something abnormal has occurred — silent
+                 * in normal operation so it doesn't clutter the output.      */
+#if PREROLL_BUFFER && !(TEST_AUDIO_SINE || TEST_AUDIO_NOISE)
+                {
+                    uint32_t errs = dma_pdm_get_error_count();
+                    uint32_t ovrs = dma_pdm_get_overrun_count();
+                    if (errs > 0 || ovrs > 0 || pdm_restart_count > 0) {
+                        printk("PDM_HEALTH: hw_errors=%u overruns=%u "
+                               "restarts=%u\n",
+                               errs, ovrs, pdm_restart_count);
+                    }
+                }
+#endif
+
+                /* ── Switching frequency power model (corrected) ────────────
+                 * Three components (nRF52840 PS v1.8 Table 55 + 56):
+                 *
+                 *  P_base   = always-on peripherals (regardless of gate):
+                 *               PDM EasyDMA running:  ~500 µA
+                 *               HFXO (required for PDM 1.28 MHz): ~300 µA
+                 *               CPU sleep (WFI between frames):     ~1 µA
+                 *             Total baseline = 801 µA × 3.3V = 2643 µW
+                 *
+                 *  P_gate   = incremental CPU active cost during gate decision:
+                 *               (I_active - I_base) × VDD × duty_cycle
+                 *               (6500 - 801)µA × 3300µV × duty  ≈ 18,630 µW/duty
+                 *             Duty = gate_total_us / 1,000,000
+                 *             → P_gate = gate_total_us × 18630 / 1,000,000
+                 *
+                 *             Note: previous model used 6500µA (not incremental)
+                 *             → overstated gate cost, understated baseline.
+                 *
+                 *  P_trans  = HFXO restart per WAKE event (batch path eliminates
+                 *             this — HFXO never stops with PPI batch wakeup).
+                 *             Kept for comparison: 8mA × 3.3V × 0.5ms = 13.2µJ/wake
+                 *
+                 * Report every 50 frames (1 second window).                 */
+/* Baseline power constants (µW) — see comment above for derivation       */
+#define POWER_BASE_UW    2643U   /* PDM+HFXO+sleep, always on             */
+#define POWER_GATE_COEFF 18630U  /* incremental CPU active µW per duty-1  */
+                {
+                    uint32_t now_ms      = k_uptime_get_32();
+                    uint32_t elapsed_ms  = now_ms - power_frame_start;
+                    if (elapsed_ms == 0) { elapsed_ms = 1; }
+
+                    /* wakes per second (×100 for 2 decimal places) */
+                    uint32_t wakes_per_sec_x100 =
+                        power_report_frames * 100000U / elapsed_ms;
+
+                    /* P_gate (µW): incremental CPU cost above baseline.
+                     * duty_fraction = gate_total_us / 1,000,000
+                     * P_gate = POWER_GATE_COEFF × gate_total_us / 1,000,000 */
+                    uint32_t p_gate_uw = (uint32_t)(
+                        (uint64_t)gate_total_snapshot * POWER_GATE_COEFF / 1000000U);
+
+                    /* P_transition (µW): HFXO restart cost per WAKE.
+                     * With PPI batch wakeup, HFXO stays on → P_trans ≈ 0.
+                     * Retained for reference: 13.2µJ × wakes/s.
+                     * ×100 fixed point: 1320 × wakes_x100 / 10000          */
+                    uint32_t p_trans_uw  = 1320U * wakes_per_sec_x100 / 10000U;
+
+                    uint32_t p_total_uw  = POWER_BASE_UW + p_gate_uw + p_trans_uw;
+
+                    printk("POWER: wakes=%u/s(x100=%u) "
+                           "P_base=%uuW P_gate=%uuW P_trans=%uuW P_total=%uuW "
+                           "lifetime_wakes=%u\n",
+                           wakes_per_sec_x100 / 100U,
+                           wakes_per_sec_x100,
+                           POWER_BASE_UW, p_gate_uw, p_trans_uw, p_total_uw,
+                           power_wakes_total);
+
+                    power_report_frames = 0;
+                    power_frame_start   = now_ms;
+                }
             }
 
 #if DEADLINE_STATS

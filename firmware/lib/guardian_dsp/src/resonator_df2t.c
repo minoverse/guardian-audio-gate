@@ -14,7 +14,7 @@ int resonator_bank_df2t_init(resonator_bank_df2t_t *bank)
     memset(bank, 0, sizeof(resonator_bank_df2t_t));
 
     for (int ch = 0; ch < NUM_RESONATORS; ch++) {
-        arm_biquad_cascade_df2T_init_f32(
+        arm_biquad_cascade_df1_init_f32(
             &bank->channels[ch],
             NUM_STAGES,
             RESONATOR_COEFS[ch],
@@ -33,7 +33,7 @@ void resonator_bank_df2t_process(resonator_bank_df2t_t *bank, const int16_t *inp
     }
 
     for (int ch = 0; ch < NUM_RESONATORS; ch++) {
-        arm_biquad_cascade_df2T_f32(
+        arm_biquad_cascade_df1_f32(
             &bank->channels[ch], s_float_input, s_float_output, (uint32_t)len);
 
         /* float → Q15, clip to [-32768, 32767] */
