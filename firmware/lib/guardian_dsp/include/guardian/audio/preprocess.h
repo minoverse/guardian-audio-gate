@@ -41,12 +41,19 @@ typedef struct {
 #define AUDIO_FRONTEND_AGC_MIN     0.25f
 #define AUDIO_FRONTEND_AGC_MAX     4.0f
 
+/* Maximum allowed frame length passed to audio_frontend_process().
+ * Matches FRAME_SIZE in main.c (320 samples @ 16 kHz = 20 ms).
+ * Upper-bound guard prevents output buffer overflow on API misuse.         */
+#define AUDIO_FRONTEND_FRAME_MAX   320U
+
 void audio_frontend_init(audio_frontend_t *fe, float cal_gain);
 
 /* Process one frame: raw Q15 input → preprocessed Q15 output.
  * in and out must point to different buffers (not in-place).
+ * len must be in [1, AUDIO_FRONTEND_FRAME_MAX].
  *
- * Returns 0 on success, -EINVAL if any pointer is NULL or len is 0.
+ * Returns 0 on success, -EINVAL if any pointer is NULL, len is 0,
+ * or len > AUDIO_FRONTEND_FRAME_MAX (prevents output buffer overflow).
  * The error path is a programmer error — should never fire in production.
  * Saturation uses __SSAT (single ARM SSAT instruction) — no UB on overflow. */
 int audio_frontend_process(audio_frontend_t *fe,

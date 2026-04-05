@@ -51,10 +51,13 @@ int audio_frontend_process(audio_frontend_t *fe,
                            int16_t *out,
                            size_t len)
 {
-    /* Zephyr-style guard: programmer error if pointers are NULL or len is 0.
+    /* Zephyr-style guard: programmer error if pointers are NULL, len is 0,
+     * or len exceeds AUDIO_FRONTEND_FRAME_MAX.
+     * Upper bound: without it, a caller passing len > 320 would write past
+     * the end of a FRAME_SIZE output buffer (undefined behaviour).
      * In production (GATE_MODE 2 normal path) this never fires — all three
-     * arguments are statically allocated in main().                          */
-    if (!fe || !in || !out || len == 0U) {
+     * arguments are statically allocated in main() with len == FRAME_SIZE.  */
+    if (!fe || !in || !out || len == 0U || len > AUDIO_FRONTEND_FRAME_MAX) {
         return -EINVAL;
     }
 

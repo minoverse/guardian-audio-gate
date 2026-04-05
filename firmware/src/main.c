@@ -426,12 +426,32 @@ static void mock_tinyml_inference(void); /* forward declaration */
  * Increase to 8 only if deploying mock 100ms TinyML at high wake rates.       */
 K_MSGQ_DEFINE(tinyml_q, sizeof(int16_t *), 4, 4);
 
+/* Maximum time to wait for a TinyML job. Gate fires at most once per
+ * HYSTERESIS_FRAMES × 20ms = 60ms, so 500ms is ~8× the normal inter-job
+ * interval.  If the queue is silent that long, it is a stall, not normal
+ * quiet operation (gate simply stopped waking).
+ * On timeout: log once, then continue — main thread is unaffected and WDT
+ * keeps being fed by the main loop, so the system stays alive.             */
+#define TINYML_QUEUE_TIMEOUT_MS  500
+
 static void tinyml_thread_entry(void *a, void *b, void *c)
 {
     ARG_UNUSED(a); ARG_UNUSED(b); ARG_UNUSED(c);
     int16_t *frame;
+    uint32_t stall_count = 0;
     while (1) {
-        k_msgq_get(&tinyml_q, &frame, K_FOREVER);
+        int rc = k_msgq_get(&tinyml_q, &frame, K_MSEC(TINYML_QUEUE_TIMEOUT_MS));
+        if (rc != 0) {
+            /* Timeout: gate has not fired for 500ms.  This is normal in
+             * silence.  Log at 10s intervals to avoid flooding the console. */
+            stall_count++;
+            if (stall_count % 20 == 1) {   /* every 20 × 500ms = 10s        */
+                printk("TINYML: queue idle (%u × %dms) — gate in silence\n",
+                       stall_count, TINYML_QUEUE_TIMEOUT_MS);
+            }
+            continue;
+        }
+        stall_count = 0;
         TR(TR_TINYML_START, 0);
         mock_tinyml_inference();
         TR(TR_TINYML_END, 0);
@@ -670,17 +690,26 @@ int main(void)
      * WDT_OPT_PAUSE_HALTED_BY_DBG: pauses WDT during J-Link halt so the debugger
      *   doesn't reset the chip every time a breakpoint is hit.                  */
     static const struct device *wdt_dev = DEVICE_DT_GET(DT_NODELABEL(wdt0));
-    struct wdt_timeout_cfg wdt_cfg = {
-        .window = { .min = 0U, .max = 500U },
-        .callback = NULL,
-        .flags    = WDT_FLAG_RESET_SOC,
-    };
-    int wdt_channel_id = wdt_install_timeout(wdt_dev, &wdt_cfg);
-    if (wdt_channel_id < 0) {
-        printk("WDT install failed: %d\n", wdt_channel_id);
+    /* Zephyr device model: always call device_is_ready() before using a
+     * device pointer.  DEVICE_DT_GET() returns a valid pointer at compile
+     * time but the driver may not have initialised at runtime.              */
+    int wdt_channel_id = -1;
+    if (!device_is_ready(wdt_dev)) {
+        printk("WDT: device not ready — running without hardware watchdog\n");
     } else {
-        wdt_setup(wdt_dev, WDT_OPT_PAUSE_HALTED_BY_DBG);
-        printk("WDT: 500ms hardware watchdog active (channel %d)\n", wdt_channel_id);
+        struct wdt_timeout_cfg wdt_cfg = {
+            .window   = { .min = 0U, .max = 500U },
+            .callback = NULL,
+            .flags    = WDT_FLAG_RESET_SOC,
+        };
+        wdt_channel_id = wdt_install_timeout(wdt_dev, &wdt_cfg);
+        if (wdt_channel_id < 0) {
+            printk("WDT install failed: %d\n", wdt_channel_id);
+        } else {
+            wdt_setup(wdt_dev, WDT_OPT_PAUSE_HALTED_BY_DBG);
+            printk("WDT: 500ms hardware watchdog active (channel %d)\n",
+                   wdt_channel_id);
+        }
     }
 
     int frame_count   = 0;
