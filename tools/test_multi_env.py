@@ -42,21 +42,19 @@ COEFS = [
 ]
 CENTER_FREQS = [300, 800, 1500, 2500]
 
-# Gate thresholds (mirrors decision.c defaults)
-ENERGY_THRESH   = 800
-CORR_THRESH     = 6000
-ZCR_LO, ZCR_HI = 20, 220
-SFM_THRESH      = 0.60
-CV_THRESH       = 0.12
-# Rule 7: multi-formant activation — ≥2 channels above per-channel threshold
-# Speech activates ch0 (300Hz) + ch1 (800Hz) simultaneously.
-# Band-limited noise (HVAC, engine, wind) activates only ch0.
-MULTIBAND_CHAN_THRESH = 5000  # per-channel energy sub-threshold
-# Calibration: speech at -12dBFS produces ch energy ~1M+; noise bleed
-# into adjacent channels at -35dBFS produces ~500-2000. Threshold of 5000
-# sits safely between them — rejects noise bleed, passes speech formants.
-MULTIBAND_MIN_ACTIVE  = 2     # minimum active channels
-SCORE_WAKE      = 80          # raised from 55: requires energy + multiband + 1 rule
+# Gate thresholds — mirrors decision.c / GATE_CONFIG_DEFAULT exactly
+# Rule weights: corr=40, energy=20, coherence=25, zcr=15, sfm=20, cv=20 (max=140)
+# SCORE_WAKE=20 matches firmware: Rule 7 (hard gate) is the primary discriminator.
+# Band-limited noise (HVAC, engine, wind) → ACH=1 → hard gate blocks regardless of score.
+ENERGY_THRESH        = 800    # mirrors config->noise_floor * 2 (noise_floor default=500)
+CORR_THRESH          = 6000   # 0.183 in Q15 = 14746 → but sim uses Pearson scale
+ZCR_LO, ZCR_HI      = 20, 220
+SFM_THRESH           = 0.60
+CV_THRESH            = 0.12
+COHERENCE_THRESH     = 1000   # mirrors config->coherence_threshold (Q15 dot-product >> 15)
+MULTIBAND_CHAN_THRESH = 5000  # per-channel energy (sum-of-sq >> 10 units)
+MULTIBAND_MIN_ACTIVE = 2      # Rule 7: hard gate — not a score bonus
+SCORE_WAKE           = 20     # mirrors firmware decision.c exactly
 
 # ── Python DF1 biquad ───────────────────────────────────────────────────────
 class BiquadDF1:
@@ -112,8 +110,8 @@ class GateSim:
             da = np.sqrt(np.sum(af**2) * np.sum(bf**2))
             return int((np.sum(af*bf) / da * 32767) if da > 0 else 0)
 
-        corr     = pearson_q15(ch_q15[0], ch_q15[1])
-        zcr      = int(np.sum(np.diff(np.sign(frame_i16)) != 0))
+        corr = pearson_q15(ch_q15[0], ch_q15[1])
+        zcr  = int(np.sum(np.diff(np.sign(frame_i16)) != 0))
 
         ef    = np.array(energies, dtype=float) + 1.0
         arith = np.mean(ef)
@@ -122,32 +120,46 @@ class GateSim:
 
         self.mod_n   += 1
         alpha         = self.MOD_ALPHA
-        self.mod_mean = alpha * total_e + (1-alpha) * self.mod_mean
-        self.mod_var  = alpha * (total_e - self.mod_mean)**2 + (1-alpha)*self.mod_var
+        self.mod_mean = alpha * total_e + (1 - alpha) * self.mod_mean
+        self.mod_var  = alpha * (total_e - self.mod_mean)**2 + (1 - alpha) * self.mod_var
         cv = 0.0
         if self.mod_n >= 25 and self.mod_mean > 0:
             cv = float(np.clip(np.sqrt(self.mod_var) / self.mod_mean, 0, 2))
 
+        # Rule 3: pitch coherence — mirrors coherence.c (arm_dot_prod_q15 >> 15)
+        # Lag range 62-249 samples = pitch period 64-258 Hz (male + female speech).
+        x64 = ch_q15[0].astype(np.int64)
+        n   = len(x64)
+        coh = 0
+        for lag in range(62, min(250, n // 2), 2):
+            dot = int(np.dot(x64[:n - lag], x64[lag:]))
+            s   = dot >> 15
+            if s > coh:
+                coh = s
+
         active_ch = sum(1 for e in energies if e > MULTIBAND_CHAN_THRESH)
 
-        r_energy    = total_e    > ENERGY_THRESH
-        r_corr      = corr       > CORR_THRESH
+        r_corr      = corr      > CORR_THRESH
+        r_energy    = total_e   > ENERGY_THRESH
+        r_coherence = coh       > COHERENCE_THRESH
         r_zcr       = ZCR_LO < zcr < ZCR_HI
-        r_sfm       = sfm        < SFM_THRESH
-        r_cv        = cv         > CV_THRESH
-        r_multiband = active_ch  >= MULTIBAND_MIN_ACTIVE
+        r_sfm       = sfm       < SFM_THRESH
+        r_cv        = cv        > CV_THRESH
+        r_multiband = active_ch >= MULTIBAND_MIN_ACTIVE
 
-        score  = (40*r_energy + 20*r_corr + 25*r_zcr +
-                  20*r_sfm   + 20*r_cv   + 25*r_multiband)
+        # Score mirrors firmware decision.c rule weights exactly (max = 140).
+        # Rule 7 multiband is a HARD GATE (prerequisite), not a score bonus.
+        score = (40*r_corr + 20*r_energy + 25*r_coherence +
+                 15*r_zcr  + 20*r_sfm    + 20*r_cv)
 
-        rules = dict(energy=r_energy, corr=r_corr, zcr=r_zcr,
-                     sfm=r_sfm, cv=r_cv, multiband=r_multiband,
+        rules = dict(energy=r_energy, corr=r_corr, coherence=r_coherence,
+                     zcr=r_zcr, sfm=r_sfm, cv=r_cv, multiband=r_multiband,
                      active_ch=active_ch, score=score,
                      energies=energies, total_e=total_e)
 
-        # Multi-formant activation is a hard gate: WAKE requires ≥2 active
-        # channels AND sufficient score.  Band-limited noise (HVAC, car engine,
-        # wind) activates only ch0 regardless of score; speech activates ≥2.
+        # Wake condition mirrors firmware exactly:
+        #   score >= 20 AND active_ch >= 2
+        # Band-limited noise (HVAC, engine, wind): ACH=0-1 → hard gate always blocks.
         wake = (score >= SCORE_WAKE) and (active_ch >= MULTIBAND_MIN_ACTIVE)
         return 'WAKE' if wake else 'ABORT', score, sfm, cv, rules
 
@@ -254,13 +266,14 @@ def run_env(name, noise_gen, n_noise=200, n_speech=100):
     gate = GateSim()
     noise_aborts  = 0
     speech_wakes  = 0
-    rule_fire_counts = {'energy': 0, 'corr': 0, 'zcr': 0, 'sfm': 0,
-                        'cv': 0, 'multiband': 0}
+    rule_fire_counts = {'energy': 0, 'corr': 0, 'coherence': 0, 'zcr': 0,
+                        'sfm': 0, 'cv': 0, 'multiband': 0}
 
     for frame in noise_gen:
         dec, score, sfm, cv, rules = gate.process_frame(frame)
         if dec == 'ABORT': noise_aborts += 1
         if rules['energy']:    rule_fire_counts['energy']    += 1
+        if rules['coherence']: rule_fire_counts['coherence'] += 1
         if rules['sfm']:       rule_fire_counts['sfm']       += 1
         if rules['cv']:        rule_fire_counts['cv']        += 1
         if rules['zcr']:       rule_fire_counts['zcr']       += 1
@@ -319,17 +332,13 @@ def main(do_plot):
 
     # ── Per-rule diagnosis ─────────────────────────────────────────────────
     print("\n── Rule fire rate on NOISE frames (lower = better) ─────────────")
-    print(f"  {'Environment':<28} {'Energy':>8} {'SFM':>8} {'ZCR':>8} "
-          f"{'CV':>8} {'Multiband':>10}")
-    print("  " + "─" * 70)
+    print(f"  {'Environment':<28} {'Energy':>8} {'Coher':>7} {'SFM':>6} "
+          f"{'ZCR':>6} {'CV':>6} {'Multibnd':>9}")
+    print("  " + "─" * 75)
     for name, rates in zip(names, all_rules):
-        e  = rates['energy']
-        sf = rates['sfm']
-        z  = rates['zcr']
-        cv = rates['cv']
-        mb = rates['multiband']
-        print(f"  {name:<28} {e:>7.0f}% {sf:>7.0f}% {z:>7.0f}% "
-              f"{cv:>7.0f}% {mb:>9.0f}%")
+        print(f"  {name:<28} {rates['energy']:>7.0f}% {rates['coherence']:>6.0f}%"
+              f" {rates['sfm']:>5.0f}% {rates['zcr']:>5.0f}%"
+              f" {rates['cv']:>5.0f}% {rates['multiband']:>8.0f}%")
 
     print("""
 ── Diagnosis ──────────────────────────────────────────────────────────────

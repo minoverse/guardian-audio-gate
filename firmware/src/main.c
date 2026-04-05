@@ -384,8 +384,9 @@ K_THREAD_DEFINE(ctx_t3, 256, ctx_switch_entry, NULL, NULL, NULL, 0, 0, 0);
 #endif
 
 #if CTX_SWITCH_FIX
-/* Fix: gate runs in system workqueue (cooperative, no preemption mid-gate) */
-static K_WORK_DEFINE(gate_work, NULL); /* placeholder — wired in loop below */
+/* Fix: gate runs in system workqueue (cooperative, no preemption mid-gate).
+ * When enabled, submit gate_work to k_work_submit() instead of running inline.
+ * Requires implementing the work handler — left as future optimisation.       */
 #endif
 
 /* ── Problem 2: Priority inversion simulation + fix ──────────────────────────

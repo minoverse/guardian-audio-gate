@@ -35,15 +35,16 @@ COEFS = [
     [0.0578, 0.0, -0.0578,  1.0451, -0.8844],
 ]
 
-# Thresholds — mirror test_multi_env.py (validated)
+# Thresholds — mirrors decision.c / GATE_CONFIG_DEFAULT exactly
 ENERGY_THRESH        = 800
 CORR_THRESH          = 6000
 ZCR_LO, ZCR_HI      = 20, 220
 SFM_THRESH           = 0.60
 CV_THRESH            = 0.12
+COHERENCE_THRESH     = 1000   # mirrors config->coherence_threshold
 MULTIBAND_CHAN_THRESH = 5000
 MULTIBAND_MIN_ACTIVE = 2
-SCORE_WAKE           = 80
+SCORE_WAKE           = 20     # mirrors firmware: Rule 7 is the primary discriminator
 
 # AGC parameters
 AGC_ALPHA_ATTACK  = 0.8647
@@ -134,18 +135,32 @@ class GateSim:
         if self.mod_n >= 25 and self.mod_mean > 0:
             cv = float(np.clip(np.sqrt(self.mod_var) / self.mod_mean, 0, 2))
 
+        # Rule 3: pitch coherence — mirrors coherence.c (arm_dot_prod_q15 >> 15)
+        # Computed on ch0 resonator output (same as firmware: bank->outputs[0]).
+        x64 = ch_q15[0].astype(np.int64)
+        n   = len(x64)
+        coh = 0
+        for lag in range(62, min(250, n // 2), 2):
+            dot = int(np.dot(x64[:n - lag], x64[lag:]))
+            s   = dot >> 15
+            if s > coh:
+                coh = s
+
         # Rule 7: multi-formant hard gate
         active_ch = sum(1 for e in energies if e > MULTIBAND_CHAN_THRESH)
 
-        r_energy    = total_e   > ENERGY_THRESH
         r_corr      = corr      > CORR_THRESH
+        r_energy    = total_e   > ENERGY_THRESH
+        r_coherence = coh       > COHERENCE_THRESH
         r_zcr       = ZCR_LO < zcr < ZCR_HI
         r_sfm       = sfm       < SFM_THRESH
         r_cv        = cv        > CV_THRESH
         r_multiband = active_ch >= MULTIBAND_MIN_ACTIVE
 
-        score = (40*r_energy + 20*r_corr + 25*r_zcr +
-                 20*r_sfm   + 20*r_cv   + 25*r_multiband)
+        # Score mirrors firmware decision.c exactly (max = 140).
+        # Rule 7 multiband is a HARD GATE (prerequisite), not a score bonus.
+        score = (40*r_corr + 20*r_energy + 25*r_coherence +
+                 15*r_zcr  + 20*r_sfm    + 20*r_cv)
 
         wake = (score >= SCORE_WAKE) and (active_ch >= MULTIBAND_MIN_ACTIVE)
         return wake, score, active_ch, energies
