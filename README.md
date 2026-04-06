@@ -19,6 +19,10 @@ Gate decision: **1761 µs avg**, **~8.9% CPU duty cycle**, **100% abort rate on 
 | Final: Safety + noise rejection | ✅ | Rule 7 multi-formant gate, AGC NaN fix, PPI batch wakeup |
 | Audio front-end hardening | ✅ | NaN-safe cal_gain clamp, `len` upper-bound guard (-EINVAL) |
 | Python sim firmware alignment | ✅ | Coherence rule + SCORE_WAKE=20 match firmware exactly |
+| Fault tolerance — Layer 1 | ✅ | PDM overflow ISR flag, 75ms stall watchdog, overrun counter |
+| Fault tolerance — Layer 2 | ✅ | HW WDT 500ms, consecutive restart cap (PDM_MAX_RESTARTS=5) |
+| TinyML audio continuity | ✅ | `preroll_discontinuous` suppresses inference until ring is clean |
+| Production hardening | ✅ | `__aligned(4)` EasyDMA, `FAULT_INJECT` CMake guard, RESETREAS boot log |
 
 ## Performance (measured on hardware)
 
@@ -83,6 +87,51 @@ system runs without HW watchdog rather than crashing on a NULL dereference.
 `k_msgq_get(&tinyml_q, K_FOREVER)` silently hangs if inference blocks.
 Changed to `K_MSEC(500)` with stall counter — logs idle every 10 seconds without flooding serial.
 WDT would never reset a hung TinyML thread under `K_FOREVER` since the gate loop keeps feeding it.
+
+### Two-Layer Fault Tolerance (`main.c`, `dma_pdm.c`)
+
+Every failure path leads to either peripheral recovery or controlled SoC reset — no silent freezes:
+
+| Layer | Trigger | Response |
+|-------|---------|----------|
+| 1A — PDM hardware error | `NRFX_PDM_ERROR_OVERFLOW` in ISR | `dma_pdm_restart()` from main thread |
+| 1B — DMA silent stall | 3 × 25ms timeouts (75ms) | `dma_pdm_restart()` from main thread |
+| Restart cap | `pdm_consecutive_restarts >= 5` (no clean frame) | Safe mode → WDT fires → SoC reset |
+| 2 — Hardware WDT | Main thread hangs 500ms | Full SoC reset, independent of all SW |
+
+Key implementation details:
+- `volatile bool pdm_restart_requested` — ISR sets flag, main thread acts (no mutex needed: HW stop is the natural critical section boundary)
+- `WDT_OPT_PAUSE_HALTED_BY_DBG` — watchdog pauses at J-Link breakpoints, no surprise resets during debugging
+- `device_is_ready()` called before `wdt_install_timeout()` — graceful degradation if WDT peripheral not ready
+- `NRF_POWER->RESETREAS` read on every boot — distinguishes WDT reset from power-on, logged to serial
+
+### TinyML Audio Continuity After Ring Overrun (`main.c`)
+
+If DMA laps the consumer (`pdm_overrun_count` increases), `preroll_ring` contains a temporal gap:
+audio from time T stitched with audio from T+100ms. TinyML inference on that window produces unreliable results.
+
+`preroll_discontinuous` flag suppresses inference until `PREROLL_FRAMES` (50) consecutive clean frames
+fully rewrite the ring with fresh audio. Serial output during suppression:
+```
+KWS: suppressed — preroll discontinuous (12/50 clean frames)
+PREROLL: ring clean after overrun — TinyML re-enabled
+```
+
+### EasyDMA 4-Byte Alignment (`dma_pdm.c`, `main.c`)
+
+nRF52840 EasyDMA requires all DMA destination buffers to be 32-bit aligned.
+`preroll_ring` was missing this — intermittent silent corruption with no error flag:
+```c
+static int16_t preroll_ring[PREROLL_FRAMES][FRAME_SIZE] __aligned(4);
+```
+
+### Fault Injection Guard (`CMakeLists.txt`)
+
+Test helpers (`dma_pdm_inject_error()`, `dma_pdm_stop_for_test()`) compile only when explicitly enabled:
+```bash
+west build -- -DFAULT_INJECT=ON   # test build
+west build                         # production: zero test code, zero flash cost
+```
 
 ### Python Simulation Firmware Alignment (`test_multi_env.py`, `test_real_audio.py`)
 Both Python simulations now match firmware `decision.c` exactly:

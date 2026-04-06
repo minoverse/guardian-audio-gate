@@ -562,3 +562,233 @@ Comparable to Amazon Alexa Stage 1 target (60–80% recall) on a general-purpose
 | 8 | WDT never arms | No WDT boot line, stall not caught | No `device_is_ready()` check | Add check + graceful degradation | `WDT: 500ms hardware watchdog active` |
 | 9 | 28% speech recall | Looks like failure | Frame-level metric penalizes silence | Clip-level metric | 99% clip recall |
 | 10 | Broadband passes gate | `ACH=4`, gate wakes on dishes/white noise | Band-limited design — broadband = speech to physics gate | Document + validate with correct noise | 100% abort on HVAC/engine/wind |
+
+---
+
+## 11. EasyDMA Buffer Misalignment (Silent Audio Corruption)
+
+**Situation:**  
+After implementing the pre-roll ring buffer, occasional frames contained garbage samples — wrong values with no error logged, no crash. Happened intermittently and only under certain load conditions.
+
+**Task:**  
+Find why `preroll_ring` produced corrupted audio with no visible error path.
+
+**Investigation:**  
+nRF52840 EasyDMA can only transfer from RAM addresses that are **32-bit (4-byte) aligned**. The ping-pong DMA buffers had `__aligned(4)` — but `preroll_ring` was added later without it:
+```c
+/* Old — missing alignment: */
+static int16_t preroll_ring[PREROLL_FRAMES][FRAME_SIZE];
+
+/* EasyDMA silently misaligns → corrupted transfers, no error flag */
+```
+The linker placed `preroll_ring` at an odd address. EasyDMA started the transfer but wrote to the wrong byte offset — corrupting 2 bytes at the start of every DMA burst with no hardware fault.
+
+**Action:**  
+```c
+/* Fixed — explicit 4-byte alignment: */
+static int16_t preroll_ring[PREROLL_FRAMES][FRAME_SIZE] __aligned(4);
+```
+
+**Result:**  
+Intermittent corruption eliminated. Rule: any buffer used as an EasyDMA destination on nRF52 must be `__aligned(4)`. Impossible to debug from the audio side alone — requires knowing the EasyDMA constraint.
+
+---
+
+## 12. Test Code Compiling Into Production Binary
+
+**Situation:**  
+`dma_pdm_inject_error()` and `dma_pdm_stop_for_test()` — functions used to simulate hardware faults during development — compiled into every production build. Dead code in flash and an attack surface.
+
+**Task:**  
+Remove test scaffolding from production binary with zero runtime cost.
+
+**Action:**  
+CMake option gate — test helpers only compile when explicitly requested:
+```cmake
+# firmware/CMakeLists.txt
+option(FAULT_INJECT "Enable fault injection test helpers" OFF)
+if(FAULT_INJECT)
+    target_compile_definitions(app          PRIVATE FAULT_INJECT_ENABLED=1)
+    target_compile_definitions(guardian_dsp PRIVATE FAULT_INJECT_ENABLED=1)
+endif()
+```
+Source guards in both `.c` and `.h`:
+```c
+#ifdef FAULT_INJECT_ENABLED
+void dma_pdm_inject_error(void);   /* only exists in test builds */
+void dma_pdm_stop_for_test(void);
+#endif
+```
+To run fault injection tests:
+```bash
+west build -- -DFAULT_INJECT=ON
+```
+
+**Result:**  
+Production binary: zero test code, zero flash cost. Test paths fully available during development. The three fault injection modes (`FAULT_INJECT_STALL`, `FAULT_INJECT_PDM_ERROR`, `FAULT_INJECT_OVERRUN`) verify all three fault recovery paths before shipping.
+
+---
+
+## 13. Two-Layer Fault Tolerance — Full System Design
+
+**Situation:**  
+Initial design had one recovery path: if PDM overflows, restart it. But three failure modes were unhandled: silent stall (no ISR, no error), DMA lapping the consumer (silent data loss), and main thread hang (software watchdog itself hangs).
+
+**Task:**  
+Design a fault recovery system where every failure path leads to either recovery or controlled reset — no silent freezes.
+
+**Implementation:**
+
+### Layer 1A — PDM Hardware Error (ISR → main thread)
+```c
+/* In PDM ISR (nrfx callback): */
+if (evt->buffer_released == NULL) {   /* NRFX_PDM_ERROR_OVERFLOW */
+    pdm_restart_requested = true;     /* volatile — safe in ISR */
+    /* Do NOT call nrfx_pdm_stop() here — re-enters IRQ handler */
+    return;
+}
+
+/* In main thread, top of every frame loop: */
+if (dma_pdm_needs_restart()) {
+    dma_pdm_restart();   /* stop → reset ring indices → start */
+    pdm_consecutive_restarts++;
+}
+```
+Serial output: `PDM_FAULT: hardware error (overflow #1) — restarting`
+
+### Layer 1B — DMA Silent Stall Watchdog
+```c
+uint32_t pdm_timeout_streak = 0;
+
+ret = dma_pdm_read_ring(&buf, K_MSEC(25));
+if (ret == -ETIMEDOUT) {
+    pdm_timeout_streak++;
+    if (pdm_timeout_streak >= 3) {   /* 75ms stall */
+        dma_pdm_restart();
+        pdm_consecutive_restarts++;
+    }
+} else {
+    pdm_timeout_streak = 0;   /* clear on any good frame */
+}
+```
+Serial output: `PDM_FAULT: 3 consecutive timeouts (stall) — restarting`
+
+### Infinite Restart Cap (Attack 8)
+```c
+#define PDM_MAX_RESTARTS 5
+
+if (pdm_consecutive_restarts >= PDM_MAX_RESTARTS) {
+    printk("PDM_FATAL: %u consecutive restarts — entering safe mode\n",
+           pdm_consecutive_restarts);
+    while (1) { k_sleep(K_MSEC(100)); }  /* stop feeding WDT → HW reset in 500ms */
+}
+pdm_consecutive_restarts = 0;   /* reset to 0 on every clean frame */
+```
+Key: `pdm_consecutive_restarts` counts *consecutive* restarts. A transient glitch that recovers after 2 restarts does not accumulate toward the limit.
+
+### Layer 2 — Hardware WDT (500ms full SoC reset)
+```c
+const struct device *wdt_dev = DEVICE_DT_GET(DT_NODELABEL(wdt0));
+int wdt_channel_id = -1;
+
+if (!device_is_ready(wdt_dev)) {
+    printk("WDT: device not ready — running without hardware watchdog\n");
+} else {
+    struct wdt_timeout_cfg wdt_cfg = {
+        .window = { .min = 0U, .max = 500U },
+        .callback = NULL,
+        .flags = WDT_FLAG_RESET_SOC,
+    };
+    wdt_channel_id = wdt_install_timeout(wdt_dev, &wdt_cfg);
+    wdt_setup(wdt_dev, WDT_OPT_PAUSE_HALTED_BY_DBG);
+    printk("WDT: 500ms hardware watchdog active (channel %d)\n", wdt_channel_id);
+}
+
+/* Top of every frame loop (~20ms): */
+if (wdt_channel_id >= 0) {
+    wdt_feed(wdt_dev, wdt_channel_id);
+}
+```
+`WDT_OPT_PAUSE_HALTED_BY_DBG`: watchdog pauses when J-Link halts the CPU — no surprise resets at breakpoints.
+
+### TinyML Suppression After Overrun (Attack 9)
+```c
+bool     preroll_discontinuous = false;
+uint32_t preroll_clean_frames  = 0;
+
+/* On any overrun detected: */
+preroll_discontinuous = true;
+preroll_clean_frames  = 0;
+
+/* Each frame: count clean frames until ring is fully refreshed */
+if (preroll_discontinuous) {
+    if (++preroll_clean_frames >= PREROLL_FRAMES) {  /* 50 frames = 1 full ring */
+        preroll_discontinuous = false;
+        printk("PREROLL: ring clean after overrun — TinyML re-enabled\n");
+    }
+}
+
+/* TinyML wake path: */
+if (preroll_discontinuous) {
+    printk("KWS: suppressed — preroll discontinuous (%u/%u clean frames)\n",
+           preroll_clean_frames, PREROLL_FRAMES);
+    /* skip inference */
+}
+```
+The model always sees a temporally coherent 1-second window or nothing at all.
+
+### Boot Reason Detection (Attack — "fault state disappears on reboot")
+```c
+uint32_t reas = nrf_power_resetreas_get(NRF_POWER);
+nrf_power_resetreas_clear(NRF_POWER, 0xFFFFFFFF);
+
+if (reas & NRF_POWER_RESETREAS_DOG_MASK) {
+    printk("BOOT: *** WDT reset — previous session crashed or hit PDM_FATAL\n");
+} else if (reas & NRF_POWER_RESETREAS_SREQ_MASK) {
+    printk("BOOT: soft reset (sys_reboot)\n");
+} else if (reas == 0) {
+    printk("BOOT: power-on reset (clean start)\n");
+}
+```
+
+**Complete fault map:**
+```
+PDM hardware overflow
+  │ ISR: pdm_restart_requested = true
+  └─► main thread: dma_pdm_restart() → PDM restarts
+
+PDM silent stall (no ISR)
+  │ 25ms timeout × 3 = 75ms
+  └─► pdm_timeout_streak >= 3 → dma_pdm_restart()
+
+Both paths:
+  └─► pdm_consecutive_restarts++ → if >= 5: safe mode → WDT fires → reboot
+
+DMA outruns consumer
+  └─► pdm_overrun_count logged, preroll_discontinuous = true
+      TinyML suppressed until 50 clean frames refill ring
+
+Main thread completely hangs
+  └─► wdt_feed() stops → HW WDT fires at 500ms → full SoC reset
+      Next boot: RESETREAS reveals the cause
+```
+
+**Result:**
+
+| Attack | Defense | Code |
+|--------|---------|------|
+| PDM hardware overflow | ISR flag → main thread restart | `pdm_restart_requested` volatile |
+| DMA silent stall | 3× timeout → restart | `pdm_timeout_streak >= 3` |
+| Ring buffer overrun | Counter + TinyML suppressed | `preroll_discontinuous` |
+| Race on ISR flag | `volatile` + HW stop = natural barrier | `volatile bool` |
+| EasyDMA misalignment | `__aligned(4)` on all DMA buffers | compile-time |
+| Test code in production | CMake `FAULT_INJECT` guard | zero flash in prod |
+| SW watchdog bug | HW WDT is independent peripheral | `wdt_feed()` stops → reset |
+| Infinite restart loop | `pdm_consecutive_restarts` cap at 5 | `PDM_MAX_RESTARTS = 5` |
+| TinyML on corrupt audio | `preroll_discontinuous` suppresses | 50 clean frames to re-enable |
+| Reboot history unknown | `NRF_POWER->RESETREAS` on boot | detects WDT-triggered resets |
+
+**Known remaining gaps (verbal defense):**
+- Fault counter does not survive multiple reboots (needs NVMC flash write — architecture designed, not implemented)
+- Absolute power numbers are model-derived, not PPK2-measured (hardware task pending)
+- Real-world TinyML accuracy unknown (needs field recordings in target environments)
