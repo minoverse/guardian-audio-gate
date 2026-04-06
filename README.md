@@ -1888,6 +1888,18 @@ P_transition = 8mA × 3.3V × 0.5ms × wakes_per_sec = 13.2µW per wake/s
 - Validated under BLE radio load (100ms beacon)
 - WCET increase: +95µs (within budget)
 - Average latency: +3µs (negligible)
+## Engineering Challenges
+
+10 real problems encountered during development — root cause analysis and fixes documented in STAR format:
+
+**[docs/ENGINEERING_CHALLENGES.md](docs/ENGINEERING_CHALLENGES.md)**
+
+Covers: PDM IRQ never fires · MPU fault on boot · CMSIS coefficient format · NaN in gain chain ·
+Python sim mismatch · priority inversion · TinyML thread blocking · WDT silent failure ·
+frame-level vs clip-level recall metric · broadband noise design boundary.
+
+---
+
 ## License
 
 MIT License
