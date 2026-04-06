@@ -9,7 +9,7 @@ except ImportError:
     print("Install: pip3 install ppk2-api numpy --break-system-packages")
     sys.exit(1)
 
-print("=== Guardian Week 5 Power Measurement ===\n")
+print("=== Guardian Power Measurement ===\n")
 
 # Find PPK2 port
 import serial.tools.list_ports

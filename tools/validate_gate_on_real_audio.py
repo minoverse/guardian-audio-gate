@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Guardian Week 10 — Gate Validation on Real (or Synthetic) Audio
+Guardian Gate Validation on Real (or Synthetic) Audio
 
 Runs a Python-exact simulation of the nRF52840 gate logic on WAV files and
 computes Precision / Recall / F1.  All feature extraction replicates the C
@@ -408,7 +408,7 @@ def plot_results(results, metrics, out_png):
     noise_r  = [r for r in results if r['true_label'] == 'noise']
 
     fig, axes = plt.subplots(2, 2, figsize=(13, 9))
-    fig.suptitle("Guardian Gate — Real Audio Validation (Week 10)", fontsize=13, fontweight='bold')
+    fig.suptitle("Guardian Gate — Real Audio Validation", fontsize=13, fontweight='bold')
 
     # ── Plot 1: Wake rate distribution ──────────────────────────────────────
     ax = axes[0][0]
@@ -511,8 +511,8 @@ def main():
     results_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                '../results')
     ts  = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
-    out_csv = os.path.join(results_dir, f'week10_validation_{ts}.csv')
-    out_png = os.path.join(results_dir, f'week10_validation_{ts}.png')
+    out_csv = os.path.join(results_dir, f'gate_validation_{ts}.csv')
+    out_png = os.path.join(results_dir, f'gate_validation_{ts}.png')
 
     # Load labels
     rows = []
@@ -520,7 +520,7 @@ def main():
         for row in csv.DictReader(f):
             rows.append(row)
 
-    print(f"\n=== Guardian Week 10 — Gate Validation ===")
+    print(f"\n=== Guardian Gate Validation ===")
     print(f"Labels : {labels_csv}  ({len(rows)} clips)")
     print(f"Running gate simulation on each clip...\n")
 

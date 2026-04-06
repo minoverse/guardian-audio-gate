@@ -33,7 +33,7 @@
  *   TIMER1 CC[4] compare  ──[PPI CH1]──► EGU0 TRIGGER → EGU0 ISR (CPU)
  * ─────────────────────────────────────────────────────────────────────────── */
 
-/* ── Week 15-16 Opt #5: BLE jitter stress test ───────────────────────────────
+/* ── BLE jitter stress test ───────────────────────────────
  * When CONFIG_BLE_JITTER_TEST=y, starts a non-connectable BLE beacon at
  * 100ms advertising interval. nRF52840 radio IRQ fires every 100ms, stealing
  * ~300-500µs from the CPU — directly competing with gate processing.
@@ -74,7 +74,7 @@ static void ble_beacon_start(void)
 }
 #endif /* CONFIG_BT */
 
-/* ── Week 5 Day 5: DMA vs Polling power comparison ────────────────────────────
+/* ── DMA vs Polling power comparison ────────────────────────────
  * Set POLL_MODE_TEST 1 to use busy-wait polling (CPU never sleeps).
  * Set POLL_MODE_TEST 0 (default) for DMA sleep mode (CPU sleeps between frames).
  * Flash each binary, measure PPK2 current, compare.
@@ -123,7 +123,7 @@ static void ble_beacon_start(void)
 
 #define POLL_MODE_TEST 0
 
-/* ── Week 7-8: Gate mode comparison for power measurement ────────────────────
+/* ── Gate mode configuration ────────────────────
  * GATE_MODE -1 = SLEEP     — CPU sleeps forever (J-Link baseline measurement)
  * GATE_MODE  0 = BASELINE  — resonator + always runs mock TinyML (no gate)
  * GATE_MODE  1 = ENERGY_VAD — simple RMS threshold gate, skips resonator bank
@@ -153,7 +153,7 @@ static void ble_beacon_start(void)
 #error "Set only one of TEST_AUDIO_SINE or TEST_AUDIO_NOISE, not both"
 #endif
 
-/* ── Week 9: Custom trace logging ────────────────────────────────────────────
+/* ── Trace logging ────────────────────────────────────────────
  * ENABLE_TRACE 1 — logs GUARDIAN/TINYML events, dumps CSV every 100 frames.
  *   Capture with: cat /dev/ttyACM0 | tee trace_log.csv
  *   Visualize  : python3 tools/analyze_systemview/visualize_trace.py trace_log.csv
@@ -179,7 +179,7 @@ static void ble_beacon_start(void)
 #define DEADLINE_STATS  0
 #define FRAME_BUDGET_US 20000U
 
-/* ── Week 15-16: Real TinyML — Edge Impulse keyword spotting ─────────────────
+/* ── Real TinyML — Edge Impulse keyword spotting ─────────────────
  * EI_TINYML 1 — replaces LCG mock with a real Edge Impulse MFCC + NN model
  * trained on Google Speech Commands ("yes", "no", "unknown", "noise").
  *
@@ -198,7 +198,7 @@ static void ble_beacon_start(void)
 #include "ei_classifier_wrapper.h"
 #endif
 
-/* ── Week 15-16 Opt #2: Hysteresis + hold-time ───────────────────────────────
+/* ── Hysteresis + hold-time ───────────────────────────────
  * Problem: gate fires KWS on every single wake frame — even a 20ms noise
  * spike triggers a full ~15ms TinyML inference call, wasting power.
  *
@@ -245,7 +245,7 @@ static uint32_t preroll_head   = 0;   /* next write slot (circular) */
 static uint32_t preroll_filled = 0;   /* frames stored (caps at PREROLL_FRAMES) */
 #endif
 
-/* ── Week 11-12: On-device playback test ─────────────────────────────────────
+/* ── On-device playback test ─────────────────────────────────────────────────
  * TEST_PLAYBACK 1 — embeds 3 s of speech + noise in flash and runs the gate
  * on them at boot (before entering the normal mic loop).
  *
@@ -262,7 +262,7 @@ static uint32_t preroll_filled = 0;   /* frames stored (caps at PREROLL_FRAMES) 
  * ─────────────────────────────────────────────────────────────────────────── */
 #define TEST_PLAYBACK 0
 
-/* ── Week 13-14: Full pipeline stats ─────────────────────────────────────────
+/* ── Pipeline statistics ─────────────────────────────────────────
  * PIPELINE_STATS 1 — tracks TinyML run count + keyword detections (10% mock
  * rate via LCG) and prints a PIPELINE: line every 50 frames.
  * Keep TINYML_THREADED 0 for this mode so keyword detection stays in main loop.
@@ -272,7 +272,7 @@ static uint32_t preroll_filled = 0;   /* frames stored (caps at PREROLL_FRAMES) 
  * ─────────────────────────────────────────────────────────────────────────── */
 #define PIPELINE_STATS 0
 
-/* ── Problem simulations (Week 9 Day 6-7) ────────────────────────────────────
+/* ── Problem simulations ────────────────────────────────────
  * SIMULATE_CTX_SWITCHES 1 — spawns 4 threads at same priority as main.
  *   Each yields every 1ms, forcing frequent context switches into gate path.
  *   SHOWS: gate timing variance increases in trace.
@@ -349,7 +349,7 @@ static void tr_dump(void)
 #define TR(evt, data) /* disabled */
 #endif /* ENABLE_TRACE */
 
-/* ── Week 9: Stress thread ───────────────────────────────────────────────────
+/* ── CPU stress thread ───────────────────────────────────────────────────
  * Competes for CPU at priority 7 (main thread is priority 0).
  * Busy-loops 5ms every 15ms — simulates background sensor/radio work.
  * Gate timing should stay flat even with this load.                         */
@@ -409,7 +409,7 @@ static void low_prio_entry(void *a, void *b, void *c)
 K_THREAD_DEFINE(low_prio_tid, 512, low_prio_entry, NULL, NULL, NULL, 8, 0, 0);
 #endif
 
-/* ── Week 9: Threaded TinyML (Day 6-7 optimization) ─────────────────────────
+/* ── Threaded TinyML ─────────────────────────
  * Problem: 100ms TinyML in main loop blocks gate for 5 frames per wake.
  * Fix: dedicated lower-priority thread drains a 4-slot queue.
  * Gate thread queues frame pointer (non-blocking) and continues immediately. */
@@ -496,7 +496,7 @@ static int16_t *get_test_frame(void)
 }
 #endif /* TEST_AUDIO_NOISE */
 
-/* ── Week 11-12: On-device playback test ─────────────────────────────────── */
+/* ── On-device playback test ─────────────────────────────────────────────── */
 #if TEST_PLAYBACK
 #include "testdata/speech_sample.h"
 #include "testdata/noise_sample.h"
@@ -510,7 +510,7 @@ static void run_playback_test(void)
 
     resonator_bank_df2t_init(&pb_bank);
 
-    printk("\n=== Week 11-12: On-Device Playback Test ===\n");
+    printk("\n=== Guardian On-Device Playback Test ===\n");
     printk("Speech array: %u samples (%.1fs)  Flash: ~%u KB\n",
            SPEECH_SAMPLE_SAMPLE_COUNT,
            (float)SPEECH_SAMPLE_SAMPLE_COUNT / SPEECH_SAMPLE_SAMPLE_RATE,
@@ -553,7 +553,7 @@ static void run_playback_test(void)
 }
 #endif /* TEST_PLAYBACK */
 
-/* ── Week 7-8: Mock TinyML inference ────────────────────────────────────────
+/* ── Mock TinyML inference ────────────────────────────────────────
  * 100ms busy-wait simulates heavy TinyML inference keeping CPU fully active. */
 static void mock_tinyml_inference(void)
 {
@@ -584,21 +584,21 @@ int main(void)
 #endif
 
 #if TEST_AUDIO_SINE
-    printk("\n=== Guardian Week 6 - Gate Decision [TEST: 800Hz SINE] ===\n");
+    printk("\n=== Guardian Gate [TEST: 800Hz SINE] ===\n");
     printk("Expected: WAKE most frames (periodic speech-like signal)\n\n");
 #elif TEST_AUDIO_NOISE
-    printk("\n=== Guardian Week 6 - Gate Decision [TEST: LFSR NOISE] ===\n");
+    printk("\n=== Guardian Gate [TEST: LFSR NOISE] ===\n");
     printk("Expected: ABORT most frames (broadband noise)\n\n");
 #else
 #if GATE_MODE == 0
-    printk("\n=== Guardian Week 7 - Power Test [BASELINE / no gate] ===\n\n");
+    printk("\n=== Guardian Power Test [BASELINE / no gate] ===\n\n");
 #elif GATE_MODE == 1
-    printk("\n=== Guardian Week 7 - Power Test [ENERGY VAD] ===\n\n");
+    printk("\n=== Guardian Power Test [ENERGY VAD] ===\n\n");
 #else
 #if STRESS_TEST
-    printk("\n=== Guardian Week 9 - Stress Test [PHYSICS GATE + CPU LOAD] ===\n\n");
+    printk("\n=== Guardian Stress Test [PHYSICS GATE + CPU LOAD] ===\n\n");
 #else
-    printk("\n=== Guardian Week 6 - Gate Decision [LIVE MIC / DMA MODE] ===\n\n");
+    printk("\n=== Guardian Gate [LIVE MIC / DMA MODE] ===\n\n");
 #endif
 #endif
 #endif
@@ -716,19 +716,19 @@ int main(void)
     int wake_count    = 0;
 
 #if EI_TINYML
-    /* Hysteresis + hold-time state (Opt #2) */
+    /* Hysteresis + hold-time state */
     uint32_t consecutive_wakes = 0;
     uint32_t hold_frames_left  = 0;
 #endif
 
-    /* ── Week 9 polishing stats ───────────────────────────────────────────── */
+    /* ── Runtime statistics ───────────────────────────────────────────── */
     uint32_t gate_wcet_us    = 0;  /* WCET: worst-case gate execution time    */
     uint32_t gate_total_us   = 0;  /* for duty cycle calculation              */
     uint32_t irq_latency_max = 0;  /* worst-case IRQ→thread wakeup latency   */
     uint32_t irq_latency_sum = 0;  /* for average latency                     */
     uint32_t irq_latency_n   = 0;
 
-    /* ── Week 15-16 Opt: Switching frequency power model ────────────────────
+    /* ── Switching frequency power model ────────────────────
      * Duty cycle alone understates power cost — every SLEEP→WAKE transition
      * draws a current spike (HFXO startup ~0.5ms @ ~8mA = 4µJ per transition).
      *
@@ -771,15 +771,15 @@ int main(void)
 #endif
 
 #if PIPELINE_STATS
-    /* Week 13-14: complete pipeline metrics — gate aborts, TinyML runs,
-     * keyword detections.  LCG gives ~10% mock keyword detection rate.      */
+    /* Pipeline metrics: gate aborts, TinyML runs, keyword detections.
+     * LCG gives ~10% mock keyword detection rate.                            */
     uint32_t pipe_tinyml_runs    = 0;
     uint32_t pipe_keywords       = 0;
     uint32_t pipe_gate_abort     = 0;
     uint32_t pipe_lrand          = 0xDEADBEEFu; /* LCG seed */
 #endif
 
-    /* Point 3: zero-copy queue — confirm on startup */
+    /* Startup: confirm zero-copy queue item size */
 #if TINYML_THREADED
     printk("TINYML_THREADED: zero-copy pointer passing (sizeof queue item = %u bytes)\n",
            (unsigned)sizeof(int16_t *));
@@ -944,7 +944,7 @@ int main(void)
             continue;
         }
 
-        /* Point 2: IRQ latency — time from ISR fire to thread wakeup */
+        /* IRQ latency — time from ISR fire to thread wakeup */
         {
             uint32_t irq_ts  = dma_pdm_get_irq_timestamp_ms();
             uint32_t wake_ms = k_uptime_get_32();
@@ -966,7 +966,7 @@ int main(void)
 #endif
 
         /* ── Pre-roll: zero-copy — DMA already wrote into ring slot ─────────
-         * Legacy memcpy path removed (Opt #4). When PREROLL_BUFFER=1, the
+         * Zero-copy path: when PREROLL_BUFFER=1, the
          * DMA driver writes directly into preroll_ring[] via dma_pdm_set_ring().
          * preroll_head / preroll_filled are updated in the dma_pdm_read_ring()
          * block above.  For TEST_AUDIO_SINE/NOISE, copy is still needed.      */
@@ -1040,7 +1040,7 @@ int main(void)
 #endif
         TR(TR_GUARDIAN_END, (uint16_t)decision.elapsed_us);
 
-        /* Point 1+4: WCET and duty cycle tracking */
+        /* WCET and duty cycle tracking */
         gate_total_us += decision.elapsed_us;
         if (decision.elapsed_us > gate_wcet_us) {
             gate_wcet_us = decision.elapsed_us;
@@ -1063,7 +1063,7 @@ int main(void)
             power_report_frames++;
 
 #if EI_TINYML
-            /* ── Hysteresis + hold-time (Opt #2) ────────────────────────────
+            /* ── Hysteresis + hold-time ────────────────────────────────────────
              * Only call KWS when HYSTERESIS_FRAMES consecutive wakes arrive
              * and we are not already in a hold window.                        */
             if (hold_frames_left > 0) {
@@ -1182,7 +1182,7 @@ int main(void)
 #endif
             wake_count = 0;
 
-            /* Point 1: Duty cycle — gate_us / frame_period_us
+            /* Duty cycle — gate_us / frame_period_us
              * Frame period = 50 frames × 20ms = 1,000ms = 1,000,000us       */
             {
                 /* duty% = gate_total_us / 1,000,000µs (50 frames × 20ms)

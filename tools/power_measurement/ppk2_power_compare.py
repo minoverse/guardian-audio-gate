@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Guardian Week 5 Day 5 — DMA vs Polling Power Comparison
+Guardian — DMA vs Polling Power Comparison
 Measures both modes sequentially using PPK2 Source Meter.
 
 Usage:
@@ -21,7 +21,7 @@ except ImportError:
 
 DURATION_S   = 20      # seconds per phase
 VOLTAGE_MV   = 3300    # supply voltage (match prj.conf: 3.3 V)
-BASELINE_MA  = 0.516   # nRF52840 sleep baseline measured Week 7 (515 µA)
+BASELINE_MA  = 0.516   # nRF52840 sleep baseline (515 µA)
 
 
 def find_ppk2_port():
@@ -127,7 +127,7 @@ def print_results(dma, poll):
 
 
 def main():
-    print("=== Guardian Week 5 Day 5 — DMA vs Polling Power Compare ===\n")
+    print("=== Guardian — DMA vs Polling Power Compare ===\n")
     print(f"Supply voltage : {VOLTAGE_MV} mV")
     print(f"Duration/phase : {DURATION_S} s")
     print(f"Baseline       : {BASELINE_MA:.3f} mA (nRF52840 sleep)\n")

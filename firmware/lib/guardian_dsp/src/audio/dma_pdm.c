@@ -316,7 +316,7 @@ int dma_pdm_restart(void)
     return nrfx_pdm_start(&pdm_instance);
 }
 
-/* Week 5 Day 5: polling variant — CPU never sleeps, burns cycles waiting for DMA.
+/* Polling variant — CPU never sleeps, burns cycles waiting for DMA.
  * Use this to measure power cost of busy-wait vs k_sem sleep (DMA mode above).
  * Expected: noticeably higher active current than dma_pdm_read(). */
 int dma_pdm_read_poll(int16_t **buffer)

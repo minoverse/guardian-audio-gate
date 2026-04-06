@@ -4,18 +4,18 @@ Physics-based audio gate for always-on keyword detection on nRF52840.
 Two-stage pipeline: IIR resonator bank (physics pre-filter) → TinyML KWS (Edge Impulse).  
 Gate decision: **1761 µs avg**, **~8.9% CPU duty cycle**, **100% abort rate on band-limited noise**.
 
-## Project Status — Complete (Week 1–16)
+## Component Status
 
 | Phase | Status | Key Result |
 |-------|--------|------------|
-| Week 1–2: Resonator bank | ✅ | 297 µs/frame — 16.8× faster than 5ms target |
-| Week 3–4: Feature pipeline | ✅ | 5 features @ 1546 µs — 3.6× optimized |
-| Week 5–6: PDM DMA driver | ✅ | nrfx direct + IRQ_CONNECT; zero-copy ring buffer |
-| Week 7–8: Gate scoring | ✅ | 6 rules, score-based wake decision |
-| Week 9–10: Observability | ✅ | Trace logging, stress test, deadline stats |
-| Week 11–12: Pre-roll + playback | ✅ | 1000ms TinyML context window, zero memcpy |
-| Week 13–14: Pipeline stats | ✅ | Gate abort rate, TinyML call count logged |
-| Week 15–16: TinyML + production | ✅ | Edge Impulse KWS, 97.8% accuracy, fault tolerance |
+| IIR Resonator Bank | ✅ | 297 µs/frame — 16.8× faster than 5ms target |
+| Feature Pipeline | ✅ | 5 features @ 1546 µs — 3.6× optimized |
+| PDM DMA Driver | ✅ | nrfx direct + IRQ_CONNECT; zero-copy ring buffer |
+| Gate Scoring | ✅ | 6 rules, score-based wake decision |
+| Observability | ✅ | Trace logging, stress test, deadline stats |
+| Pre-roll + Playback | ✅ | 1000ms TinyML context window, zero memcpy |
+| Pipeline Stats | ✅ | Gate abort rate, TinyML call count logged |
+| TinyML + Production | ✅ | Edge Impulse KWS, 97.8% accuracy, fault tolerance |
 | Final: Safety + noise rejection | ✅ | Rule 7 multi-formant gate, AGC NaN fix, PPI batch wakeup |
 
 ## Performance (measured on hardware)
@@ -189,7 +189,7 @@ Exit screen: `Ctrl+A` then `K` then `Y`
 ## Expected Output
 ```
 *** Booting Zephyr OS build v4.3.0 ***
-Guardian Audio Gate - Week 1-2 Timing Test
+Guardian Audio Gate — Resonator Timing Test
 Resonator initialized
 Resonator timing: 297 us (target: < 5000 us)
 PASS: Meets timing requirement
@@ -353,7 +353,7 @@ CMSIS-DSP uses:
 - Minimal printk() calls (reduce overhead)
 - Direct CMSIS-DSP calls (no abstraction layers)
 
-# Week 3-4 Problems & Solutions
+# Implementation Notes
 ### Goal
 Implement 5 physics-based features with target: **< 2000 µs**
 ### Final Result
@@ -385,7 +385,7 @@ CPU usage: 9.2% of frame budget
 | **Final** | **Lag 80-250 step-by-2** | **1546** | ** PASS** |
 
 **Total speedup:** 3.6x faster
-![Week 3-4 Timing Result](docs/images/20260208_131113.jpg)
+![Resonator Timing Result](docs/images/20260208_131113.jpg)
 ### Key Optimizations
 
 1. **Coherence Feature (Main Bottleneck)**
@@ -501,7 +501,7 @@ CPU usage: 9.2% of frame budget
 
 **Total speedup:** 3.6x faster
 
-![Week 3-4 Timing Result](docs/images/week3-4-timing.png)
+![Resonator Timing Result](docs/images/week3-4-timing.png)
 
 ### Key Optimizations
 
@@ -538,7 +538,7 @@ firmware/src/main.c                         # Feature extraction test
 
 ---
 
-## Week 5: DMA Zero-Copy Audio (Complete)
+## PDM DMA Driver — Zero-Copy Audio
 
 ### Goal
 Eliminate CPU overhead from audio capture using DMA transfers for 15% power savings.
@@ -559,7 +559,7 @@ Eliminate CPU overhead from audio capture using DMA transfers for 15% power savi
 
 **Processing Time:**
 - DMA mode: 1227 µs/frame
-- 20% faster than Week 4 polling (1546 µs)
+- 20% faster than polling baseline (1546 µs)
 - Consistent timing (no variance)
 
 **Memory Usage:**
@@ -606,7 +606,7 @@ DMA: E:27295 C:32693 T:1227us
 
 ### Power Measurement Status
 
-## Week 5 Day 5: DMA vs Polling Power Analysis
+## DMA vs Polling Power Analysis
 
 ### Goal
 Quantify power savings from DMA-based audio capture vs CPU polling.
@@ -686,7 +686,7 @@ See: `docs/measurements/ppk2_week5_*.csv`
 - [nRF52840 Product Specification v1.7](https://infocenter.nordicsemi.com/pdf/nRF52840_PS_v1.7.pdf) - Section 6.34: PDM Interface
 - [PPK2 User Guide](https://infocenter.nordicsemi.com/topic/ug_ppk2/UG/ppk/PPK_user_guide_Intro.html)
 
-## Week 5.5: Gate Timing Analysis
+## Gate Timing Analysis
 
 ### Goal
 Verify gate decision meets real-time deadline (<5ms per frame) under all conditions.
@@ -750,7 +750,7 @@ Idle time: 18,532 µs (92.7%)
 
 See: `docs/measurements/week5.5_*.log`
 ### Where Real Power Savings Come From
-## Week 6: Gate Decision Logic (Complete)
+## Gate Decision Logic
 
 ### Goal
 Threshold-based discrimination: wake TinyML only for speech-like signals, abort on silence/noise.
@@ -797,7 +797,7 @@ Result: Correct ✓
 - Coefficient bug: `a1=32767` for all filters (unstable)
 - Fixed: Proper frequency-dependent `a1` values
 
-**Week 6 Gate Logic:**
+**Gate Logic:**
 ```
 Without gate: Process 50/50 frames = 4.12 mA
 With gate:    Process 15/50 frames (30% pass rate)
@@ -820,9 +820,9 @@ Despite negligible power benefit at current workload:
 **4. Code quality:** Clean separation (capture → process → decide)
 
 **Power optimization hierarchy:**
-1. **Don't do work** (Gate abort: 70% savings) ← Week 6
-2. **Do work efficiently** (CMSIS-DSP: 16× vs naive) ← Week 1-4
-3. **Optimize idle** (DMA vs poll: 2.4% cost) ← Week 5
+1. **Don't do work** (Gate abort: 70% savings)
+2. **Do work efficiently** (CMSIS-DSP: 16× vs naive)
+3. **Optimize idle** (DMA vs poll: 2.4% cost)
 
 ### Technical Issues Resolved
 
@@ -837,7 +837,7 @@ Despite negligible power benefit at current workload:
 - Added volatile, verified with actual measurements
 - Typical: 804 µs gate decision overhead
 
-### Power Measurement (Week 7 Preview)
+### Power Measurement
 
 **Methodology:**
 - J-Link subtraction method (SB40 not removed)
@@ -859,7 +859,7 @@ See: `docs/measurements/ppk2_week7_*.csv`
 - `resonator_coefs_cmsis.h` - Fixed filter coefficients
 - `main.c` - Integration + test modes (SINE/NOISE/LIVE)
 
-## Week 7-8: Power Measurement (Complete)
+## Power Measurement
 
 ### Goal
 Prove gate saves power by comparing 3 firmware modes using PPK2.
@@ -891,13 +891,13 @@ Prove gate saves power by comparing 3 firmware modes using PPK2.
 **Measurement limitation:** J-Link overhead (99.55 mA) dominates nRF signal (~4 mA), signal-to-noise ratio 25:1. Sub-1mA resolution requires SB40 removal or P22 isolation.
 
 **Validation approach:** Power savings proven indirectly via abort rate:
-- Quiet room (Week 5.5): 99.4% abort → TinyML skipped 99.4% of frames
-- Noisy environment (Week 7-8): Low abort → no power benefit (expected)
+- Quiet room: 99.4% abort → TinyML skipped 99.4% of frames
+- Noisy environment: Low abort → no power benefit (expected)
 
 **Conclusion:** Gate effectiveness environment-dependent. In quiet deployment (>90% abort rate), gate provides significant power savings. In noisy environments, gate overhead may exceed benefit.
 
 **Measurement limitation acknowledged:** Without P22 isolation, absolute power numbers remain theoretical. Gate discrimination and timing budget validated experimentally.
-## Week 9: Scheduler Validation & Real-Time Stress Testing (Complete)
+## Scheduler Validation & Real-Time Stress Testing
 
 ### Goal
 Prove gate timing determinism, validate deadline compliance under stress, and demonstrate scheduler optimization techniques.
@@ -1013,7 +1013,7 @@ TinyML Thread (Priority 10):
 - `tools/analyze_systemview/visualize_trace.py` — execution timeline + deadline miss analysis
 - `tools/analyze_systemview/analyze_serial_log.py` — FA/hr + gate timing from serial log
 
-## Week 10: Real Audio Validation (Complete)
+## Real Audio Validation
 
 ### Goal
 Validate gate discrimination on actual audio samples — prove F1 ≥ 0.60 on labeled speech vs noise clips.
@@ -1082,7 +1082,7 @@ wake = (score >= 55)
 
 **Synthetic test F1 = 1.000** validates implementation correctness but does not represent production accuracy.
 
-**Expected real audio performance: F1 ≈ 0.65–0.80** (matches Week 6 Python simulation target of 0.678)
+**Expected real audio performance: F1 ≈ 0.65–0.80** (matches Python simulation target of 0.678)
 
 **Why real audio is harder:**
 - **Speech variability:** Silence gaps, whispers, plosives → some frames score low
@@ -1090,7 +1090,7 @@ wake = (score >= 55)
 - **Acoustic complexity:** Babble/music has harmonic content → can trigger gate
 - **Whispered speech:** High ZCR fails Rule 4
 
-**Design decision:** Thresholds tuned for F1=0.678 on realistic dataset (Python simulation, Week 6). Synthetic test proves **C firmware matches Python model**, not real-world accuracy.
+**Design decision:** Thresholds tuned for F1=0.678 on realistic dataset (Python simulation). Synthetic test proves **C firmware matches Python model**, not real-world accuracy.
 
 **Production deployment:** Requires field testing with representative audio (office, home, car) to validate 0.678 target holds.
 
@@ -1113,7 +1113,7 @@ python3 tools/record_test_set.py
 - `tools/validate_gate_on_real_audio.py` — Python gate simulation, F1 scoring, plots
 
 
-## Week 11-12: On-Device Audio Playback (Complete)
+## On-Device Audio Playback
 
 ### Goal
 Validate gate discrimination using pre-recorded audio samples played through nRF52840.
@@ -1137,7 +1137,7 @@ Validate gate discrimination using pre-recorded audio samples played through nRF
 
 ---
 
-## Week 13-14: TinyML Integration (Complete)
+## TinyML Integration
 
 ### Goal
 Integrate mock TinyML inference pipeline with gate decision logic.
@@ -1195,7 +1195,7 @@ k_msgq_put(&tinyml_q, &frame, K_NO_WAIT);
 
 ---
 
-## Week 13-14: Advanced Validation (Complete)
+## Advanced Validation
 
 ### 1. SQNR Analysis — Quantization Distortion Proof
 
@@ -1388,7 +1388,7 @@ The 3-sigma bound equals the observed maximum (1,736 µs). This means the timing
 **Tool:** `tools/analyze_systemview/analyze_serial_log.py`
 
 
-## Week 15-16: Real TinyML — Edge Impulse Keyword Spotting (Complete)
+## Edge Impulse Keyword Spotting
 
 ### Goal
 
@@ -1664,7 +1664,7 @@ Savings: (23.7 - 1.91) / 23.7 = 91%
 
 **Note:** Power estimates based on nRF52840 datasheet values (gate 1.7ms @ 4.8mA, 
 TinyML 100ms @ 15mA, PDM always-on 1.2mA). Clean direct measurement blocked by 
-J-Link overhead (Week 7-8 limitation). Savings validated indirectly via measured 
+J-Link overhead. Savings validated indirectly via measured 
 96% abort rate.
 
 ---
@@ -1792,7 +1792,7 @@ End-to-end F1: ~0.87
 
 ---
 
-### Power Consumption (Corrected - Week 15-16)
+### Power Consumption
 
 **Switching Frequency Model:**
 ```

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Guardian Week 9 — Execution Timeline Visualizer
+Guardian — Execution Timeline Visualizer
 
 Parses CSV trace dumped from firmware (ENABLE_TRACE 1) and produces:
   - Execution timeline (Guardian gate + TinyML spans)
@@ -122,7 +122,7 @@ GUARDIAN_Y = 0.0
 TINYML_Y   = 1.3
 
 fig, axes = plt.subplots(2, 1, figsize=(16, 8))
-fig.suptitle("Guardian Execution Timeline (Week 9)", fontsize=14, fontweight="bold")
+fig.suptitle("Guardian Execution Timeline", fontsize=14, fontweight="bold")
 
 # ── Top: timeline ──────────────────────────────────────────────────────────
 ax = axes[0]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Guardian Week 10 — Audio Test-Set Recorder
+Guardian Gate — Audio Test-Set Recorder
 
 Records labeled WAV files (speech / noise) at 16 kHz mono for gate validation.
 
@@ -131,7 +131,7 @@ def main():
     rows = []
 
     if args.synthetic:
-        print("=== Guardian Week 10 — Generating Synthetic Test Set ===\n")
+        print("=== Guardian Gate — Generating Synthetic Test Set ===\n")
         print(f"  Speech : {args.clips} clips — harmonic mix (100-180 Hz f0 + overtones)")
         print(f"  Noise  : {args.clips} clips — LFSR broadband noise")
         print(f"  Output : {OUT_DIR}\n")
@@ -156,7 +156,7 @@ def main():
             print(f"  Saved {os.path.basename(path)}")
 
     else:
-        print("=== Guardian Week 10 — Live Microphone Recording ===\n")
+        print("=== Guardian Gate — Live Microphone Recording ===\n")
         print(f"  Will record {args.clips} speech + {args.clips} noise clips ({DURATION_S}s each).")
         print("  SPEECH clips: say a word or phrase each time.")
         print("  NOISE  clips: stay silent or make background noise.\n")

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Guardian Week 7-8 — Gate Power Comparison (3 modes)
+Guardian Gate — Power Comparison (3 modes)
 
 Measures average current for:
   Mode 0 BASELINE   — resonator + always runs mock TinyML (no gate)
@@ -158,7 +158,7 @@ def plot_results(results):
     baseline = means[0]
 
     fig, axes = plt.subplots(1, 2, figsize=(13, 5))
-    fig.suptitle("Guardian Gate Power Comparison (Week 7-8)", fontsize=13, fontweight="bold")
+    fig.suptitle("Guardian Gate Power Comparison", fontsize=13, fontweight="bold")
 
     # Plot 1: average current bar chart with % savings
     ax = axes[0]
@@ -192,8 +192,8 @@ def plot_results(results):
                                "../../results")
     os.makedirs(results_dir, exist_ok=True)
     ts      = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    png     = os.path.join(results_dir, f"week7_power_comparison_{ts}.png")
-    csv     = os.path.join(results_dir, f"week7_power_comparison_{ts}.csv")
+    png     = os.path.join(results_dir, f"power_comparison_{ts}.png")
+    csv     = os.path.join(results_dir, f"power_comparison_{ts}.csv")
     plt.savefig(png, dpi=300)
     print(f"\nSaved plot : {png}")
 
@@ -207,7 +207,7 @@ def plot_results(results):
 
 
 def main():
-    print("=== Guardian Week 7-8 — Gate Power Comparison ===\n")
+    print("=== Guardian Gate — Power Comparison ===\n")
     print(f"Supply voltage : {VOLTAGE_MV} mV")
     print(f"Duration/phase : {DURATION_S} s")
     print(f"Battery model  : {BATTERY_MAH} mAh (CR2032)\n")
