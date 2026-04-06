@@ -17,6 +17,8 @@ Gate decision: **1761 µs avg**, **~8.9% CPU duty cycle**, **100% abort rate on 
 | Pipeline Stats | ✅ | Gate abort rate, TinyML call count logged |
 | TinyML + Production | ✅ | Edge Impulse KWS, 97.8% accuracy, fault tolerance |
 | Final: Safety + noise rejection | ✅ | Rule 7 multi-formant gate, AGC NaN fix, PPI batch wakeup |
+| Audio front-end hardening | ✅ | NaN-safe cal_gain clamp, `len` upper-bound guard (-EINVAL) |
+| Python sim firmware alignment | ✅ | Coherence rule + SCORE_WAKE=20 match firmware exactly |
 
 ## Performance (measured on hardware)
 
@@ -52,6 +54,43 @@ PDM mic ──[DMA zero-copy ring]──► audio_frontend_process()
                            ← 1000ms pre-roll context (50 frames)
 ```
 
+## Safety & Correctness Hardening
+
+### AGC NaN Safety (`preprocess.c`)
+`CLAMP(NaN, lo, hi)` returns `NaN` in IEEE 754 because NaN comparisons are always false —
+`MIN`/`MAX` both propagate NaN silently. The mic calibration gain uses an inverted-AND guard instead:
+```c
+fe->cal_gain = (cal_gain >= 0.5f && cal_gain <= 2.0f) ? cal_gain : 1.0f;
+```
+This correctly rejects NaN (NaN >= 0.5 is false → falls back to unity gain).
+Applied both in `audio_frontend_init()` and `mic_cal_is_valid()`.
+
+### Frame Length Upper-Bound Guard (`preprocess.c`)
+`audio_frontend_process()` validates `len` against `AUDIO_FRONTEND_FRAME_MAX` (320):
+```c
+if (!fe || !in || !out || len == 0U || len > AUDIO_FRONTEND_FRAME_MAX)
+    return -EINVAL;
+```
+Without this, a caller passing `len > 320` would write past the end of the output buffer (UB).
+Returns `-EINVAL` (Zephyr convention) — a programmer error guard, never fires in production.
+
+### Hardware Watchdog with `device_is_ready()` (`main.c`)
+`DEVICE_DT_GET()` returns a compile-time pointer; the device may not be ready at runtime.
+Added explicit `device_is_ready()` check before `wdt_install_timeout()` with graceful degradation:
+system runs without HW watchdog rather than crashing on a NULL dereference.
+
+### TinyML Thread Stall Detection (`main.c`)
+`k_msgq_get(&tinyml_q, K_FOREVER)` silently hangs if inference blocks.
+Changed to `K_MSEC(500)` with stall counter — logs idle every 10 seconds without flooding serial.
+WDT would never reset a hung TinyML thread under `K_FOREVER` since the gate loop keeps feeding it.
+
+### Python Simulation Firmware Alignment (`test_multi_env.py`, `test_real_audio.py`)
+Both Python simulations now match firmware `decision.c` exactly:
+- Coherence rule (Rule 3, +25 pts): autocorrelation peak via lag range 62–249 samples, threshold=1000
+- Score formula: corr=40 + energy=20 + coherence=25 + zcr=15 + sfm=20 + cv=20 (max=140)
+- `SCORE_WAKE=20` (was 80 — wrong), `MULTIBAND_MIN_ACTIVE=2`
+- Result: `test_multi_env.py` 100% abort on noise / 100% speech recall; `test_real_audio.py` 99% clip recall
+
 ## Repository Structure
 ```
 guardian-audio-gate/
@@ -73,9 +112,21 @@ guardian-audio-gate/
 │   ├── prj.conf                                # Zephyr configuration
 │   └── CMakeLists.txt
 ├── tools/
-│   ├── test_multi_env.py                       # 5-environment noise simulation
+│   ├── test_multi_env.py                       # 5-environment noise simulation (firmware-aligned)
+│   ├── test_real_audio.py                      # Real audio validation (Google Speech Commands)
 │   ├── test_agc_gate_separation.py             # AGC/gate + float32 safety tests
-│   └── test_hardware.py                        # Hardware serial test runner
+│   ├── test_hardware.py                        # Hardware serial test runner
+│   ├── det_real_speech.py                      # DET curve on real speech (100 clips)
+│   ├── det_librispeech_esc50.py                # DET curve: LibriSpeech + ESC-50
+│   ├── validate_gate_on_real_audio.py          # Gate validation with plots
+│   ├── record_test_set.py                      # Synthetic + live test set recorder
+│   ├── sqnr_analysis.py                        # Quantization distortion (SQNR)
+│   ├── power_model.py                          # Instruction-level power model
+│   ├── plot_freq_response.py                   # Resonator frequency response plot
+│   └── power_measurement/
+│       ├── ppk2_power_compare.py               # PPK2 automated power logging
+│       ├── power_compare_3modes.py             # 3-mode power comparison (DMA/poll/sleep)
+│       └── measure_power.py                    # Basic PPK2 measurement script
 └── training_data/                              # Google Speech Commands + ESC-50
 ```
 
