@@ -142,8 +142,7 @@ Both Python simulations now match firmware `decision.c` exactly:
 
 ## Repository Structure
 ```
-guardian-audio-gate/
-├── CLAUDE.md                                   # Development guide (build, arch, debug)
+guardian-audio-gate/                                 
 ├── firmware/
 │   ├── src/
 │   │   └── main.c                              # Main application (gate loop + TinyML)
