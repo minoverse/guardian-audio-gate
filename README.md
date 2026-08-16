@@ -11,7 +11,7 @@ Gate decision: **1761 µs avg**, **~8.9% CPU duty cycle**, **100% abort rate on 
 | IIR Resonator Bank | ✅ | 297 µs/frame — 16.8× faster than 5ms target |
 | Feature Pipeline | ✅ | 5 features @ 1546 µs — 3.6× optimized |
 | PDM DMA Driver | ✅ | nrfx direct + IRQ_CONNECT; zero-copy ring buffer |
-| Gate Scoring | ✅ | 6 rules, score-based wake decision |
+| Gate Scoring | ✅ | 7 rules, score-based wake decision |
 | Observability | ✅ | Trace logging, stress test, deadline stats |
 | Pre-roll + Playback | ✅ | 1000ms TinyML context window, zero memcpy |
 | Pipeline Stats | ✅ | Gate abort rate, TinyML call count logged |
