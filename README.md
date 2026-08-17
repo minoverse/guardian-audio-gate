@@ -47,7 +47,7 @@ PDM mic ──[DMA zero-copy ring]──► audio_frontend_process()
                                      ├─ DC removal (IIR HPF @ 20 Hz)
                                      └─ AGC (10ms attack / 500ms release)
                                    ↓
-                          resonator_bank_df2t (300/800/1500/2500 Hz)
+                          resonator_bank_df1t (300/800/1500/2500 Hz)
                                    ↓
                           gate_decide() — 7 rules
                             Rules 1–6: score (max 140)
