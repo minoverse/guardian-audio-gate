@@ -1,5 +1,5 @@
-#ifndef RESONATOR_DF2T_H
-#define RESONATOR_DF2T_H
+#ifndef RESONATOR_DF1T_H
+#define RESONATOR_DF1T_H
 
 #include <stdint.h>
 #include <stddef.h>
@@ -33,10 +33,10 @@ typedef struct {
     int16_t outputs[NUM_RESONATORS][FRAME_SIZE];     /* Q15 output for features */
 } resonator_bank_df2t_t;
 
-int resonator_bank_df2t_init(resonator_bank_df2t_t *bank);
-void resonator_bank_df2t_process(resonator_bank_df2t_t *bank, const int16_t *input, size_t len);
-void resonator_bank_df2t_reset(resonator_bank_df2t_t *bank);
-const int16_t* resonator_bank_df2t_get_output(const resonator_bank_df2t_t *bank, int channel);
-uint16_t resonator_bank_df2t_get_center_freq(int channel);
+int resonator_bank_df1t_init(resonator_bank_df2t_t *bank);
+void resonator_bank_df1t_process(resonator_bank_df2t_t *bank, const int16_t *input, size_t len);
+void resonator_bank_df1t_reset(resonator_bank_df2t_t *bank);
+const int16_t* resonator_bank_df1t_get_output(const resonator_bank_df2t_t *bank, int channel);
+uint16_t resonator_bank_df1t_get_center_freq(int channel);
 
 #endif
