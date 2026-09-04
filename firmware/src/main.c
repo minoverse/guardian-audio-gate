@@ -503,12 +503,12 @@ static int16_t *get_test_frame(void)
 
 static void run_playback_test(void)
 {
-    static resonator_bank_df2t_t pb_bank;   /* static: 2600B — too large for stack */
+    static resonator_bank_df1t_t pb_bank;   /* static: 2600B — too large for stack */
     gate_config_t         pb_cfg   = GATE_CONFIG_DEFAULT;
     noise_tracker_t       pb_noise = {0};
     uint32_t go, abort_cnt, total;
 
-    resonator_bank_df2t_init(&pb_bank);
+    resonator_bank_df1t_init(&pb_bank);
 
     printk("\n=== Guardian On-Device Playback Test ===\n");
     printk("Speech array: %u samples (%.1fs)  Flash: ~%u KB\n",
@@ -562,7 +562,7 @@ static void mock_tinyml_inference(void)
 
 /* ── Application ─────────────────────────────────────────────────────────── */
 
-static resonator_bank_df2t_t bank;
+static resonator_bank_df1t_t bank;
 static gate_config_t         config = GATE_CONFIG_DEFAULT;
 static noise_tracker_t       noise  = {0};
 
