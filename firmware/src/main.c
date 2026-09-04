@@ -519,7 +519,7 @@ static void run_playback_test(void)
     /* ── Run gate on speech ───────────────────────────────────────────────── */
     go = abort_cnt = 0;
     for (uint32_t i = 0; i + FRAME_SIZE <= SPEECH_SAMPLE_SAMPLE_COUNT; i += FRAME_SIZE) {
-        resonator_bank_df2t_process(&pb_bank, &speech_sample[i], FRAME_SIZE);
+        resonator_bank_df1t_process(&pb_bank, &speech_sample[i], FRAME_SIZE);
         gate_decision_t d = gate_decide(&pb_bank, &pb_cfg);
         energy_features_t ef = { .total_energy = d.features_used.energy };
         update_noise_floor(&pb_noise, &ef, d.should_wake);
@@ -531,14 +531,14 @@ static void run_playback_test(void)
            go, abort_cnt, total ? go * 100U / total : 0U);
 
     /* ── Reset state for noise test ──────────────────────────────────────── */
-    resonator_bank_df2t_reset(&pb_bank);
+    resonator_bank_df1t_reset(&pb_bank);
     pb_cfg   = (gate_config_t)GATE_CONFIG_DEFAULT;
     pb_noise = (noise_tracker_t){0};
 
     /* ── Run gate on noise ────────────────────────────────────────────────── */
     go = abort_cnt = 0;
     for (uint32_t i = 0; i + FRAME_SIZE <= NOISE_SAMPLE_SAMPLE_COUNT; i += FRAME_SIZE) {
-        resonator_bank_df2t_process(&pb_bank, &noise_sample[i], FRAME_SIZE);
+        resonator_bank_df1t_process(&pb_bank, &noise_sample[i], FRAME_SIZE);
         gate_decision_t d = gate_decide(&pb_bank, &pb_cfg);
         energy_features_t ef = { .total_energy = d.features_used.energy };
         update_noise_floor(&pb_noise, &ef, d.should_wake);
@@ -644,7 +644,7 @@ int main(void)
 #endif
 
 #if (GATE_MODE == 0 || GATE_MODE == 2)
-    resonator_bank_df2t_init(&bank);
+    resonator_bank_df1t_init(&bank);
 #endif
 
     /* ── Audio front-end: calibration + DC removal + AGC ───────────────────
@@ -1002,7 +1002,7 @@ int main(void)
 #endif
 
 #if GATE_MODE == 0
-        resonator_bank_df2t_process(&bank, processed_frame, FRAME_SIZE);
+        resonator_bank_df1t_process(&bank, processed_frame, FRAME_SIZE);
         should_wake = true;
 
 #elif GATE_MODE == 1
@@ -1011,11 +1011,11 @@ int main(void)
         should_wake = (rms > ENERGY_VAD_THRESHOLD);
 
 #else
-        resonator_bank_df2t_process(&bank, processed_frame, FRAME_SIZE);
+        resonator_bank_df1t_process(&bank, processed_frame, FRAME_SIZE);
 
 #if !(TEST_AUDIO_SINE || TEST_AUDIO_NOISE)
         if (frame_count == 0) {
-            const int16_t *r0 = resonator_bank_df2t_get_output(&bank, 0);
+            const int16_t *r0 = resonator_bank_df1t_get_output(&bank, 0);
             int16_t r_min = r0[0], r_max = r0[0];
             for (int i = 1; i < FRAME_SIZE; i++) {
                 if (r0[i] < r_min) r_min = r0[i];
