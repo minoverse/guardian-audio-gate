@@ -8,7 +8,7 @@
 #include "guardian/features/modulation.h"
 #include <arm_math.h>
 #include "guardian/audio/dma_pdm.h"
-#include "guardian/resonator_df2t.h"
+#include "guardian/resonator_df1t.h"
 #include "guardian/gate/decision.h"
 #ifdef CONFIG_SEGGER_SYSTEMVIEW
 #include <SEGGER_SYSVIEW.h>
