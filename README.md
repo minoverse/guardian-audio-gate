@@ -2,7 +2,7 @@
 
 Physics-based audio gate for always-on keyword detection on nRF52840.  
 Two-stage pipeline: IIR resonator bank (physics pre-filter) → TinyML KWS (Edge Impulse).  
-Gate decision: **1761 µs avg**, **~8.9% CPU duty cycle**, **100% abort rate on band-limited noise**.
+Gate decision: **1761 µs avg**, **~8.9% CPU duty cycle**, 
 
 ## Component Status
 
